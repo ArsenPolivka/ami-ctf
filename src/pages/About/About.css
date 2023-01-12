@@ -1,0 +1,39 @@
+section {
+    display: flex;
+    padding: 20px 60px 140px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Nunito, sans-serif;
+    line-height: 1.5;
+    gap: 60px;
+}
+
+img {
+    width: 602px;
+    max-width: 100%;
+    height: auto;
+}
+
+.column:nth-child(2) {
+    max-width: 505px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+}
+
+p:last-child {
+    margin: 0;
+}
+
+.highlighter {
+    color: #6C63FF;
+}

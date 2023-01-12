@@ -1,4 +1,5 @@
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { About } from "./pages/About/About";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
 
       {/* Routes nest inside one another. Nested route paths build upon
             parent route paths, and nested route elements render inside
-            parent route elements. See the note about <Outlet> below. */}
+            parent route elements. See the note About <Outlet> below. */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -57,7 +58,7 @@ function Layout() {
       <hr />
 
       {/* An <Outlet> renders whatever child route is currently active,
-          so you can think about this <Outlet> as a placeholder for
+          so you can think About this <Outlet> as a placeholder for
           the child routes we defined above. */}
       <Outlet />
     </div>
@@ -72,13 +73,7 @@ function Home() {
   );
 }
 
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
+
 
 function Dashboard() {
   return (
