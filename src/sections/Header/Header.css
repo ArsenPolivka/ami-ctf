@@ -1,11 +1,22 @@
 .header {
+  padding: 30px 0;
+}
+
+.wrapper {
   display: flex;
   align-items: center;
-  padding: 30px 0;
 }
 
 .nav {
   display: flex;
   align-items: center;
   margin-left: auto;
+}
+
+.navigation {
+  margin-right: 100px;
+}
+
+.first-button {
+  margin-right: 32px;
 }
