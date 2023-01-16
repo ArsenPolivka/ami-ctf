@@ -6,9 +6,12 @@
   font-size: 12px;
   line-height: 15px;
   text-decoration: none;
+  appearance: none;
+  cursor: pointer;
 }
 
 .button--primary {
+  border: 1px solid #FFBA49;
   background-color: #FFBA49;
   color: #000;
 }

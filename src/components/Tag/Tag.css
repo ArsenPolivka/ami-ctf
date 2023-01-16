@@ -1,0 +1,11 @@
+.tag {
+  padding: 8px 36px;
+  background: rgba(255, 186, 73, 0.03);
+  border: 1px solid #000000;
+  border-radius: 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
