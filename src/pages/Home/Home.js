@@ -1,4 +1,5 @@
 import { Header } from '../../sections/Header';
+import { Intro } from '../../sections/Intro';
 
 const pageNavigation = [
   {
@@ -23,6 +24,8 @@ export const Home = () => {
         hasLogin
         hasRegistration
       />
+
+      <Intro />
     </>
   );
 };
