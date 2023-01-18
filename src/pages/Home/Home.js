@@ -1,20 +1,8 @@
 import { Header } from '../../sections/Header';
 import { Intro } from '../../sections/Intro';
+import { ContactUs } from '../../sections/ContactUs';
 
-const pageNavigation = [
-  {
-    to: '#about',
-    label: 'About',
-  },
-  {
-    to: '#roadmap',
-    label: 'Road map',
-  },
-  {
-    to: '#faq',
-    label: 'FAQ',
-  },
-];
+import { pageNavigation } from './constants';
 
 export const Home = () => {
   return (
@@ -26,6 +14,8 @@ export const Home = () => {
       />
 
       <Intro />
+
+      <ContactUs />
     </>
   );
 };

@@ -19,13 +19,13 @@ export const Header = ({ pageNavigation, hasLogin, hasRegistration}) => {
             ) : null}
 
             {hasLogin ? (
-              <Button to="/login" type="secondary" rootClassName="first-button">
+              <Button to="/login" variant="secondary" rootClassName="first-button">
                 Login
               </Button>
             ) : null}
 
             {hasRegistration ? (
-              <Button to="/registration" type="primary">
+              <Button to="/registration" variant="primary">
                 Sign Up
               </Button>
             ) : null}

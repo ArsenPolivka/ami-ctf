@@ -21,9 +21,9 @@ export const Intro = () => {
             </p>
 
             <div className="btn-group">
-              <Button type="primary" rootClassName="btn">Register now</Button>
+              <Button variant="primary" rootClassName="btn">Register now</Button>
 
-              <Button type="secondary" rootClassName="btn">Read more</Button>
+              <Button variant="secondary" rootClassName="btn">Read more</Button>
             </div>
           </div>
 
