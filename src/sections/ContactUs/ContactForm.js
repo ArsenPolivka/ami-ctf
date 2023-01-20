@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Input } from '../../components/Input';
+import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
 
 export const ContactForm = () => {
@@ -25,19 +26,9 @@ export const ContactForm = () => {
         <Input
           hideLabel
           required
-          rootClassName="first-input"
           name="name"
           label="Full name"
           placeholder="Full name"
-          onChange={handleChange}
-        />
-
-        <Input
-          hideLabel
-          rootClassName="second-input"
-          name="tel"
-          label="Phone number"
-          placeholder="Phone number"
           onChange={handleChange}
         />
       </div>
@@ -54,8 +45,20 @@ export const ContactForm = () => {
         />
       </div>
 
+      <div className="row third-row">
+        <TextArea
+          hideLabel
+          required
+          name="message"
+          label="Enter your message:"
+          placeholder="Text message"
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="row last-row">
         <Button
+          wide
           variant="primary"
           type="submit"
         >
