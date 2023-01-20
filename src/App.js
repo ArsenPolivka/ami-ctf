@@ -1,12 +1,13 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { Home } from './pages/Home';
 import { Registration } from './pages/Registration';
 import { Login } from './pages/Login';
+import { NoMatch } from './pages/404';
 
 export default function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route path="/registration" element={<Registration />} />
@@ -17,17 +18,6 @@ export default function App() {
                 routes for. */}
         <Route path="*" element={<NoMatch />} />
       </Routes>
-    </div>
-  );
-}
-
-function NoMatch() {
-  return (
-    <div>
-      <h2>Nothing to see here!</h2>
-      <p>
-        <Link to="/">Go to the home page</Link>
-      </p>
-    </div>
+    </>
   );
 }
