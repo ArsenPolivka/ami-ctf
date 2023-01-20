@@ -1,0 +1,19 @@
+.link {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  width: 1px;
+  height: 42px;
+  margin: 0 16px;
+  background-color: #000;
+}
+
+.label {
+  color: #000;
+}

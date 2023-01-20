@@ -1,0 +1,28 @@
+.contact-us {
+  padding-top: 70px;
+  padding-bottom: 140px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.first-input,
+.second-input {
+  flex-grow: 1;
+}
+
+.second-input {
+  margin-left: 10px;
+}
+
+.row + .row {
+  margin-top: 16px;
+}
+
+.last-row {
+  justify-content: flex-end;
+}
+
+

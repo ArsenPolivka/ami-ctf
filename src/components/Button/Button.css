@@ -1,0 +1,29 @@
+.button {
+  display: block;
+  padding: 12px 40px;
+  border-radius: 6px;
+  user-select: none;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.button--primary {
+  border: 1px solid #FFBA49;
+  background-color: #FFBA49;
+  color: #000;
+}
+
+.button--secondary {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+}
+
+.button--secondary-dark {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
