@@ -1,0 +1,26 @@
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.row + .row {
+  margin-top: 16px;
+}
+
+.last-row {
+  justify-content: flex-end;
+}
+
+.input {
+  background-color: #2F2E41;
+  border-color: #fff;
+  color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .input {
+    background-color: #fff;
+    border-color: #000;
+    color: #000;
+  }
+}

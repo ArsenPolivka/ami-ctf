@@ -4,19 +4,6 @@
   background: #2F2E41;
 }
 
-.row {
-  display: flex;
-  width: 100%;
-}
-
-.row + .row {
-  margin-top: 16px;
-}
-
-.last-row {
-  justify-content: flex-end;
-}
-
 .title {
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
@@ -30,15 +17,8 @@
   color: #6C63FF;
 }
 
-.illustration {
+.img {
   display: none;
-}
-
-.input,
-.textarea {
-  background-color: #2F2E41;
-  border-color: #fff;
-  color: #fff;
 }
 
 @media (min-width: 768px) {
@@ -76,7 +56,7 @@
     max-width: 426px;
   }
 
-  .illustration {
+  .img {
     display: block;
     max-width: 400px;
   }
@@ -85,13 +65,6 @@
     font-size: 36px;
     line-height: 49px;
     margin-bottom: 16px;
-    color: #000;
-  }
-
-  .input,
-  .textarea {
-    background-color: #fff;
-    border-color: #000;
     color: #000;
   }
 }

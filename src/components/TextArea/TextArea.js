@@ -1,4 +1,6 @@
-import './TextArea.css';
+import classNames from 'classnames';
+
+import styles from './TextArea.module.css';
 
 export const TextArea = ({
   label,
@@ -10,15 +12,24 @@ export const TextArea = ({
   onChange,
   required,
   rootClassName,
+  textareaRootClassName,
 }) => {
   return (
-    <label className={`textarea-wrapper ${rootClassName}`}>
-      <span className={`label ${hideLabel && 'visually-hidden'}`}>
+    <label className={classNames(
+      styles.wrapper,
+      rootClassName,
+    )}
+    >
+      <span className={classNames(
+        styles.label,
+        'visually-hidden',
+      )}
+      >
         {label}
       </span>
 
       <textarea
-        className="textarea"
+        className={classNames(styles.textarea, textareaRootClassName)}
         required={required}
         disabled={disabled}
         value={value}

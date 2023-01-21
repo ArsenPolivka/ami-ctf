@@ -1,4 +1,4 @@
-.block-about {
+.about-section {
     font-family: Nunito, sans-serif;
     line-height: 1.5;
 }
@@ -11,7 +11,7 @@
     color: #6C63FF;
 }
 
-.illustration {
+.img {
     display: none;
 }
 
@@ -27,8 +27,7 @@
 }
 
 @media screen and (min-width: 270px) {
-
-    .block-about {
+    .about-section {
         padding: 60px 20px;
     }
 
@@ -43,8 +42,7 @@
 }
 
 @media screen and (min-width: 500px) {
-
-    .block-about {
+    .about-section {
         padding: 100px 32px;
     }
 
@@ -55,18 +53,16 @@
     .text {
         font-size: 16px;
     }
-
 }
 
-@media screen and (min-width: 750px) {
-    .block-about {
+@media screen and (min-width: 768px) {
+    .about-section {
         padding: 100px 32px 100px 206px;
     }
 }
 
 @media screen and (min-width: 1024px) {
-
-    .block-about {
+    .about-section {
         display: flex;
         padding: 20px 60px 140px;
         justify-content: space-between;
@@ -84,7 +80,7 @@
         margin: 0 0 16px 0;
     }
 
-    .illustration {
+    .img {
         display: block;
         width: 602px;
         max-width: 100%;
@@ -94,5 +90,4 @@
     .column-second {
         max-width: 505px;
     }
-
 }

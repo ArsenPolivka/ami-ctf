@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { Link } from 'react-scroll/modules';
 
-import './PageNavigation.css';
+import styles from './PageNavigation.module.css';
 
 export const PageNavigation = ({ navList, rootClassName }) => {
   return (
-    <ul className={`page-navigation ${rootClassName}`}>
+    <ul className={classNames(
+      styles['page-navigation'],
+      rootClassName,
+    )}
+    >
       {navList.map(({ to, label, id }) => {
         return (
-          <li className="list-item" key={id}>
-            <Link className="link" to={to}>
+          <li className={styles['list-item']} key={id}>
+            <Link className={styles.link} to={to}>
               {label}
             </Link>
           </li>

@@ -1,17 +1,17 @@
 export const pageNavigation = [
   {
-    to: '#about',
+    to: 'about',
     label: 'About',
     id: 'about',
   },
   {
-    to: '#roadmap',
+    to: 'road-map',
     label: 'Road map',
     id: 'road-map',
   },
   {
-    to: '#faq',
-    label: 'FAQ',
-    id: 'faq',
+    to: 'contact-us',
+    label: 'Contact Us',
+    id: 'contact-us',
   },
 ];

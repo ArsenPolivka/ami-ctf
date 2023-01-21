@@ -1,8 +1,10 @@
-import "./Container.css";
+import classNames from 'classnames';
 
-export const Container = ({ children }) => {
+import styles from "./Container.module.css";
+
+export const Container = ({ children, rootClassName }) => {
   return (
-    <div className="container">
+    <div className={classNames(styles.container, rootClassName)}>
       {children}
     </div>
   );
