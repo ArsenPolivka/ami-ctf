@@ -1,4 +1,6 @@
-import './Input.css';
+import classNames from 'classnames';
+
+import styles from './Input.module.css';
 
 export const Input = ({
   label,
@@ -11,15 +13,24 @@ export const Input = ({
   onChange,
   required,
   rootClassName,
+  inputRootClassName,
 }) => {
   return (
-    <label className={`input-wrapper ${rootClassName}`}>
-      <span className={`label ${hideLabel && 'visually-hidden'}`}>
+    <label className={classNames(
+      styles['input-wrapper'],
+      rootClassName,
+    )}
+    >
+      <span className={classNames(
+        styles.label,
+        hideLabel && 'visually-hidden',
+      )}
+      >
         {label}
       </span>
 
       <input
-        className="input"
+        className={classNames(styles.input, inputRootClassName)}
         required={required}
         disabled={disabled}
         type={type}

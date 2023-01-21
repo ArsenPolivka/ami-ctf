@@ -1,34 +1,36 @@
-import { TagsList } from './TagsList';
+import classNames from 'classnames';
+
+import { TagsList } from './TagsList/TagsList';
 import img from './assets/intro-decoration.png';
 
 import { Container } from '../../components/Layout';
 import { Button } from '../../components/Button';
 
-import './Intro.css';
+import styles from './Intro.module.css';
 
 export const Intro = () => {
   return (
-    <section className="intro-section">
+    <section id="intro" className={styles.section}>
       <Container>
-        <div className="wrapper">
-          <div className="column column--first">
-            <TagsList rootClassName="tags-list-wrapper" />
+        <div className={styles.wrapper}>
+          <div className={classNames(styles.column, styles['column--first'])}>
+            <TagsList rootClassName={styles['tags-list-wrapper']} />
 
-            <h1 className="title">Capture your flag now!</h1>
+            <h1 className={styles.title}>Capture your flag now!</h1>
 
-            <p className="text">
+            <p className={styles.text}>
               Lorem ipsum dolor sit amet consectetur. Duis aenean condimentum nullam
             </p>
 
-            <div className="btn-group">
-              <Button variant="primary" rootClassName="btn">Register now</Button>
+            <div className={styles['btn-group']}>
+              <Button variant="primary" rootClassName={styles.btn}>Register now</Button>
 
-              <Button variant="secondary" rootClassName="btn">Read more</Button>
+              <Button variant="secondary" rootClassName={styles.btn}>Read more</Button>
             </div>
           </div>
 
-          <div className="column column--second">
-            <img className="decoration" src={img} alt="young man coding on laptop" />
+          <div className={classNames(styles.column, styles['column--second'])}>
+            <img className={styles.decoration} src={img} alt="young man coding on laptop" />
           </div>
         </div>
       </Container>

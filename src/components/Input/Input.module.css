@@ -1,9 +1,9 @@
-.textarea-wrapper {
+.input-wrapper {
   display: flex;
   width: 100%;
 }
 
-.textarea {
+.input {
   flex-grow: 1;
   padding: 12px 16px;
   border: 1px solid #000000;
@@ -13,16 +13,4 @@
   font-weight: 300;
   font-size: 12px;
   line-height: 16px;
-  height: 104px;
-  resize: none;
-}
-
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
 }

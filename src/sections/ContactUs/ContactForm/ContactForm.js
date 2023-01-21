@@ -1,8 +1,12 @@
+import classNames from 'classnames';
+
 import { useState } from 'react';
 
-import { Input } from '../../components/Input';
-import { TextArea } from '../../components/TextArea';
-import { Button } from '../../components/Button';
+import { Input } from '../../../components/Input';
+import { TextArea } from '../../../components/TextArea';
+import { Button } from '../../../components/Button';
+
+import styles from './ContactForm.module.css';
 
 export const ContactForm = () => {
   const [formValues, setFormValues] = useState();
@@ -21,11 +25,12 @@ export const ContactForm = () => {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <div className="row first-row">
+    <form onSubmit={handleSubmit}>
+      <div className={styles.row}>
         <Input
           hideLabel
           required
+          inputRootClassName={styles.input}
           name="name"
           label="Full name"
           placeholder="Full name"
@@ -33,10 +38,11 @@ export const ContactForm = () => {
         />
       </div>
 
-      <div className="row second-row">
+      <div className={styles.row}>
         <Input
           hideLabel
           required
+          inputRootClassName={styles.input}
           type="email"
           name="email"
           label="Email"
@@ -45,10 +51,11 @@ export const ContactForm = () => {
         />
       </div>
 
-      <div className="row third-row">
+      <div className={styles.row}>
         <TextArea
           hideLabel
           required
+          textareaRootClassName={styles.input}
           name="message"
           label="Enter your message:"
           placeholder="Text message"
@@ -56,7 +63,7 @@ export const ContactForm = () => {
         />
       </div>
 
-      <div className="row last-row">
+      <div className={classNames(styles.row, styles['last-row'])}>
         <Button
           wide
           variant="primary"
