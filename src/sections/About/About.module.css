@@ -7,7 +7,7 @@
     margin: 0;
 }
 
-.highlighter {
+.highlighted {
     color: #6C63FF;
 }
 
@@ -63,8 +63,11 @@
 
 @media screen and (min-width: 1024px) {
     .about-section {
-        display: flex;
         padding: 20px 60px 140px;
+    }
+
+    .wrapper {
+        display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 60px;
@@ -90,4 +93,5 @@
     .column-second {
         max-width: 505px;
     }
+
 }

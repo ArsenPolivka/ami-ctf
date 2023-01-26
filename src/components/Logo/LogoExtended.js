@@ -21,9 +21,9 @@ export const LogoExtended = ({ theme = 'light' }) => {
           <LogoWhite />
         )}
 
-        <div className={styles.divider} />
+        <div className={classNames(styles.divider, styles[`divider--${theme}`])} />
 
-        <div className={styles.label}>
+        <div className={classNames(styles.label, styles[`label--${theme}`])}>
           AMI IT Department
         </div>
       </div>
