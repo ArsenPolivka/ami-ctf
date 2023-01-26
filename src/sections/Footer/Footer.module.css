@@ -1,0 +1,21 @@
+.footer-section {
+    padding: 80px 0;
+    background-color: #262534;
+    color: #ffffff;
+}
+
+.footer-wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.year,
+.copyright-symbol {
+    margin-right: 3px;
+}
+
+.instagram {
+    margin-left: 16px;
+}
