@@ -1,45 +1,52 @@
-# Getting Started with Create React App
+# Getting Started with AMI CTF Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Quick start
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install && npm start`
 
-Runs the app in the development mode.\
+Install dependencies and runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Code & Git conventions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Branches
 
-### `npm run build`
+You should notice what type of work was done in current branch and the ID number of the task. It might be on of the next:
+  - **feature**
+  - **task**
+  - **bug**
+  - **test**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Than, after divider `/`, you should describe what actually was done in this branch.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Example:
+  - `task-12/footer-markup`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Commits
 
-### `npm run eject`
+You should messaging commits in the next pattern:
+ - ID number of task in the braces
+ - divider
+ - what actually was done in this commit
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ Example:
+  - `[12]: added footer markup`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Libraries
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project based on next libraries:
+ - [React](https://reactjs.org/)
+ - [classnames](https://github.com/JedWatson/classnames#readme)
+ - [React Router v.6](https://reactrouter.com/en/main)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
+## React
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
@@ -49,22 +56,19 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### Functional Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+We use functional components pattern in this projects. [Docs](https://beta.reactjs.org/learn/describing-the-ui)
 
-### Making a Progressive Web App
+### Hooks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+We using hooks to provide some additional functionality to components, such as state. [Docs](https://reactjs.org/docs/hooks-intro.html)
 
-### Advanced Configuration
+## Other Useful links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Code Style
+- [Javascript Best Practices by airbnb](https://github.com/airbnb/javascript)
+- [React.js Best Practices by airbnb](https://github.com/airbnb/javascript/tree/master/react)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Styles Splitting
+- [CSS Modules](https://github.com/css-modules/css-modules)
