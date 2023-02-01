@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import { Container } from '../../components/Layout';
 import { LogoExtended } from '../../components/Logo';
 
@@ -7,7 +5,6 @@ import { ReactComponent as Telegram } from './assets/telegram.svg';
 import { ReactComponent as Instagram } from './assets/instagram.svg';
 
 import styles from './Footer.module.css';
-
 
 export const Footer = () => {
     return (
