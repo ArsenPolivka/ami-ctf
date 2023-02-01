@@ -1,12 +1,17 @@
 import { Header } from '../../sections/Header';
+import { LoginForm } from '../../sections/LoginForm';
+import { Footer } from '../../sections/Footer';
 
 export const Login = () => {
   return (
     <>
-      <Header />
-      <h2>
-        This is login page!!!
-      </h2>
+      <Header
+        hasRegistration
+      />
+
+      <LoginForm />
+
+      <Footer />
     </>
   );
 };

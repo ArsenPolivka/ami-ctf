@@ -1,6 +1,5 @@
-import classNames from 'classnames';
-
 import { useState } from 'react';
+import classNames from 'classnames';
 
 import { Input } from '../../../components/Input';
 import { TextArea } from '../../../components/TextArea';
