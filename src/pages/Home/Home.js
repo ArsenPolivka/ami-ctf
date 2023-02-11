@@ -2,8 +2,9 @@ import { Header } from '../../sections/Header';
 import { Intro } from '../../sections/Intro';
 import { About } from '../../sections/About';
 import { ContactUs } from '../../sections/ContactUs';
+import { RoadMap } from '../../sections/RoadMap';
 
-import { pageNavigation } from './constants';
+import { pageNavigation, roadMap } from './constants';
 import {Footer} from "../../sections/Footer";
 
 export const Home = () => {
@@ -18,6 +19,10 @@ export const Home = () => {
       <Intro />
 
       <About />
+
+      <RoadMap
+        items={roadMap}
+      />
 
       <ContactUs />
 
