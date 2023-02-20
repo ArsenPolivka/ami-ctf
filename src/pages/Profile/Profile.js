@@ -33,7 +33,7 @@ export const Profile = (hasChangePassword) => {
                                         <div className={styles['item-label']}>Password:</div>
                                         <div className={styles['item-content']}>**********</div>
                                         {hasChangePassword ? (
-                                            <Button to="/profile" variant="change">
+                                            <Button to="/profile" variant="purple">
                                                 Change password
                                             </Button>
                                         ) : null}
