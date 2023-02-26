@@ -1,13 +1,28 @@
 import { Header } from '../../sections/Header';
-
 import { Container } from '../../components/Layout';
-
-import avatar from './assets/image.png';
-
-import styles from './Profile.module.css';
 import {Button} from "../../components/Button";
 
-export const Profile = (hasChangePassword) => {
+import styles from './Profile.module.css';
+import { useState } from "react";
+
+import avatar from './assets/image.png';
+import {Input} from "../../components/Input";
+
+export const Profile = () => {
+    const [isChangeInfoVisible, setChangeInfoVisible] = useState(false);
+    const [isResetPasswordVisible, setResetPasswordVisible] = useState(false);
+    const [inputValue, setInputValue] = useState();
+
+    const toggleChangeInfoVisibility = () => setChangeInfoVisible(!isChangeInfoVisible);
+    const toggleResetPasswordVisibility = () => setResetPasswordVisible(!isResetPasswordVisible);
+
+    const handleChange = ({ target }) => {
+        setInputValue({
+            ...inputValue,
+            [target.name]: target.value
+        })
+    };
+
     return (
         <>
             <Header />
@@ -23,7 +38,13 @@ export const Profile = (hasChangePassword) => {
                                 <ul className={styles['list']}>
                                     <li className={styles['list-item']}>
                                         <div className={styles['item-label']}>Username:</div>
-                                        <div className={styles['item-content']}>ralph_edwards19</div>
+
+                                        {!isChangeInfoVisible ?
+                                            <div className={styles['item-content']}>ralph_edwards19</div>
+                                            :
+                                            <Input placeholder="ralph_edwards19" onChange={handleChange}/>
+                                        }
+
                                     </li>
                                     <li className={styles['list-item']}>
                                         <div className={styles['item-label']}>E-mail:</div>
@@ -31,20 +52,46 @@ export const Profile = (hasChangePassword) => {
                                     </li>
                                     <li className={styles['list-item']}>
                                         <div className={styles['item-label']}>Password:</div>
-                                        <div className={styles['item-content']}>**********</div>
-                                        {hasChangePassword ? (
-                                            <Button to="/profile" variant="purple">
-                                                Change password
-                                            </Button>
-                                        ) : null}
+                                        {!isResetPasswordVisible ? (
+                                            <>
+                                                <div className={styles['item-content']}>**********</div>
+                                                <Button to="/profile" variant="purple"
+                                                        onClick={toggleResetPasswordVisibility}>
+                                                    Change password
+                                                </Button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Input rootClassName={styles['input-password']} placeholder="Current password"
+                                                       onChange={handleChange}/>
+                                                <Input rootClassName={styles['input-password']} placeholder="New password"
+                                                       onChange={handleChange}/>
+                                                <Input rootClassName={styles['input-password']} placeholder="Confirm password"
+                                                       onChange={handleChange}/>
+                                            </>
+                                        )}
                                     </li>
                                 </ul>
                             </div>
-                            {hasChangePassword ? (
-                                <Button to="/profile" variant="secondary" rootClassName={styles['main-button']}>
+
+                            {!isChangeInfoVisible ? (
+                                <Button to="/profile" variant="secondary" rootClassName={styles['main-button']}
+                                        onClick={toggleChangeInfoVisibility}>
                                     Change profile info
                                 </Button>
-                            ) : null}
+                                ) : (
+                                <div className={styles['buttons']}>
+                                    <Button to="/profile" variant="secondary" rootClassName={styles['back-button']}
+                                            onClick={toggleChangeInfoVisibility}>
+                                        Back
+                                    </Button>
+                                    <Button to="/profile" variant="primary" rootClassName={styles['save-button']}
+                                            onClick={toggleChangeInfoVisibility}>
+                                        Save changes
+                                    </Button>
+                                </div>
+                            )}
+
                         </div>
                     </div>
                 </div>
