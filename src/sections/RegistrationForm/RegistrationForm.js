@@ -5,11 +5,13 @@ import classNames from 'classnames';
 import { Container } from '../../components/Layout';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/useAuth';
 
 import styles from './RegistrationForm.module.css';
 
 export const RegistrationForm = () => {
   const [formValues, setFormValues] = useState();
+  const { signUp } = useAuth();
 
   const handleChange = ({ target }) => {
     setFormValues({
@@ -21,8 +23,8 @@ export const RegistrationForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(formValues);
-  }
+    signUp(formValues);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -71,7 +73,7 @@ export const RegistrationForm = () => {
               hideLabel
               required
               inputRootClassName={styles.input}
-              name="confirm-password"
+              name="confirmedPassword"
               type="password"
               label="Confirm password"
               placeholder="Confirm password"

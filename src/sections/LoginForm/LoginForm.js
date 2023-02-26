@@ -5,11 +5,13 @@ import classNames from 'classnames';
 import { Container } from '../../components/Layout';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/useAuth';
 
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const [formValues, setFormValues] = useState();
+  const { login } = useAuth();
 
   const handleChange = ({ target }) => {
     setFormValues({
@@ -21,8 +23,8 @@ export const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(formValues);
-  }
+    login(formValues);
+  };
 
   return (
     <div className={styles.wrapper}>
