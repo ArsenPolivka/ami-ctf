@@ -41,4 +41,4 @@ export async function getCurrentUser() {
   const userInfo = await response.json();
 
   return userInfo;
-}
+};

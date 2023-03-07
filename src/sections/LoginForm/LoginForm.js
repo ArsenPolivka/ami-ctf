@@ -1,17 +1,19 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { Container } from '../../components/Layout';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
-import { useAuth } from '../../hooks/useAuth';
+import { loginUser } from '../../api/user';
+import { AuthContext } from '../../context/auth/context';
 
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const [formValues, setFormValues] = useState();
-  const { login } = useAuth();
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     setFormValues({
@@ -20,10 +22,13 @@ export const LoginForm = () => {
     })
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    login(formValues);
+    const user = await loginUser(formValues);
+
+    setUser(user);
+    navigate('/profile');
   };
 
   return (
