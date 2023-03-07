@@ -6,7 +6,7 @@ import { Container } from '../../components/Layout'
 
 import styles from './Header.module.css';
 
-export const Header = ({ pageNavigation, hasLogin, hasRegistration}) => {
+export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration}) => {
   return (
     <header className={styles.header}>
       <Container>
@@ -16,6 +16,12 @@ export const Header = ({ pageNavigation, hasLogin, hasRegistration}) => {
           <nav className={styles.nav}>
             {pageNavigation ? (
               <PageNavigation navList={pageNavigation} rootClassName={styles.navigation} />
+            ) : null}
+
+            {hasProfile ? (
+              <Button to="/profile" variant="secondary" rootClassName={styles['first-button']}>
+                Profile
+              </Button>
             ) : null}
 
             {hasLogin ? (

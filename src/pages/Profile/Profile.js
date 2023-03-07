@@ -1,13 +1,24 @@
-import { Header } from '../../sections/Header';
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
+import { Header } from '../../sections/Header';
 import { Container } from '../../components/Layout';
+import { Button } from "../../components/Button";
+import { AuthContext } from '../../context/auth/context';
 
 import avatar from './assets/image.png';
 
 import styles from './Profile.module.css';
-import {Button} from "../../components/Button";
 
-export const Profile = (hasChangePassword) => {
+
+export const Profile = ({ hasChangePassword }) => {
+    const { user } = useContext(AuthContext);
+
+    if (!user) {
+        console.log(user);
+        return <Navigate replace to="/login" />;
+    }
+
     return (
         <>
             <Header />
