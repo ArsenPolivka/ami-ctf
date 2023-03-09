@@ -11,13 +11,11 @@ export const Avatar = ({ isChangeInfoVisible }) => {
                     src={avatar}
                     alt="user-avatar"
                 />
-                {isChangeInfoVisible ? (
+                { isChangeInfoVisible ? (
                     <button className={styles['upload-button']}>
                         Upload photo
                     </button>
-                ) : (
-                    <></>
-                )}
+                ) : null }
             </div>
         </div>
     )

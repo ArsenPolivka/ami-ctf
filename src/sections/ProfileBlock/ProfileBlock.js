@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Container } from "../../components/Layout";
 import { Avatar } from "./components/Avatar";
-import { ChangeButtonsLogic } from "./components/ChangeButtonsLogic";
+import { ChangeButtons } from "./components/ChangeButtons";
 import { ChangePassword } from "./components/ChangePassword";
 import { InputUserName } from "./components/InputUserName";
 
@@ -13,6 +13,7 @@ export const ProfileBlock = () => {
     const [isChangePasswordVisible, setChangePasswordVisible] = useState(false);
 
     const toggleChangePasswordVisibility = () => setChangePasswordVisible(!isChangePasswordVisible);
+    const toggleChangeInfoVisibility = () => setChangeInfoVisible(!isChangeInfoVisible);
 
     return (
         <Container>
@@ -51,11 +52,12 @@ export const ProfileBlock = () => {
                                 </li>
                             </ul>
                         </div>
-                        <ChangeButtonsLogic
+                        <ChangeButtons
                             isChangeInfoVisible={isChangeInfoVisible}
                             isChangePasswordVisible={isChangePasswordVisible}
                             setChangeInfoVisible={setChangeInfoVisible}
                             toggleChangePasswordVisibility={toggleChangePasswordVisibility}
+                            toggleChangeInfoVisibility={toggleChangeInfoVisibility}
                         />
                     </div>
                 </div>
