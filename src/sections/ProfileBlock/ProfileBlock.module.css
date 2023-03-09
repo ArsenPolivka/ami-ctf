@@ -1,5 +1,6 @@
 .profile-wrapper {
     margin-top: 80px;
+    margin-bottom: 275px;
 }
 
 .heading1 {
@@ -28,7 +29,7 @@
 .list-item {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .list-item + .list-item {
@@ -74,6 +75,30 @@
     margin-right: 80px;
 }
 
-.input-password {
+.input-block {
     display: block;
+    width: 100%;
+
 }
+
+.input-password {
+    margin-bottom: 10px;
+}
+
+.input-password:last-child {
+    margin-bottom: 0;
+}
+
+.toggle-input {
+    display: flex;
+    align-items: center;
+
+}
+
+.visibility-button {
+    position: absolute;
+    right: 16px;
+    margin-bottom: 4px;
+}
+
+
