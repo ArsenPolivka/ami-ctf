@@ -24,7 +24,6 @@ export const ChangeButtons = ({ isChangeInfoVisible, isChangePasswordVisible, to
                     </Button>
                     <Button
                         variant="primary"
-                        type="submit"
                         rootClassName={styles['save-button']}
                     >
                         Save changes
