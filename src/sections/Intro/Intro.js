@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 
+import { Link } from 'react-scroll/modules';
 import { TagsList } from './TagsList/TagsList';
 import img from './assets/intro-decoration.png';
 
@@ -31,7 +32,14 @@ export const Intro = () => {
                 Register now
               </Button>
 
-              <Button to=""variant="secondary" rootClassName={styles.btn}>Read more</Button>
+              <Button
+                  variant="secondary"
+                  rootClassName={styles.btn}
+              >
+                <Link to="about">
+                  Read more
+                </Link>
+              </Button>
             </div>
           </div>
 
