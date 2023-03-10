@@ -21,8 +21,8 @@ export const RegistrationForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(formValues);
-  }
+    // signUp(formValues);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -71,7 +71,7 @@ export const RegistrationForm = () => {
               hideLabel
               required
               inputRootClassName={styles.input}
-              name="confirm-password"
+              name="confirmedPassword"
               type="password"
               label="Confirm password"
               placeholder="Confirm password"
