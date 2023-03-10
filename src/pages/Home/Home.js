@@ -16,7 +16,7 @@ export const Home = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className={styles['body']}>
+    <div className={styles.body}>
       <Header
         pageNavigation={pageNavigation}
         hasProfile={user}
