@@ -1,18 +1,10 @@
 .profile-wrapper {
     margin-top: 80px;
+    margin-bottom: 275px;
 }
 
 .heading1 {
     margin-bottom: 32px;
-}
-
-.profile-image {
-    width: 315px;
-    border-radius: 8px;
-}
-
-.avatar {
-    padding-right: 156px;
 }
 
 .content {
@@ -28,7 +20,7 @@
 .list-item {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .list-item + .list-item {
@@ -38,11 +30,22 @@
 .item-label {
     width: 100px;
     margin-right: 28px;
+    flex-shrink: 0;
 }
 
 .item-content {
     position: relative;
     flex: 1;
+}
+
+.item-content:first-of-type {
+    position: absolute;
+    width: 100%;
+}
+
+.item-wrapper {
+    position: relative;
+    width: 100%;
 }
 
 .change-type {
@@ -55,10 +58,4 @@
 
 .info-block {
     position: relative;
-}
-
-.main-button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }

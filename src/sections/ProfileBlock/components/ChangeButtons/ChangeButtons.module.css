@@ -1,0 +1,18 @@
+.main-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.buttons {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.back-button {
+    margin-right: 80px;
+}
