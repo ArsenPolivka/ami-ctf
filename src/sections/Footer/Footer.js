@@ -17,7 +17,7 @@ export const Footer = () => {
                         <span className={styles['rights']}>All rights reserved</span>
                     </div>
 
-                    <LogoExtended theme="white" className={styles['logo']}/>
+                    <LogoExtended theme="white" size="desktop" className={styles['logo']}/>
 
                     <div className={styles['social']}>
                         <Telegram className={styles['telegram']}/>
