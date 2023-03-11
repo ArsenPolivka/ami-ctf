@@ -4,26 +4,49 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.footer-wrapper {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .copyright {
     display: flex;
     gap: 3px;
 }
+
 .social {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
+.telegram,
+.instagram {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.telegram:hover,
+.instagram:hover {
+    opacity: 0.5;
+}
+
+.telegram-wrapper,
+.instagram-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (min-width: 270px)  {
-    .logo-desktop {
+    .desktop-variant {
         display: none;
+    }
+
+    .mobile-variant {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .copyright-logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .copyright {
@@ -34,11 +57,6 @@
         padding: 38px 0;
     }
 
-    .social {
-        display: flex;
-        align-items: center;
-    }
-
     .telegram,
     .instagram {
         width: 24px;
@@ -46,25 +64,29 @@
     }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 700px) {
+    .desktop-variant {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .mobile-variant {
+        display: none;
+    }
+
     .footer-section {
         padding: 80px 0;
     }
 
-    .logo-desktop {
-        display: block;
+    .copyright {
+        font-size: 14px;
     }
 
-    .logo-mobile {
-        display: none;
+    .telegram,
+    .instagram {
+        width: 32px;
+        height: auto;
     }
-
-
-    /*.logo-copyright-wrapper {*/
-    /*    display: none;*/
-    /*    flex-direction: row;*/
-    /*    align-items: center;*/
-    /*    justify-content: space-between;*/
-    /*}*/
-
 }
