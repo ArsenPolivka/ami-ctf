@@ -14,9 +14,15 @@
   background-color: #000;
 }
 
-
 .label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
   color: #000;
+}
+
+.label--mobile {
+  font-size: 12px;
 }
 
 .label--white {
@@ -25,4 +31,9 @@
 
 .divider--white {
   background-color: #ffffff;
+}
+
+.divider--mobile {
+  height: 35px;
+  margin: 0 12px;
 }
