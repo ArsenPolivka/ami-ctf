@@ -1,7 +1,7 @@
 .footer-section {
-    padding: 80px 0;
     background-color: #262534;
     color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .footer-wrapper {
@@ -11,11 +11,60 @@
     justify-content: space-between;
 }
 
-.year,
-.copyright-symbol {
-    margin-right: 3px;
+.copyright {
+    display: flex;
+    gap: 3px;
+}
+.social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.instagram {
-    margin-left: 16px;
+@media screen and (min-width: 270px)  {
+    .logo-desktop {
+        display: none;
+    }
+
+    .copyright {
+        font-size: 10px;
+    }
+
+    .footer-section {
+        padding: 38px 0;
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+    }
+
+    .telegram,
+    .instagram {
+        width: 24px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .footer-section {
+        padding: 80px 0;
+    }
+
+    .logo-desktop {
+        display: block;
+    }
+
+    .logo-mobile {
+        display: none;
+    }
+
+
+    /*.logo-copyright-wrapper {*/
+    /*    display: none;*/
+    /*    flex-direction: row;*/
+    /*    align-items: center;*/
+    /*    justify-content: space-between;*/
+    /*}*/
+
 }

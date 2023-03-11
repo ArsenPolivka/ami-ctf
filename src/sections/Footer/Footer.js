@@ -16,12 +16,13 @@ export const Footer = () => {
                         <span className={styles['copyright-symbol']}>&copy;</span>
                         <span className={styles['rights']}>All rights reserved</span>
                     </div>
-
-                    <LogoExtended theme="white" size="desktop" className={styles['logo']}/>
-
+                    <div className={styles['logo-wrapper']}>
+                        <LogoExtended className={styles['logo-desktop']} theme="white" size="desktop" />
+                        <LogoExtended className={styles['logo-mobile']} theme="white" size="mobile" />
+                    </div>
                     <div className={styles['social']}>
-                        <Telegram className={styles['telegram']}/>
-                        <Instagram className={styles['instagram']}/>
+                        <Telegram className={styles['telegram']} />
+                        <Instagram className={styles['instagram']} />
                     </div>
                 </div>
             </Container>
