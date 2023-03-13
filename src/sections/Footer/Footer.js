@@ -10,20 +10,60 @@ export const Footer = () => {
     return (
         <footer className={styles['footer-section']}>
             <Container>
-                <div className={styles['footer-wrapper']}>
-                    <div className={styles['copyright']}>
-                        <span className={styles['year']}>2023</span>
-                        <span className={styles['copyright-symbol']}>&copy;</span>
-                        <span className={styles['rights']}>All rights reserved</span>
+                    <div className={styles['mobile-variant']}>
+                        <div className={styles['copyright-logo-wrapper']}>
+                            <LogoExtended
+                                className={styles['logo-mobile']}
+                                theme="white"
+                                size="mobile"
+                            />
+                            <div className={styles.copyright}>
+                                <span>2023</span>
+                                <span>&copy;</span>
+                                <span>All rights reserved</span>
+                            </div>
+                        </div>
+                        <div className={styles.social}>
+                            <a
+                                className={styles['telegram-wrapper']}
+                                href="https://web.telegram.org/"
+                            >
+                                <Telegram className={styles.telegram} />
+                            </a>
+                            <a
+                                className={styles['instagram-wrapper']}
+                                href="https://www.instagram.com/"
+                            >
+                                <Instagram className={styles.instagram} />
+                            </a>
+                        </div>
                     </div>
-
-                    <LogoExtended theme="white" size="desktop" className={styles['logo']}/>
-
-                    <div className={styles['social']}>
-                        <Telegram className={styles['telegram']}/>
-                        <Instagram className={styles['instagram']}/>
+                    <div className={styles['desktop-variant']}>
+                        <div className={styles.copyright}>
+                            <span>2023</span>
+                            <span>&copy;</span>
+                            <span>All rights reserved</span>
+                        </div>
+                        <LogoExtended
+                            className={styles['logo-desktop']}
+                            theme="white"
+                            size="desktop"
+                        />
+                        <div className={styles.social}>
+                            <a
+                                className={styles['telegram-wrapper']}
+                                href="https://web.telegram.org/"
+                            >
+                                <Telegram className={styles.telegram}/>
+                            </a>
+                            <a
+                                className={styles['instagram-wrapper']}
+                                href="https://www.instagram.com/"
+                            >
+                                <Instagram className={styles.instagram}/>
+                            </a>
+                        </div>
                     </div>
-                </div>
             </Container>
         </footer>
     );
