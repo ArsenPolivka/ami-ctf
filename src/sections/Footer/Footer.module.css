@@ -15,20 +15,16 @@
     gap: 16px;
 }
 
-.telegram,
-.instagram {
-    transition: opacity 0.2s ease-in-out;
-}
-
-.telegram:hover,
-.instagram:hover {
-    opacity: 0.5;
-}
-
 .telegram-wrapper,
 .instagram-wrapper {
     display: flex;
     align-items: center;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.telegram-wrapper:hover,
+.instagram-wrapper:hover {
+    opacity: 0.5;
 }
 
 @media screen and (min-width: 270px)  {
