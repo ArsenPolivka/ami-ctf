@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 
 import { Home } from './pages/Home';
 import { Registration } from './pages/Registration';
@@ -20,6 +21,24 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
+      <Toaster
+        toastOptions={{
+          className: 'toaster',
+          position: 'top-right',
+          success: {
+            style: {
+              background: '#d3f6d7',
+              color: '#29D13A',
+            },
+          },
+          error: {
+            style: {
+              background: '#FFEFEF',
+              color: '#CF5454',
+            },
+          },
+        }}
+      />
     </AuthProvider>
   );
 }
