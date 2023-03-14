@@ -3,9 +3,9 @@
   list-style: none;
 }
 
-.list-item + .list-item {
-  margin-left: 32px;
-}
+/*.list-item + .list-item {*/
+/*  margin-left: 32px;*/
+/*}*/
 
 .link {
   font-weight: 500;

@@ -1,0 +1,53 @@
+.dropdown-header {
+    display: none;
+    background-color: #6C63FF;
+}
+
+.desktop-header {
+    display: none;
+}
+
+.burger {
+    width: auto;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.burger span {
+    width: 24px;
+    height: 2px;
+    background-color: #000;
+
+}
+
+.visible {
+    display: block;
+    background-color: #6C63FF;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    margin-top: 16px;
+    border-top: 1px solid #000;
+}
+
+.nav li {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 22px 0;
+    margin-left: 0;
+}

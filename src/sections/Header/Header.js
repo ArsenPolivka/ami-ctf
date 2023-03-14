@@ -5,33 +5,55 @@ import { Button } from '../../components/Button';
 import { Container } from '../../components/Layout'
 
 import styles from './Header.module.css';
+import { MobileHeader } from "./MobileHeader/MobileHeader";
 
 export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration}) => {
   return (
     <header className={styles.header}>
       <Container>
-        <div className={styles.wrapper}>
+
+          <div className={styles['mobile-wrapper']}>
+              <MobileHeader pageNavigation={pageNavigation}/>
+              <div className={styles.logo}>
+                  <LogoExtended size="mobile" />
+              </div>
+          </div>
+          <div className={styles['desktop-wrapper']}>
           <LogoExtended />
 
           <nav className={styles.nav}>
             {pageNavigation ? (
-              <PageNavigation navList={pageNavigation} rootClassName={styles.navigation} />
+              <PageNavigation
+                  navList={pageNavigation}
+                  rootClassName={styles.navigation}
+              />
             ) : null}
 
             {hasProfile ? (
-              <Button to="/profile" variant="secondary" rootClassName={styles['first-button']}>
+              <Button
+                  to="/profile"
+                  variant="secondary"
+                  rootClassName={styles['first-button']}
+              >
                 Profile
               </Button>
             ) : null}
 
             {hasLogin ? (
-              <Button to="/login" variant="secondary" rootClassName={styles['first-button']}>
+              <Button
+                  to="/login"
+                  variant="secondary"
+                  rootClassName={styles['first-button']}
+              >
                 Login
               </Button>
             ) : null}
 
             {hasRegistration ? (
-              <Button to="/registration" variant="primary">
+              <Button
+                  to="/registration"
+                  variant="primary"
+              >
                 Sign Up
               </Button>
             ) : null}
