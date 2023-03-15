@@ -1,40 +1,81 @@
-import { PageNavigation } from './PageNavigation';
+import { useEffect, useMemo, useState } from "react";
 
-import { LogoExtended } from '../../components/Logo';
-import { Button } from '../../components/Button';
 import { Container } from '../../components/Layout'
+
+import { PageNavigation } from './components/PageNavigation';
+import { LogoExtended } from '../../components/Logo';
+import { MainButtons } from "./components/MainButtons/MainButtons";
+import { MobileHeader } from "./components/MobileHeader";
 
 import styles from './Header.module.css';
 
 export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration}) => {
-  return (
+    const [isHeaderVisible, setHeaderVisible] = useState(false);
+    const [isBurgerActive, setBurgerActive] = useState(false);
+
+    useEffect(() => {
+        if (!isHeaderVisible) {
+            setBurgerActive(false);
+        }
+    }, [isHeaderVisible]);
+
+    const onLinkTapClose = () => {
+        setHeaderVisible(false);
+        document.body.style.overflow = "";
+    }
+
+    const toggleHeader = () => {
+        setHeaderVisible(!isHeaderVisible);
+        setBurgerActive(!isBurgerActive);
+
+        if (!isHeaderVisible) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    };
+
+    const headerClass = useMemo(() => {
+        if (isHeaderVisible) {
+            return "dropdown-header visible";
+        }
+
+        return "dropdown-header";
+    }, [isHeaderVisible]);
+
+    return (
     <header className={styles.header}>
       <Container>
-        <div className={styles.wrapper}>
+          <div className={styles['mobile-wrapper']}>
+              <MobileHeader
+                  pageNavigation={pageNavigation}
+                  hasProfile={hasProfile}
+                  hasLogin={hasLogin}
+                  hasRegistration={hasRegistration}
+                  onLinkTapClose={onLinkTapClose}
+                  headerClass={headerClass}
+                  toggleHeader={toggleHeader}
+                  isBurgerActive={isBurgerActive}
+              />
+          </div>
+          <div className={styles['desktop-wrapper']}>
           <LogoExtended />
 
           <nav className={styles.nav}>
             {pageNavigation ? (
-              <PageNavigation navList={pageNavigation} rootClassName={styles.navigation} />
+              <PageNavigation
+                  navList={pageNavigation}
+                  rootClassName={styles.navigation}
+              />
             ) : null}
 
-            {hasProfile ? (
-              <Button to="/profile" variant="secondary" rootClassName={styles['first-button']}>
-                Profile
-              </Button>
-            ) : null}
-
-            {hasLogin ? (
-              <Button to="/login" variant="secondary" rootClassName={styles['first-button']}>
-                Login
-              </Button>
-            ) : null}
-
-            {hasRegistration ? (
-              <Button to="/registration" variant="primary">
-                Sign Up
-              </Button>
-            ) : null}
+            <div className={styles['main-buttons']}>
+                <MainButtons
+                    hasProfile={hasProfile}
+                    hasLogin={hasLogin}
+                    hasRegistration={hasRegistration}
+                />
+            </div>
           </nav>
         </div>
       </Container>
