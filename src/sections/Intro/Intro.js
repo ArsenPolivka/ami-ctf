@@ -8,6 +8,7 @@ import { Container } from '../../components/Layout';
 import { Button } from '../../components/Button';
 
 import styles from './Intro.module.css';
+import {ScrollDown} from "../../components/ScrollDown";
 
 export const Intro = () => {
   return (
@@ -47,6 +48,7 @@ export const Intro = () => {
             <img className={styles.decoration} src={img} alt="young man coding on laptop" />
           </div>
         </div>
+        <ScrollDown />
       </Container>
     </section>
   );
