@@ -52,13 +52,15 @@ export const Footer = () => {
                         <div className={styles.social}>
                             <a
                                 className={styles['telegram-wrapper']}
-                                href="https://web.telegram.org/"
+                                href="https://t.me/darkside_ami"
+                                target="_blank"
                             >
                                 <Telegram className={styles.telegram}/>
                             </a>
                             <a
                                 className={styles['instagram-wrapper']}
-                                href="https://www.instagram.com/"
+                                href="https://www.instagram.com/lnu.prykladna/"
+                                target="_blank"
                             >
                                 <Instagram className={styles.instagram}/>
                             </a>
