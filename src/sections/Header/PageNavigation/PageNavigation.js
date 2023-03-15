@@ -3,7 +3,7 @@ import { Link } from 'react-scroll/modules';
 
 import styles from './PageNavigation.module.css';
 
-export const PageNavigation = ({ navList, rootClassName }) => {
+export const PageNavigation = ({ navList, rootClassName, onClose }) => {
   return (
     <ul className={classNames(
       styles['page-navigation'],
@@ -12,8 +12,15 @@ export const PageNavigation = ({ navList, rootClassName }) => {
     >
       {navList.map(({ to, label, id }) => {
         return (
-          <li className={styles['list-item']} key={id}>
-            <Link className={styles.link} to={to}>
+          <li
+              className={styles['list-item']}
+              key={id}
+          >
+            <Link
+                className={styles.link}
+                to={to}
+                onClick={onClose}
+            >
               {label}
             </Link>
           </li>

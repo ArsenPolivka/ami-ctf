@@ -11,12 +11,13 @@ export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration})
   return (
     <header className={styles.header}>
       <Container>
-
           <div className={styles['mobile-wrapper']}>
-              <MobileHeader pageNavigation={pageNavigation}/>
-              <div className={styles.logo}>
-                  <LogoExtended size="mobile" />
-              </div>
+              <MobileHeader
+                  pageNavigation={pageNavigation}
+                  hasProfile={hasProfile}
+                  hasLogin={hasLogin}
+                  hasRegistration={hasRegistration}
+              />
           </div>
           <div className={styles['desktop-wrapper']}>
           <LogoExtended />

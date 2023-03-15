@@ -1,6 +1,9 @@
 .dropdown-header {
     display: none;
-    background-color: #6C63FF;
+}
+
+.burger span {
+    flex-grow: 0.01;
 }
 
 .desktop-header {
@@ -23,12 +26,10 @@
     width: 24px;
     height: 2px;
     background-color: #000;
-
 }
 
 .visible {
     display: block;
-    background-color: #6C63FF;
 }
 
 .nav {
@@ -37,9 +38,7 @@
     justify-content: flex-start;
     align-items: center;
     background-color: #fff;
-    position: absolute;
     width: 100%;
-    margin-top: 16px;
     border-top: 1px solid #000;
 }
 
@@ -49,5 +48,56 @@
     display: flex;
     justify-content: center;
     padding: 22px 0;
-    margin-left: 0;
+}
+
+
+.navigation {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    padding-top: 30px;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px;
+    background-color: #fff;
+}
+
+.backing {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 95px;
+    z-index: 0;
+}
+
+@media screen and (max-width: 315px) {
+    .buttons {
+        gap: 10px;
+        padding: 16px 8px;
+    }
 }
