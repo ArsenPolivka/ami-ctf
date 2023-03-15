@@ -21,16 +21,26 @@
 
 .navigation li {
   margin-left: 32px;
-  border-bottom: 1px solid rgba(108, 99, 255, 0);
-  transition: border-bottom-color 0.2s ease-in-out;
-}
-
-.navigation li:hover {
-  border-bottom: 1px solid #6C63FF;
 }
 
 .navigation a {
+  position: relative;
   transition: color 0.2s ease-in-out;
+}
+
+.navigation a::after {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #6C63FF;
+  margin-top: 3px;
+  transition: width 0.3s ease-in-out;
+  width: 0;
+}
+
+.navigation a:hover::after {
+  width: 100%;
 }
 
 .navigation a:hover {
