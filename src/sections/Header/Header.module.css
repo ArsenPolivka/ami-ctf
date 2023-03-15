@@ -3,9 +3,12 @@
 }
 
 .desktop-wrapper {
-
   display: none; /*TEMPORARY*/
   align-items: center;
+}
+
+.tablet-wrapper {
+  display: none;
 }
 
 .nav {
@@ -16,27 +19,25 @@
   margin-right: 100px;
 }
 
-.first-button {
-  margin-right: 32px;
+.navigation li {
+  margin-left: 32px;
 }
 
-
-
-@media screen and (min-width: 700px) {
-
-
-
+.main-buttons {
+  display: flex;
+  gap: 32px;
 }
-
 
 @media screen and (min-width: 1000px) {
-
-
   .desktop-wrapper {
     display: flex;
   }
 
   .mobile-wrapper {
+    display: none;
+  }
+
+  .tablet-wrapper {
     display: none;
   }
 

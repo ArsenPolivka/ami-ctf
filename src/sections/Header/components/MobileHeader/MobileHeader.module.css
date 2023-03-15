@@ -2,32 +2,6 @@
     display: none;
 }
 
-.burger span {
-    flex-grow: 0.01;
-}
-
-.desktop-header {
-    display: none;
-}
-
-.burger {
-    width: auto;
-    height: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.burger span {
-    width: 24px;
-    height: 2px;
-    background-color: #000;
-}
-
 .visible {
     display: block;
 }
@@ -49,7 +23,6 @@
     justify-content: center;
     padding: 22px 0;
 }
-
 
 .navigation {
     position: absolute;
@@ -95,9 +68,49 @@
     z-index: 0;
 }
 
+.hidden-logo {
+    display: none;
+}
+
+.hidden-buttons {
+    display: none;
+}
+
 @media screen and (max-width: 315px) {
     .buttons {
         gap: 10px;
         padding: 16px 8px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .hidden-logo {
+        display: block;
+        order: 1;
+        flex-grow: 4;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .hidden-buttons {
+        display: flex;
+        gap: 24px;
+        flex-grow: 1;
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    .wrapper {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+    }
+
+    .backing {
+        top: 102px;
     }
 }
