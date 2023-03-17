@@ -29,10 +29,12 @@ export const LoginForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    loginUser(formValues).then(({ user, title }) => {
-      if (user) {
-        setUser(user);
-        notifySuccess(user.email);
+    loginUser(formValues).then((response) => {
+      const { email, title } = response;
+
+      if (email) {
+        setUser(response);
+        notifySuccess(email);
         navigate('/profile');
       } else {
         notifyError(title);

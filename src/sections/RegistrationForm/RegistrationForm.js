@@ -29,10 +29,12 @@ export const RegistrationForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    registerUser(formValues).then(({ user, title }) => {
-      if (user) {
-        setUser(user);
-        notifySuccess(user.email);
+    registerUser(formValues).then((response) => {
+      const { email, title } = response;
+
+      if (email) {
+        setUser(response);
+        notifySuccess(email);
         navigate('/profile');
       } else {
         notifyError(title);
