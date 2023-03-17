@@ -5,14 +5,16 @@ import { Burger } from "../Burger";
 
 import styles from './MobileHeader.module.css'
 
-export const MobileHeader = ({ onLinkTapClose,
-                                 headerClass,
-                                 toggleHeader,
-                                 isBurgerActive,
-                                 pageNavigation,
-                                 hasProfile,
-                                 hasLogin,
-                                 hasRegistration }) => {
+export const MobileHeader = ({
+    onLinkTapClose,
+    headerClass,
+    toggleHeader,
+    isBurgerActive,
+    pageNavigation,
+    hasProfile,
+    hasLogin,
+    hasRegistration
+}) => {
     return (
         <div className={styles['mobile-header']}>
             <div className={styles.wrapper}>
@@ -20,10 +22,12 @@ export const MobileHeader = ({ onLinkTapClose,
                     <LogoExtended size="desktop" />
                 </div>
 
-                <Burger
-                    isBurgerActive={isBurgerActive}
-                    toggleHeader={toggleHeader}
-                />
+                {pageNavigation ? (
+                    <Burger
+                        isBurgerActive={isBurgerActive}
+                        toggleHeader={toggleHeader}
+                    />
+                ) : null}
 
                 <div className={styles['hidden-buttons']}>
                     <MainButtons
@@ -39,11 +43,13 @@ export const MobileHeader = ({ onLinkTapClose,
             </div>
             <div className={styles[headerClass]}>
                 <nav className={styles.navigation}>
-                    <PageNavigation
-                        navList={pageNavigation}
-                        rootClassName={styles.nav}
-                        onClose={ onLinkTapClose }
-                    />
+                    {pageNavigation ? (
+                        <PageNavigation
+                            navList={pageNavigation}
+                            rootClassName={styles.nav}
+                            onClose={ onLinkTapClose }
+                        />
+                    ) : null}
 
                     <div className={styles.buttons}>
                         <MainButtons
@@ -56,7 +62,7 @@ export const MobileHeader = ({ onLinkTapClose,
                 <div
                     className={styles.backing}
                     onClick={toggleHeader}
-                ></div>
+                />
             </div>
         </div>
     );

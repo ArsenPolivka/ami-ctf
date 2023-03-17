@@ -4,7 +4,18 @@ import { Link } from 'react-router-dom';
 
 import styles from './Button.module.css';
 
-export const Button = ({ to, children, variant, type='button', rootClassName, wide, onClick }) => {
+export const Button = ({
+  to,
+  children,
+  variant,
+  type='button',
+  rootClassName,
+  wide,
+  icon,
+  iconClassName,
+  hiddenLabel,
+  onClick
+}) => {
   if (to) {
     return (
       <Link
@@ -12,11 +23,14 @@ export const Button = ({ to, children, variant, type='button', rootClassName, wi
         className={classNames(
           styles.button,
           styles[`button--${variant}`],
+          styles[`button--${hiddenLabel ? 'hiddenLabel' :  'visibleLabel'}`],
           wide && styles.wide,
           rootClassName,
         )}
       >
-        {children}
+        {icon ? <span className={iconClassName}>{icon}</span> : null}
+
+        {hiddenLabel ? <span className='visually-hidden'>{children}</span> : children}
       </Link>
     );
   }
@@ -27,11 +41,15 @@ export const Button = ({ to, children, variant, type='button', rootClassName, wi
       className={classNames(
         styles.button,
         styles[`button--${variant}`],
+        styles[`button--${hiddenLabel ? 'hiddenLabel' :  'visibleLabel'}`],
         wide && styles.wide,
         rootClassName,
       )}
-      onClick={onClick}>
-      {children}
+      onClick={onClick}
+    >
+      {icon ? <span className={iconClassName}>{icon}</span> : null}
+
+      {hiddenLabel ? <span className='visually-hidden'>{children}</span> : children}
     </button>
   );
 };

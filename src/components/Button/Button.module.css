@@ -1,5 +1,5 @@
 .button {
-  display: block;
+  display: inline-flex;
   padding: 12px 40px;
   border-radius: 6px;
   user-select: none;
@@ -55,4 +55,8 @@
 
 .wide {
   width: 100%;
+}
+
+.button--hiddenLabel {
+  padding: 12px;
 }
