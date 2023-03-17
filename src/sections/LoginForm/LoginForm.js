@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import toast from 'react-hot-toast';
 
 import { Container } from '../../components/Layout';
 import { Input } from '../../components/Input';
@@ -22,13 +23,23 @@ export const LoginForm = () => {
     })
   };
 
+  const notifySuccess = (email) => toast.success(`Successfully logedin ${email}!`);
+  const notifyError = (err) => toast.error(`This is an error: ${err}!`);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const user = await loginUser(formValues);
+    loginUser(formValues).then((response) => {
+      const { email, title } = response;
 
-    setUser(user);
-    navigate('/profile');
+      if (email) {
+        setUser(response);
+        notifySuccess(email);
+        navigate('/profile');
+      } else {
+        notifyError(title);
+      }
+    });
   };
 
   return (

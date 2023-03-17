@@ -1,15 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import toast from 'react-hot-toast';
 
 import { Container } from '../../components/Layout';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { registerUser } from '../../api/user';
+import { AuthContext } from '../../context/auth/context';
 
 import styles from './RegistrationForm.module.css';
 
 export const RegistrationForm = () => {
   const [formValues, setFormValues] = useState();
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     setFormValues({
@@ -18,10 +23,23 @@ export const RegistrationForm = () => {
     })
   };
 
+  const notifySuccess = (email) => toast.success(`Successfully registered ${email}!`);
+  const notifyError = (err) => toast.error(`This is an error: ${err}!`);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // signUp(formValues);
+    registerUser(formValues).then((response) => {
+      const { email, title } = response;
+
+      if (email) {
+        setUser(response);
+        notifySuccess(email);
+        navigate('/profile');
+      } else {
+        notifyError(title);
+      }
+    });
   };
 
   return (
