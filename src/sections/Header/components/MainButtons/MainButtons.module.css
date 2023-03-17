@@ -1,0 +1,28 @@
+.profileLink {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+}
+
+.profileLink:hover {
+    text-decoration: underline;
+}
+
+.first-button {
+    margin-right: 32px;
+}
+
+.userIcon {
+    margin-left: 24px;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    background-image: url('./assets/user-icon.png');
+    background-size:  contain;
+}
+
+.logoutIcon {
+    width: 24px;
+    height: 24px;
+}

@@ -42,6 +42,7 @@
     padding-top: 30px;
     flex-direction: column;
     z-index: 1;
+    background-color: #fff;
 }
 
 .wrapper {
@@ -105,8 +106,8 @@
 
     .hidden-buttons {
         display: flex;
-        gap: 24px;
         flex-grow: 1;
+        justify-content: flex-end;
     }
 
     .buttons {
