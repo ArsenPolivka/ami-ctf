@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../../../context/auth/context";
 import { useContext } from "react";
-
+import { Link } from "react-router-dom";
 import classNames from "classnames";
+
+import { AuthContext } from "../../../../context/auth/context";
 
 import { ReactComponent as LogoutIcon } from './assets/logout.svg';
 import { Button } from "../../../../components/Button";

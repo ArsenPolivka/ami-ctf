@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../context/auth/context";
 
+import { AuthContext } from "../../context/auth/context";
 import { Container } from "../../components/Layout";
 import { Avatar } from "./components/Avatar";
 import { ChangeButtons } from "./components/ChangeButtons";

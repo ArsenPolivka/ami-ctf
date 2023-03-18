@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "../../../../context/auth/context";
 
+import { AuthContext } from "../../../../context/auth/context";
 import { Input } from "../../../../components/Input";
 
 import styles from "../../ProfileBlock.module.css";
