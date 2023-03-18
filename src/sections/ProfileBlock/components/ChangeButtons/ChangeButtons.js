@@ -11,7 +11,7 @@ export const ChangeButtons = ({ isChangeInfoVisible, isChangePasswordVisible, to
                     rootClassName={styles['main-button']}
                     onClick={toggleChangeInfoVisibility}
                 >
-                    Change profile info
+                    Change user name
                 </Button>
             ) : (
                 <div className={styles['buttons']}>
@@ -25,6 +25,7 @@ export const ChangeButtons = ({ isChangeInfoVisible, isChangePasswordVisible, to
                     <Button
                         variant="primary"
                         rootClassName={styles['save-button']}
+                        type="submit"
                     >
                         Save changes
                     </Button>

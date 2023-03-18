@@ -5,7 +5,7 @@ import { Input } from "../../../../components/Input";
 
 import styles from "../../ProfileBlock.module.css";
 
-export const InputUserName = ({ isChangeInfoVisible }) => {
+export const InputUserName = ({ isChangeInfoVisible, value, onChange }) => {
     const { user } = useContext(AuthContext);
 
     return (
@@ -19,6 +19,9 @@ export const InputUserName = ({ isChangeInfoVisible }) => {
                     <Input
                         rootClassName={styles['item-content']}
                         placeholder="New username"
+                        value={value}
+                        onChange={onChange}
+                        name="username"
                     />
                 </div>
             )}

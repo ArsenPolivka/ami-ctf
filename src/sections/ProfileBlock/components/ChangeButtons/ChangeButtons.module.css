@@ -6,11 +6,9 @@
 
 .buttons {
     display: flex;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     justify-content: space-between;
+    margin-top: 24px;
 }
 
 .back-button {

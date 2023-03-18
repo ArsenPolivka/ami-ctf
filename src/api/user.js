@@ -1,13 +1,13 @@
 import { HOST } from './constants';
 
-export async function loginUser({ email, password }) {
+export async function loginUser(body) {
   const response = await fetch(`${HOST}/auth/login`, {
     credentials: 'include',
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify(body),
   });
 
   const loginUserResponse = await response.json();
@@ -15,14 +15,14 @@ export async function loginUser({ email, password }) {
   return loginUserResponse;
 };
 
-export async function registerUser({ email, username, password, confirmedPassword }) {
+export async function registerUser(body) {
   const response = await fetch(`${HOST}/auth/register`, {
     credentials: 'include',
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ email, username, password, confirmedPassword }),
+    body: JSON.stringify(body),
   });
 
   const registerUserResponse = await response.json();
@@ -52,3 +52,43 @@ export async function logoutUser() {
     },
   });
 }
+
+export async function updateUser(body, id) {
+  const response = await fetch(`${HOST}/users/${id}`, {
+    credentials: "include",
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (response.ok) {
+    return response.json();
+  } else {
+    return {
+      error: true,
+      message: `Failed to update user: ${response.title}`,
+    };
+  }
+};
+
+export async function updatePassword(body, id) {
+  const response = await fetch(`${HOST}/users/${id}/reset-password`, {
+    credentials: "include",
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (response.ok) {
+    return response.json();
+  } else {
+    return {
+      error: true,
+      message: `Failed to update password: ${response.title}`,
+    };
+  }
+};
