@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-
 import { Link } from 'react-scroll/modules';
-import { TagsList } from './TagsList/TagsList';
+
 import img from './assets/intro-decoration.png';
 
+import { TagsList } from './TagsList/TagsList';
 import { Container } from '../../components/Layout';
 import { Button } from '../../components/Button';
+import { ScrollDown } from "../../components/ScrollDown";
 
 import styles from './Intro.module.css';
-import {ScrollDown} from "../../components/ScrollDown";
 
 export const Intro = () => {
   return (
@@ -33,22 +33,28 @@ export const Intro = () => {
                 Register now
               </Button>
 
-              <Button
-                  variant="secondary"
-                  rootClassName={styles.btn}
+
+              <Link to="about"
+                    className={styles.btn}
               >
-                <Link to="about">
-                  Read more
-                </Link>
-              </Button>
+                <Button variant="secondary">
+                    Read more
+                </Button>
+              </Link>
             </div>
           </div>
 
           <div className={classNames(styles.column, styles['column--second'])}>
-            <img className={styles.decoration} src={img} alt="young man coding on laptop" />
+            <img
+                className={styles.decoration}
+                src={img}
+                alt="young man coding on laptop"
+            />
           </div>
         </div>
-        <ScrollDown />
+        <Link to="about">
+          <ScrollDown />
+        </Link>
       </Container>
     </section>
   );
