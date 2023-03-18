@@ -33,14 +33,16 @@ export const Intro = () => {
                 Register now
               </Button>
 
-              <Button
-                  variant="secondary"
-                  rootClassName={styles.btn}
+
+              <Link to="about"
+                    className={styles.btn}
               >
-                <Link to="about">
-                  Read more
-                </Link>
-              </Button>
+                <Button
+                    variant="secondary"
+                >
+                    Read more
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -48,7 +50,9 @@ export const Intro = () => {
             <img className={styles.decoration} src={img} alt="young man coding on laptop" />
           </div>
         </div>
-        <ScrollDown />
+        <Link to="about">
+          <ScrollDown />
+        </Link>
       </Container>
     </section>
   );
