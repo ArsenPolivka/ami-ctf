@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
+import { AuthContext } from "../../context/auth/context";
 import { Container } from "../../components/Layout";
 import { Avatar } from "./components/Avatar";
 import { ChangeButtons } from "./components/ChangeButtons";
 import { ChangePassword } from "./components/ChangePassword";
 import { InputUserName } from "./components/InputUserName";
+
 
 import styles from "../../sections/ProfileBlock/ProfileBlock.module.css";
 
@@ -14,6 +16,8 @@ export const ProfileBlock = () => {
 
     const toggleChangePasswordVisibility = () => setChangePasswordVisible(!isChangePasswordVisible);
     const toggleChangeInfoVisibility = () => setChangeInfoVisible(!isChangeInfoVisible);
+
+    const { user } = useContext(AuthContext);
 
     return (
         <Container>
@@ -37,7 +41,7 @@ export const ProfileBlock = () => {
                                         E-mail:
                                     </div>
                                     <div className={styles['item-content']}>
-                                        example@gmail.com
+                                        { user.email }
                                     </div>
                                 </li>
                                 <li className={styles['list-item']}>

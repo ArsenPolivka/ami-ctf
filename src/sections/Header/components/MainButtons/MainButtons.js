@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+
+import { AuthContext } from "../../../../context/auth/context";
 
 import { ReactComponent as LogoutIcon } from './assets/logout.svg';
 import { Button } from "../../../../components/Button";
@@ -7,6 +10,7 @@ import { Button } from "../../../../components/Button";
 import styles from "./MainButtons.module.css";
 
 export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
+    const { user } = useContext(AuthContext);
     return (
         <>
             {hasProfile ? (
@@ -15,7 +19,7 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
                         to="/profile"
                         className={classNames(styles['first-button'], styles.profileLink)}
                     >
-                        ralph_edwards19
+                        { user.username }
                         <span className={styles.userIcon}></span>
                     </Link>
 
