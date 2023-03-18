@@ -8,7 +8,7 @@ import { ReactComponent as VisibilityOn } from "../../assets/visibility-on.svg";
 
 import styles from "./ChangePassword.module.css";
 
-export const ChangePassword = ({ isChangePasswordVisible, isChangeInfoVisible, toggleChangePasswordVisibility }) => {
+export const ChangePassword = ({ isChangePasswordVisible, isChangeInfoVisible, toggleChangePasswordVisibility, currentPassword, newPassword, confirmPassword, setCurrentPassword, setNewPassword, setConfirmPassword }) => {
     const [isShowCurrentPassword, setShowCurrentPassword] = useState(false);
     const [isShowNewPassword, setShowNewPassword] = useState(false);
     const [isShowConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -16,6 +16,10 @@ export const ChangePassword = ({ isChangePasswordVisible, isChangeInfoVisible, t
     const toggleShowCurrentPassword = () => setShowCurrentPassword(!isShowCurrentPassword);
     const toggleShowNewPassword = () => setShowNewPassword(!isShowNewPassword);
     const toggleShowConfirmPassword = () => setShowConfirmPassword(!isShowConfirmPassword);
+
+    const handleCurrentPasswordChange = (e) => setCurrentPassword(e.target.value);
+    const handleNewPasswordChange = (e) => setNewPassword(e.target.value);
+    const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
 
     return (
         <>
@@ -44,6 +48,8 @@ export const ChangePassword = ({ isChangePasswordVisible, isChangeInfoVisible, t
                             type={isShowCurrentPassword ? "text" : "password"}
                             rootClassName={styles['input-password']}
                             placeholder="Current password"
+                            value={currentPassword}
+                            onChange={handleCurrentPasswordChange}
                         />
                         <button
                             className={styles['visibility-button']}
@@ -57,6 +63,8 @@ export const ChangePassword = ({ isChangePasswordVisible, isChangeInfoVisible, t
                             type={isShowNewPassword ? "text" : "password"}
                             rootClassName={styles['input-password']}
                             placeholder="New password"
+                            value={newPassword}
+                            onChange={handleNewPasswordChange}
                         />
                         <button
                             className={styles['visibility-button']}
@@ -70,6 +78,8 @@ export const ChangePassword = ({ isChangePasswordVisible, isChangeInfoVisible, t
                             type={isShowConfirmPassword ? "text" : "password"}
                             rootClassName={styles['input-password']}
                             placeholder="Confirm password"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
                         />
                         <button
                             className={styles['visibility-button']}

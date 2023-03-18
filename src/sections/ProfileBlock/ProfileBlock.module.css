@@ -20,11 +20,12 @@
 .list-item {
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    min-height: 42px;
 }
 
 .list-item + .list-item {
-    margin-top: 28px;
+    margin-top: 18px;
 }
 
 .item-label {
@@ -39,7 +40,6 @@
 }
 
 .item-content:first-of-type {
-    position: absolute;
     width: 100%;
 }
 
