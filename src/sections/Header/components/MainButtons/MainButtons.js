@@ -6,11 +6,18 @@ import { AuthContext } from "../../../../context/auth/context";
 
 import { ReactComponent as LogoutIcon } from './assets/logout.svg';
 import { Button } from "../../../../components/Button";
+import { logoutUser } from "../../../../api/user";
 
 import styles from "./MainButtons.module.css";
 
 export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
+
+    const handleLogout = async () => {
+        await logoutUser();
+        setUser(null);
+    };
+
     return (
         <>
             {hasProfile ? (
@@ -28,6 +35,7 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
                         hiddenLabel
                         icon={<LogoutIcon />}
                         iconClassName={styles.logoutIcon}
+                        onClick={ handleLogout }
                     >
                         Logout
                     </Button>

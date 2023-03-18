@@ -42,3 +42,15 @@ export async function getCurrentUser() {
 
   return userInfo;
 };
+
+export async function logoutUser() {
+  await fetch(`${HOST}/auth/logout`, {
+    credentials: 'include',
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+
+  document.cookie = "authToken=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+}

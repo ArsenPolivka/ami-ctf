@@ -7,7 +7,6 @@ import { ChangeButtons } from "./components/ChangeButtons";
 import { ChangePassword } from "./components/ChangePassword";
 import { InputUserName } from "./components/InputUserName";
 
-
 import styles from "../../sections/ProfileBlock/ProfileBlock.module.css";
 
 export const ProfileBlock = () => {
