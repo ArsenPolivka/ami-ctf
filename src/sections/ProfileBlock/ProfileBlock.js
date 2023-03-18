@@ -1,80 +1,80 @@
 import {useContext, useState} from "react";
+import toast from 'react-hot-toast';
 
 import {AuthContext} from "../../context/auth/context";
 import {Container} from "../../components/Layout";
+import classNames from "classnames";
+
 import {Avatar} from "./components/Avatar";
 import {ChangeButtons} from "./components/ChangeButtons";
 import {ChangePassword} from "./components/ChangePassword";
 import {InputUserName} from "./components/InputUserName";
+import { updateUser, updatePassword } from "../../api/user";
+import { ALL_NAMES } from "../../api/constants";
 
 import styles from "../../sections/ProfileBlock/ProfileBlock.module.css";
-import {HOST} from "../../api/constants";
+
+const { USERNAME, CURRENT_PASSWORD, NEW_PASSWORD, CONFIRMED_PASSWORD } = ALL_NAMES;
 
 export const ProfileBlock = () => {
     const [isChangeInfoVisible, setChangeInfoVisible] = useState(false);
     const [isChangePasswordVisible, setChangePasswordVisible] = useState(false);
-    const [currentPassword, setCurrentPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
 
     const toggleChangePasswordVisibility = () => setChangePasswordVisible(!isChangePasswordVisible);
     const toggleChangeInfoVisibility = () => setChangeInfoVisible(!isChangeInfoVisible);
 
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
 
     const [newUsername, setNewUsername] = useState("");
+    const [passwordFormValues, setPasswordFormValues] = useState({
+        [CURRENT_PASSWORD]: "",
+        [NEW_PASSWORD]: "",
+        [CONFIRMED_PASSWORD]: "",
+    });
 
-    const handleChangeUsername = async (e) => {
-        e.preventDefault();
+    const notifySuccess = (message) => toast.success(message);
+    const notifyError = (message) => toast.error(message);
 
-        try {
-            const response = await fetch(`${HOST}/users/${user.id}`, {
-                credentials: "include",
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ newUsername })
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to update username");
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    const handlePasswordFormChange = ({ target }) => {
+        setPasswordFormValues({
+            ...passwordFormValues,
+            [target.name]: target.value,
+        });
     };
 
     const handleConfirm = async (e) => {
         e.preventDefault();
 
-        try {
-            let response = '';
-            if (isChangePasswordVisible) {
-                response = await fetch(`${HOST}/users/${user.id}`, {
-                    credentials: "include",
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({currentPassword, newPassword, confirmPassword})
-                })
-            } else {
-                response = await fetch(`${HOST}/users/${user.id}`, {
-                    credentials: "include",
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ username: newUsername })
-                });
-            }
+        const body = isChangeInfoVisible ? {
+            [USERNAME]: newUsername,
+        } : {
+            [CURRENT_PASSWORD]: passwordFormValues[CURRENT_PASSWORD],
+            [NEW_PASSWORD]: passwordFormValues[NEW_PASSWORD],
+            [CONFIRMED_PASSWORD]: passwordFormValues[CONFIRMED_PASSWORD],
+        }
 
-            if (!response.ok) {
-                throw new Error("Failed to update info");
-            }
-        } catch (error) {
-            console.error(error);
+        if (isChangeInfoVisible) {
+            updateUser(body, user.id).then(response => {
+                if (response.error) {
+                    notifyError(response.message);
+                } else {
+                    notifySuccess("Username successfully updated!");
+                    setUser({
+                        ...user,
+                        ...body,
+                    });
+                    setChangeInfoVisible(false);
+                }
+            });
+        } else {
+            updatePassword(body, user.id).then(response => {
+                if (response.error) {
+                    notifyError(response.message);
+                } else {
+                    notifySuccess("Username successfully updated!");
+                    setChangePasswordVisible(false);
+                }
+            });
         }
     }
 
@@ -109,13 +109,15 @@ export const ProfileBlock = () => {
                                         </div>
                                     </li>
                                     <li className={styles['list-item']}>
-                                        <div className={styles['item-label']}>
+                                        <div className={classNames(styles['item-label'], styles['password-label'])}>
                                             Password:
                                         </div>
                                         <ChangePassword
                                             isChangePasswordVisible={isChangePasswordVisible}
                                             isChangeInfoVisible={isChangeInfoVisible}
                                             toggleChangePasswordVisibility={toggleChangePasswordVisibility}
+                                            formValues={passwordFormValues}
+                                            onChange={handlePasswordFormChange}
                                         />
                                     </li>
                                 </ul>
@@ -126,9 +128,6 @@ export const ProfileBlock = () => {
                                 setChangeInfoVisible={setChangeInfoVisible}
                                 toggleChangePasswordVisibility={toggleChangePasswordVisibility}
                                 toggleChangeInfoVisibility={toggleChangeInfoVisibility}
-                                setCurrentPassword={setCurrentPassword}
-                                setNewPassword={setNewPassword}
-                                setConfirmPassword={setConfirmPassword}
                             />
                         </form>
                     </div>

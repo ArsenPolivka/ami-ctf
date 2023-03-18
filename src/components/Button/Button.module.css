@@ -60,3 +60,24 @@
 .button--hiddenLabel {
   padding: 12px;
 }
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button--primary:disabled:hover {
+  background-color: rgba(255, 186, 73, 1);
+  border-color: rgba(255, 186, 73, 1);
+}
+
+.button--secondary:disabled:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+.button--purple:disabled:hover {
+  background-color: transparent;
+  color: #6C63FF;
+}
+

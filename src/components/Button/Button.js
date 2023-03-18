@@ -14,6 +14,7 @@ export const Button = ({
   icon,
   iconClassName,
   hiddenLabel,
+  disabled,
   onClick
 }) => {
   if (to) {
@@ -24,9 +25,10 @@ export const Button = ({
           styles.button,
           styles[`button--${variant}`],
           styles[`button--${hiddenLabel ? 'hiddenLabel' :  'visibleLabel'}`],
-          wide && styles.wide,
+          wide & styles.wide,
           rootClassName,
         )}
+        disabled={disabled}
       >
         {icon ? <span className={iconClassName}>{icon}</span> : null}
 
@@ -42,9 +44,10 @@ export const Button = ({
         styles.button,
         styles[`button--${variant}`],
         styles[`button--${hiddenLabel ? 'hiddenLabel' :  'visibleLabel'}`],
-        wide && styles.wide,
+        wide & styles.wide,
         rootClassName,
       )}
+      disabled={disabled}
       onClick={onClick}
     >
       {icon ? <span className={iconClassName}>{icon}</span> : null}
