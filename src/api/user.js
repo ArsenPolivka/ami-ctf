@@ -42,3 +42,13 @@ export async function getCurrentUser() {
 
   return userInfo;
 };
+
+export async function logoutUser() {
+  await fetch(`${HOST}/auth/logout`, {
+    credentials: 'include',
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+}
