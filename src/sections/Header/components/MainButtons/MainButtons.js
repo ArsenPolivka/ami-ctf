@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
 import { AuthContext } from "../../../../context/auth/context";
@@ -12,10 +12,13 @@ import styles from "./MainButtons.module.css";
 
 export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
     const { user, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         await logoutUser();
         setUser(null);
+
+        navigate("/login");
     };
 
     return (
