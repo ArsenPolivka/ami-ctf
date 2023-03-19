@@ -61,7 +61,10 @@ export const Intro = () => {
               />
             </div>
           </div>
-          <Link to="about" className={styles.scroll}>
+          <Link
+              to="about"
+              className={styles.scroll}
+          >
             <ScrollDown />
           </Link>
         </Container>
