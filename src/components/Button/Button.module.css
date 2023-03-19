@@ -14,12 +14,12 @@
   border: 1px solid rgba(255, 186, 73, 1);
   background-color: rgba(255, 186, 73, 1);
   color: #000;
-  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: border-color, 0.3s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .button--primary:hover {
-  background-color: rgba(255, 186, 73, 0.5);
-  border-color: rgba(255, 186, 73, 0);
+  background-color: #fff;
+  border-color: black;
 }
 
 .button--secondary {
@@ -30,8 +30,8 @@
 }
 
 .button--secondary:hover {
-  background-color: rgba(255, 186, 73, 0.5);
-  color: #000;
+  background-color: rgba(255, 186, 73, 1);
+  border-color: rgba(255, 186, 73, 1);
 }
 
 .button--secondary-dark {
