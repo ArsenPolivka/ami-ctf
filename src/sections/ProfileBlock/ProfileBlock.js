@@ -86,7 +86,10 @@ export const ProfileBlock = () => {
                 </h1>
                 <div className={styles['content']}>
                     <Avatar isChangeInfoVisible={isChangeInfoVisible} />
-                    <form className={styles['info-block']} onSubmit={handleConfirm}>
+                    <form
+                        className={styles['info-block']}
+                        onSubmit={handleConfirm}
+                    >
                         <div className={styles['user-info']}>
                             <ul className={styles['list']}>
                                 <li className={styles['list-item']}>
