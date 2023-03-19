@@ -39,6 +39,12 @@
   border: 1px solid #fff;
   background-color: transparent;
   color: #fff;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.button--secondary-dark:hover {
+  color: #000;
+  background: #fff;
 }
 
 .button--purple {
@@ -81,4 +87,3 @@
   background-color: transparent;
   color: #6C63FF;
 }
-

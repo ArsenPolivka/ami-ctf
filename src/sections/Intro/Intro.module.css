@@ -1,48 +1,146 @@
 .section {
-  padding-top: 150px;
-  padding-bottom: 260px;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.column--second {
-  width: 430px;
-  margin-left: auto;
+  padding-bottom: 336px;
 }
 
 .decoration {
-  display: block;
-  width: 100%;
+  display: none;
 }
 
 .tags-list-wrapper {
-  margin-bottom: 12px;
+  display: none;
+}
+
+.column--first {
+  align-self: center;
+  color: #fff;
 }
 
 .title {
+  color: #fff;
+  font-size: 28px;
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
-  font-size: 50px;
   line-height: 68px;
-  color: #000;
   margin-bottom: 8px;
 }
 
 .text {
+  font-size: 14px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 18px;
   line-height: 27px;
   margin-bottom: 24px;
 }
 
 .btn-group {
   display: flex;
+  gap: 16px;
 }
 
-.btn + .btn {
-  margin-left: 24px;
+.btn-second {
+  display: none;
+}
+
+.mobile-wrapper {
+  display: flex;
+  position: absolute;
+  padding: 0 20px;
+  left: 0;
+  top: 95px;
+  width: auto;
+  height: 312px;
+  margin-right: 20px;
+  border-radius: 0 90px 90px 0;
+  background-size: contain;
+  background:  url("assets/background.png") no-repeat ;
+}
+
+.scroll {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
+  .mobile-wrapper {
+    top: 170px;
+    right: 150px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .section {
+    padding-bottom: 372px;
+  }
+
+  .btn-group {
+    gap: 24px;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .mobile-wrapper {
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .mobile-wrapper {
+    position: static;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+  }
+
+  .decoration {
+    display: block;
+    width: 100%
+  }
+
+  .column--second {
+    width: 430px;
+    margin-left: auto;
+  }
+
+  .title {
+    color: #000;
+    font-size: 50px;
+  }
+
+  .text {
+    color: #000;
+    font-size: 18px;
+  }
+
+  .tags-list-wrapper {
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  .btn-second {
+    display: block;
+  }
+
+  .btn-dark {
+    display: none;
+  }
+
+  .section {
+    padding-bottom: 268px;
+  }
+
+  .scroll {
+    display: block;
+  }
 }
