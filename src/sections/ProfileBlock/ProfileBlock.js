@@ -86,51 +86,49 @@ export const ProfileBlock = () => {
                 </h1>
                 <div className={styles['content']}>
                     <Avatar isChangeInfoVisible={isChangeInfoVisible} />
-                    <div className={styles['info-block']}>
-                        <form onSubmit={handleConfirm}>
-                            <div className={styles['user-info']}>
-                                      <ul className={styles['list']}>
-                                    <li className={styles['list-item']}>
-                                        <div className={styles['item-label']}>
-                                            Username:
-                                        </div>
-                                        <InputUserName
-                                            isChangeInfoVisible={isChangeInfoVisible}
-                                            value={newUsername}
-                                            onChange={(e) => setNewUsername(e.target.value)}
-                                        />
-                                    </li>
-                                    <li className={styles['list-item']}>
-                                        <div className={styles['item-label']}>
-                                            E-mail:
-                                        </div>
-                                        <div className={styles['item-content']}>
-                                            { user.email }
-                                        </div>
-                                    </li>
-                                    <li className={styles['list-item']}>
-                                        <div className={classNames(styles['item-label'], styles['password-label'])}>
-                                            Password:
-                                        </div>
-                                        <ChangePassword
-                                            isChangePasswordVisible={isChangePasswordVisible}
-                                            isChangeInfoVisible={isChangeInfoVisible}
-                                            toggleChangePasswordVisibility={toggleChangePasswordVisibility}
-                                            formValues={passwordFormValues}
-                                            onChange={handlePasswordFormChange}
-                                        />
-                                    </li>
-                                </ul>
-                            </div>
-                            <ChangeButtons
-                                isChangeInfoVisible={isChangeInfoVisible}
-                                isChangePasswordVisible={isChangePasswordVisible}
-                                setChangeInfoVisible={setChangeInfoVisible}
-                                toggleChangePasswordVisibility={toggleChangePasswordVisibility}
-                                toggleChangeInfoVisibility={toggleChangeInfoVisibility}
-                            />
-                        </form>
-                    </div>
+                    <form className={styles['info-block']} onSubmit={handleConfirm}>
+                        <div className={styles['user-info']}>
+                            <ul className={styles['list']}>
+                                <li className={styles['list-item']}>
+                                    <div className={styles['item-label']}>
+                                        Username:
+                                    </div>
+                                    <InputUserName
+                                        isChangeInfoVisible={isChangeInfoVisible}
+                                        value={newUsername}
+                                        onChange={(e) => setNewUsername(e.target.value)}
+                                    />
+                                </li>
+                                <li className={styles['list-item']}>
+                                    <div className={styles['item-label']}>
+                                        E-mail:
+                                    </div>
+                                    <div className={styles['item-content']}>
+                                        { user.email }
+                                    </div>
+                                </li>
+                                <li className={styles['list-item']}>
+                                    <div className={classNames(styles['item-label'], styles['password-label'])}>
+                                        Password:
+                                    </div>
+                                    <ChangePassword
+                                        isChangePasswordVisible={isChangePasswordVisible}
+                                        isChangeInfoVisible={isChangeInfoVisible}
+                                        toggleChangePasswordVisibility={toggleChangePasswordVisibility}
+                                        formValues={passwordFormValues}
+                                        onChange={handlePasswordFormChange}
+                                    />
+                                </li>
+                            </ul>
+                        </div>
+                        <ChangeButtons
+                            isChangeInfoVisible={isChangeInfoVisible}
+                            isChangePasswordVisible={isChangePasswordVisible}
+                            setChangeInfoVisible={setChangeInfoVisible}
+                            toggleChangePasswordVisibility={toggleChangePasswordVisibility}
+                            toggleChangeInfoVisibility={toggleChangeInfoVisibility}
+                        />
+                    </form>
                 </div>
             </div>
         </Container>

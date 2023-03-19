@@ -3,18 +3,17 @@
     align-items: center;
     color: #000;
     text-decoration: none;
+    font-family: "Nunito", sans-serif;
+    transition: color 0.3s ease-in-out;
 }
 
 .profileLink:hover {
-    text-decoration: underline;
-}
-
-.first-button {
-    margin-right: 32px;
+    color: #6C63FF;
 }
 
 .userIcon {
     margin-left: 24px;
+    margin-right: 0;
     width: 50px;
     height: 50px;
     flex-shrink: 0;
@@ -23,6 +22,13 @@
 }
 
 .logoutIcon {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
 }
