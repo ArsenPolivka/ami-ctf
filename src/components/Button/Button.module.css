@@ -8,6 +8,7 @@
   text-decoration: none;
   appearance: none;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 
 .button--primary {

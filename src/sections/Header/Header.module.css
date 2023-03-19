@@ -6,6 +6,7 @@
 .desktop-wrapper {
   display: none; /*TEMPORARY*/
   align-items: center;
+  min-height: 50px;
 }
 
 .tablet-wrapper {

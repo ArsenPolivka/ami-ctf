@@ -38,6 +38,7 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
                         hiddenLabel
                         icon={<LogoutIcon />}
                         iconClassName={styles.logoutIcon}
+                        rootClassName={styles.logout}
                         onClick={ handleLogout }
                     >
                         Logout
