@@ -12,50 +12,59 @@ import styles from './Intro.module.css';
 
 export const Intro = () => {
   return (
-    <section id="intro" className={styles.section}>
-      <Container>
-        <div className={styles.wrapper}>
-          <div className={classNames(styles.column, styles['column--first'])}>
-            <TagsList rootClassName={styles['tags-list-wrapper']} />
+      <section id="intro" className={styles.section}>
+        <Container>
+          <div className={styles.wrapper}>
+            <div className={styles['mobile-wrapper']}>
 
-            <h1 className={styles.title}>Capture your flag now!</h1>
+              <div className={classNames(styles.column, styles['column--first'])}>
+                <TagsList rootClassName={styles['tags-list-wrapper']} />
 
-            <p className={styles.text}>
-              Lorem ipsum dolor sit amet consectetur. Duis aenean condimentum nullam
-            </p>
+                <h1 className={styles.title}>Capture your flag now!</h1>
 
-            <div className={styles['btn-group']}>
-              <Button
-                  to="/registration"
-                  variant="primary"
-                  rootClassName={styles.btn}
-              >
-                Register now
-              </Button>
+                <p className={styles.text}>
+                  Lorem ipsum dolor sit amet consectetur. Duis aenean condimentum nullam
+                </p>
 
+                <div className={styles['btn-group']}>
+                  <Button
+                      to="/registration"
+                      variant="primary"
+                      rootClassName={styles.btn}
+                  >
+                    Register now
+                  </Button>
 
-              <Link to="about"
-                    className={styles.btn}
-              >
-                <Button variant="secondary">
-                    Read more
-                </Button>
-              </Link>
+                  <Link to="about"
+                        className={styles['btn-dark']}
+                  >
+                    <Button variant="secondary-dark">
+                      Read more
+                    </Button>
+                  </Link>
+                  <Link to="about"
+                        className={styles['btn-second']}
+                  >
+                    <Button variant="secondary">
+                      Read more
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className={classNames(styles.column, styles['column--second'])}>
+              <img
+                  className={styles.decoration}
+                  src={img}
+                  alt="young man coding on laptop"
+              />
             </div>
           </div>
-
-          <div className={classNames(styles.column, styles['column--second'])}>
-            <img
-                className={styles.decoration}
-                src={img}
-                alt="young man coding on laptop"
-            />
-          </div>
-        </div>
-        <Link to="about">
-          <ScrollDown />
-        </Link>
-      </Container>
-    </section>
+          <Link to="about" className={styles.scroll}>
+            <ScrollDown />
+          </Link>
+        </Container>
+      </section>
   );
 };
