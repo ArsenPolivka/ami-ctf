@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import classNames from 'classnames';
 
 import { Input } from '../../../components/Input';
 import { TextArea } from '../../../components/TextArea';
 import { Button } from '../../../components/Button';
+import { ALL_NAMES } from "../../../api/constants";
+import { sendContactUsRequest } from "../../../api/feebdack";
 
 import styles from './ContactForm.module.css';
 
@@ -17,11 +20,23 @@ export const ContactForm = () => {
     })
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    const notifySuccess = () => toast.success('We recieved your message!');
 
-    console.log(formValues);
-  }
+    const notifyError = (errorMessage) => toast.error(`Error occurred: ${errorMessage}!`);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        sendContactUsRequest(formValues).then((response) => {
+            const { title } = response;
+
+            if (title) {
+                notifyError(title)
+            } else {
+                notifySuccess();
+            }
+        });
+    };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -30,7 +45,7 @@ export const ContactForm = () => {
           hideLabel
           required
           inputRootClassName={styles.input}
-          name="name"
+          name={ALL_NAMES.FULL_NAME}
           label="Full name"
           placeholder="Full name"
           onChange={handleChange}
@@ -43,7 +58,7 @@ export const ContactForm = () => {
           required
           inputRootClassName={styles.input}
           type="email"
-          name="email"
+          name={ALL_NAMES.EMAIL}
           label="Email"
           placeholder="Email"
           onChange={handleChange}
@@ -55,7 +70,7 @@ export const ContactForm = () => {
           hideLabel
           required
           textareaRootClassName={styles.input}
-          name="message"
+          name={ALL_NAMES.BODY}
           label="Enter your message:"
           placeholder="Text message"
           onChange={handleChange}
