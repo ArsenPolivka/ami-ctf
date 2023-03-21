@@ -34,6 +34,7 @@
 
 .btn-group {
   display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -49,8 +50,6 @@
   top: 95px;
   width: auto;
   height: 312px;
-  margin-right: 20px;
-  border-radius: 0 90px 90px 0;
   background-size: contain;
   background:  url("assets/background.png") no-repeat ;
 }
@@ -59,10 +58,55 @@
   display: none;
 }
 
+@media screen and (max-width: 410px){
+  .button-dark,
+  .btn-dark,
+  .button-wrapper {
+    width: 100%;
+  }
+
+  .button-wrapper {
+    display: flex;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+}
+
+@media screen and (min-width: 410px) {
+  .mobile-wrapper {
+    margin-right: 20px;
+    border-radius: 0 90px 90px 0;
+  }
+
+  .btn-group {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .button-dark,
+  .btn-dark {
+    width: auto;
+  }
+}
+
 @media screen and (min-width: 650px) {
   .mobile-wrapper {
     top: 170px;
     right: 150px;
+  }
+
+  .btn {
+    width: auto;
   }
 
   .title {
