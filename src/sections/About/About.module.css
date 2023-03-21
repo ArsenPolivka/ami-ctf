@@ -28,7 +28,7 @@
 
 @media screen and (min-width: 270px) {
     .about-section {
-        padding: 60px 20px;
+        padding: 60px 0;
     }
 
     .title {
@@ -43,7 +43,7 @@
 
 @media screen and (min-width: 500px) {
     .about-section {
-        padding: 100px 32px;
+        padding: 100px 0;
     }
 
     .title {
@@ -57,13 +57,13 @@
 
 @media screen and (min-width: 768px) {
     .about-section {
-        padding: 100px 32px 100px 206px;
+        padding: 100px 0 100px 206px;
     }
 }
 
 @media screen and (min-width: 1024px) {
     .about-section {
-        padding: 20px 60px 140px;
+        padding: 20px 0 140px;
     }
 
     .wrapper {
