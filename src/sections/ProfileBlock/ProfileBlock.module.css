@@ -12,10 +12,10 @@
 
 .content {
     display: flex;
+    flex-direction: column;
 }
 
 .list {
-    width: 396px;
     list-style: none;
     padding: 0;
 }
@@ -23,6 +23,7 @@
 .list-item {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     min-height: 42px;
 }
@@ -69,4 +70,14 @@
 .password-label {
     align-self: flex-start;
     transform: translateY(11px);
+}
+
+@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+    }
+
+    .list {
+        width: 396px;
+    }
 }
