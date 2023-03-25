@@ -6,10 +6,11 @@ import { Registration } from './pages/Registration';
 import { Login } from './pages/Login';
 import { Profile } from './pages/Profile';
 import { NoMatch } from './pages/404';
+import { TaskPage } from './pages/TaskPage';
+import { TaskCollection } from './sections/TaskCollection';
+import { TaskSingle } from './sections/TaskSingle';
 
 import { AuthProvider } from './context/auth/AuthProvider';
-
-
 
 export default function App() {
   return (
@@ -19,6 +20,10 @@ export default function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/tasks" element={<TaskPage />}>
+          <Route index element={<TaskCollection />} />
+          <Route path=":id" element={<TaskSingle />} />
+        </Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>
       <Toaster
