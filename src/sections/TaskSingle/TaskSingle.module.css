@@ -1,0 +1,147 @@
+.single-task-page {
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.task-block-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 40px 80px;
+    width: auto;
+}
+
+.task-header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.tip-block {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.tip-label {
+    font-size: 12px;
+    font-weight: 300;
+    color: #FF3737;
+}
+
+.task-cost {
+    display: flex;
+    gap: 4px;
+    padding: 8px 32px;
+    border: 1px solid #000;
+    border-radius: 28px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.description,
+.attachment {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.attachment-button {
+    align-items: center;
+    gap: 24px;
+}
+
+.task-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+}
+
+.task-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 120px;
+}
+
+.submit-form {
+    display: flex;
+    width: 270px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.submit-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.back-button {
+    gap: 16px;
+    align-items: center;
+}
+
+.control-button {
+    align-items: center;
+    gap: 8px;
+}
+
+.control-button:nth-child(2) {
+    padding: 8px 8px 8px 16px;
+}
+
+.right-arrow-filled {
+    order: 1;
+    width: 24px;
+    height: 24px;
+}
+
+.left-arrow-filled {
+    width: 24px;
+    height: 24px;
+}
+
+.download-icon {
+    order: 1;
+}
+
+.tip-button {
+    gap: 8px;
+}
