@@ -25,10 +25,12 @@ export const EntryScreen = ({ isLocked }) => {
 							>
 								Start the quiz
 							</Button>
-							<p className={styles['time-left']}>
-								Quiz will be started in
-								<span className={styles.time}> 9 days 15 hours</span>
-							</p>
+							{ isLocked ? (
+									<p className={styles['time-left']}>
+										Quiz will be started in
+										<span className={styles.time}> 9 days 15 hours</span>
+									</p>
+							) : null }
 						</div>
 					</section>
 				) : null
