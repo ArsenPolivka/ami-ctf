@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
 
 import { TaskCard } from '../../components/TaskCard';
+import { EntryScreen } from "./components/EntryScreen/EntryScreen";
 
 import { mockedTasks } from './mockedTaskCollection';
 
@@ -33,11 +34,12 @@ export const TaskCollection = () => {
   };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h2 className="visually-hidden">Task Collection</h2>
 
       {currentItems?.length ? (
         <ul className={styles.collection}>
+          <EntryScreen isLocked={false}/>
           {currentItems.map(({ id, title, description }) => {
             return (
               <li key={id} className={styles.item}>
