@@ -1,5 +1,6 @@
 .single-task-page {
     font-family: 'Nunito', sans-serif;
+    width: 100%;
 }
 
 h1 {
@@ -22,26 +23,76 @@ h3 {
 .task-block-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 120px;
     background: #FFFFFF;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
-    padding: 40px 80px;
     width: auto;
+    padding: 16px;
+    gap: 28px;
+}
+
+.task-body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .task-header-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+}
+
+.header-desktop {
+    display: none;
+}
+
+.header-mobile {
+    flex-direction: column-reverse;
+    gap: 16px;
 }
 
 .task-header {
     display: flex;
-    align-items: center;
-    gap: 40px;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    flex-direction: column;
 }
+
+.task-cost {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 32px;
+    border: 1px solid #000;
+    border-radius: 28px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.task-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 
 .tip-block {
     display: flex;
@@ -55,16 +106,6 @@ h3 {
     color: #FF3737;
 }
 
-.task-cost {
-    display: flex;
-    gap: 4px;
-    padding: 8px 32px;
-    border: 1px solid #000;
-    border-radius: 28px;
-    align-items: center;
-    font-size: 14px;
-}
-
 .description,
 .attachment {
     display: flex;
@@ -75,26 +116,6 @@ h3 {
 .attachment-button {
     align-items: center;
     gap: 24px;
-}
-
-.task-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 400px;
-}
-
-.task-body {
-    display: flex;
-    justify-content: space-between;
-    gap: 120px;
-}
-
-.submit-form {
-    display: flex;
-    width: 270px;
-    flex-direction: column;
-    gap: 16px;
 }
 
 .submit-wrapper {
@@ -144,4 +165,105 @@ h3 {
 
 .tip-button {
     gap: 8px;
+}
+
+@media screen and (min-width: 430px){
+    .task-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 640px){
+    .task-body {
+        flex-direction: row;
+        gap: 80px;
+    }
+
+    .task-wrapper {
+        max-width: 550px;
+    }
+
+    .submit-form {
+        min-width: 220px;
+    }
+
+    .task-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-block-wrapper {
+        padding: 34px 24px;
+    }
+}
+
+@media screen and (min-width: 800px){
+    .task-body {
+        gap: 120px;
+    }
+
+    .submit-form {
+        width: 270px;
+    }
+
+    .task-header {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .task-block-wrapper {
+        gap: 100px;
+    }
+}
+
+@media screen and (min-width: 1090px){
+    .task-body {
+        gap: 80px;
+    }
+
+    .task-block {
+        gap: 16px;
+    }
+
+    .header-mobile {
+        display: none;
+    }
+
+    .header-desktop {
+        display: flex;
+    }
+
+    .task-cost {
+        width: auto;
+    }
+
+    .task-header {
+        justify-content: flex-start;
+        width: auto;
+        gap: 40px;
+    }
+
+    .task-block-wrapper {
+        gap: 100px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .task-block-wrapper {
+        gap: 160px;
+        padding: 40px 80px;
+    }
+
+}
+
+@media screen and (min-width: 1320px){
+    .task-body {
+        gap: 100px;
+    }
+
+    .task-wrapper {
+        max-width: 400px;
+    }
 }
