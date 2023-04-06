@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import classNames from "classnames";
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
@@ -10,7 +11,6 @@ import { ReactComponent as Download }  from "./assets/download-icon.svg";
 import { ReactComponent as TipIcon }  from "./assets/tip-icon.svg";
 
 import styles from './TaskSingle.module.css';
-import classNames from "classnames";
 
 export const TaskSingle = () => {
   const { id } = useParams();
