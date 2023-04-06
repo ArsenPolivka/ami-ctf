@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
 
 import { TaskCard } from '../../components/TaskCard';
-import { EntryScreen } from "./components/EntryScreen/EntryScreen";
+import { EntryScreen } from "./components/EntryScreen";
 
 import { mockedTasks } from './mockedTaskCollection';
 
