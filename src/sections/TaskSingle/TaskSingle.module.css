@@ -21,14 +21,11 @@ h3 {
 }
 
 .task-block-wrapper {
-    display: flex;
-    flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
     width: auto;
     padding: 16px;
-    gap: 28px;
 }
 
 .task-body {
@@ -42,6 +39,7 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .header-desktop {
@@ -75,29 +73,32 @@ h3 {
 }
 
 .task-block {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    margin-bottom: 28px;
 }
 
 .task-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     width: 100%;
 }
 
-.submit-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.form-label {
+    margin-bottom: 16px;
 }
 
+.answer-input {
+    margin-bottom: 12px;
+}
+
+.submit-answer-button {
+    width: 100%;
+}
 
 .tip-block {
     display: flex;
-    gap: 8px;
     align-items: center;
+}
+
+.tip-button {
+    margin-right: 8px;
 }
 
 .tip-label {
@@ -106,22 +107,18 @@ h3 {
     color: #FF3737;
 }
 
-.description,
-.attachment {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.description {
+    margin-bottom: 16px;
+}
+
+.description-label,
+.attachment-label {
+    margin-bottom: 8px;
 }
 
 .attachment-button {
     align-items: center;
     gap: 24px;
-}
-
-.submit-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 }
 
 .control-buttons {
@@ -173,6 +170,7 @@ h3 {
         justify-content: space-between;
         align-items: center;
     }
+
 }
 
 @media screen and (min-width: 640px){
@@ -213,8 +211,8 @@ h3 {
         align-items: center;
     }
 
-    .task-block-wrapper {
-        gap: 100px;
+    .task-block {
+        margin-bottom: 100px;
     }
 }
 
@@ -245,15 +243,18 @@ h3 {
         gap: 40px;
     }
 
-    .task-block-wrapper {
-        gap: 100px;
+    .task-block {
+        margin-bottom: 100px;
     }
 }
 
 @media screen and (min-width: 1200px){
     .task-block-wrapper {
-        gap: 160px;
         padding: 40px 80px;
+    }
+
+    .task-block {
+        margin-bottom: 160px;
     }
 
 }

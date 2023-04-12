@@ -101,7 +101,7 @@
   background-color: rgba(255, 186, 73, 1);
 }
 
-.button--tertiary-shadow {
+.button--secondary-outlined {
   background-color: transparent;
   border: none;
   align-items: center;
@@ -110,7 +110,7 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.button--tertiary-shadow:hover {
+.button--secondary-outlined:hover {
   background-color: rgba(255, 186, 73, 1);
 }
 
