@@ -43,7 +43,7 @@ export const TaskSingle = () => {
                     rootClassName={styles['tip-button']}
                     icon={ <TipIcon /> }
                     iconClassName={styles['tip-icon']}
-                    variant='secondary-outlined'
+                    variant='tertiary-shadow'
                 >
                   Use tip
                 </Button>
@@ -69,7 +69,7 @@ export const TaskSingle = () => {
                         rootClassName={styles['tip-button']}
                         icon={ <TipIcon /> }
                         iconClassName={styles['tip-icon']}
-                        variant='secondary-outlined'
+                        variant='tertiary-shadow'
                     >
                       Use tip
                     </Button>
@@ -83,7 +83,7 @@ export const TaskSingle = () => {
                   <div className={styles.points}>5 points</div>
                 </div>
               </div>
-              <div className={styles['task-block-mob']}>
+              <div className={styles['task-block']}>
                 <div className={styles.description}>
                   <h3 className={styles['description-label']}>Description</h3>
                   <div className={styles['description-content']}>
@@ -110,13 +110,10 @@ export const TaskSingle = () => {
             <form className={styles['submit-form']} action="">
               <h2 className={styles['form-label']}>Put your answer here:</h2>
               <div className={styles['submit-wrapper']}>
-                <Input rootClassName={styles['answer-input']}
-                       placeholder='Key'
-                />
+                <Input placeholder='Key'></Input>
                 <Button
                     type='submit'
                     variant='primary'
-                    rootClassName={styles['submit-answer-button']}
                 >
                   Submit
                 </Button>
