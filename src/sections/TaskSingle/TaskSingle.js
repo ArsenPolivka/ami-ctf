@@ -1,10 +1,9 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classNames from "classnames";
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-import { ReactComponent as LeftArrowOutlined }  from "./assets/arrow-left.svg";
 import { ReactComponent as LeftArrowFilled }  from "./assets/left-arrow-filled.svg";
 import { ReactComponent as RightArrowFilled }  from "./assets/right-arrow-filled.svg";
 import { ReactComponent as Download }  from "./assets/download-icon.svg";
@@ -17,19 +16,6 @@ export const TaskSingle = () => {
 
   return (
     <div className={styles['single-task-page']}>
-      <Button
-          rootClassName={styles['back-button']}
-          icon={ <LeftArrowOutlined /> }
-          iconClassName={styles['left-arrow-icon']}
-          variant='tertiary'
-      >
-        <Link
-            className={styles['back-link']}
-            to="/tasks"
-        >
-          Back to task list
-        </Link>
-      </Button>
 
       <div className={styles['task-block-wrapper']}>
         <div className={styles['task-block']}>
@@ -38,12 +24,13 @@ export const TaskSingle = () => {
               <h1 className={styles['task-name']}>
                 {id}. Task name
               </h1>
+
               <div className={styles['tip-block']}>
                 <Button
                     rootClassName={styles['tip-button']}
                     icon={ <TipIcon /> }
                     iconClassName={styles['tip-icon']}
-                    variant='tertiary-shadow'
+                    variant='secondary-outlined'
                 >
                   Use tip
                 </Button>
@@ -52,8 +39,10 @@ export const TaskSingle = () => {
                 </div>
               </div>
             </div>
+
             <div className={styles['task-cost']}>
               <div className={styles['cost-label']}>Task cost:</div>
+
               <div className={styles.points}>5 points</div>
             </div>
           </div>
@@ -64,12 +53,13 @@ export const TaskSingle = () => {
                   <h1 className={styles['task-name']}>
                     {id}. Task name
                   </h1>
+
                   <div className={styles['tip-block']}>
                     <Button
                         rootClassName={styles['tip-button']}
                         icon={ <TipIcon /> }
                         iconClassName={styles['tip-icon']}
-                        variant='tertiary-shadow'
+                        variant='secondary-outlined'
                     >
                       Use tip
                     </Button>
@@ -78,12 +68,15 @@ export const TaskSingle = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className={styles['task-cost']}>
                   <div className={styles['cost-label']}>Task cost:</div>
+
                   <div className={styles.points}>5 points</div>
                 </div>
               </div>
-              <div className={styles['task-block']}>
+
+              <div className={styles['task-content-block']}>
                 <div className={styles.description}>
                   <h3 className={styles['description-label']}>Description</h3>
                   <div className={styles['description-content']}>
@@ -94,6 +87,7 @@ export const TaskSingle = () => {
                     write a report explaining which source you would choose and why.
                   </div>
                 </div>
+
                 <div className={styles.attachment}>
                   <h3 className={styles['attachment-label']}>Attachment</h3>
                   <Button
@@ -107,13 +101,18 @@ export const TaskSingle = () => {
                 </div>
               </div>
             </div>
-            <form className={styles['submit-form']} action="">
+            <form className={styles['submit-form']}>
               <h2 className={styles['form-label']}>Put your answer here:</h2>
+
               <div className={styles['submit-wrapper']}>
-                <Input placeholder='Key'></Input>
+                <Input placeholder='Key'
+                       rootClassName={styles['answer-input']}
+                />
+
                 <Button
                     type='submit'
                     variant='primary'
+                    rootClassName={styles['submit-answer-button']}
                 >
                   Submit
                 </Button>
@@ -121,6 +120,7 @@ export const TaskSingle = () => {
             </form>
           </div>
         </div>
+
         <div className={styles['control-buttons']}>
           <Button
               rootClassName={styles['control-button']}
