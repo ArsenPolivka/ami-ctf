@@ -18,6 +18,10 @@ export const TaskCollection = () => {
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
 
+  const [isStarted, setStarted] = useState(false);
+
+  const toggleStart = () => setStarted(!isStarted);
+
   useEffect(() => {
     // Fetch items from another resources.
     const endOffset = itemOffset + TASKS_PER_PAGE;
@@ -39,18 +43,24 @@ export const TaskCollection = () => {
 
       {currentItems?.length ? (
         <ul className={styles.collection}>
-          <EntryScreen isLocked={false}/>
-          {currentItems.map(({ id, title, description }) => {
-            return (
-              <li key={id} className={styles.item}>
-                <TaskCard
-                  id={id}
-                  name={title}
-                  description={description}
-                />
-              </li>
-            );
-          })}
+          {isStarted ? (
+              currentItems.map(({ id, title, description }) => {
+                  return (
+                      <li key={id} className={styles.item}>
+                        <TaskCard
+                            id={id}
+                            name={title}
+                            description={description}
+                        />
+                      </li>
+                  );
+                })
+          ) : (
+              <EntryScreen
+                  isLocked={false}
+                  onClick={ toggleStart }
+              />
+          )}
         </ul>
       ) : null}
 

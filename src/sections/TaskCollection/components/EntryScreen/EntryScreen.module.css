@@ -1,11 +1,11 @@
 .entry {
+    background: url("assets/entry-background.png") no-repeat center center;
+    background-size: cover;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(38, 37, 52, 0.7);
-    backdrop-filter: blur(7px);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
