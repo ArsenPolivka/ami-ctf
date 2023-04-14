@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import { Header } from '../../sections/Header';
 import { TaskSidebar } from '../../sections/TaskSidebar';
@@ -23,13 +23,9 @@ export const TaskPage = () => {
               icon={ <LeftArrowOutlined /> }
               iconClassName={styles['left-arrow-icon']}
               variant='tertiary'
+              to="/tasks"
           >
-            <Link
-                className={styles['back-link']}
-                to="/tasks"
-            >
-              Back to task list
-            </Link>
+            Back to task list
           </Button>
           <div className={styles.innerWrapper}>
             <SidebarConfigProvider>
