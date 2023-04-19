@@ -7,10 +7,13 @@ import { TagsList } from './TagsList/TagsList';
 import { Container } from '../../components/Layout';
 import { Button } from '../../components/Button';
 import { ScrollDown } from "../../components/ScrollDown";
+import { AuthContext } from '../../context/auth/context';
 
 import styles from './Intro.module.css';
+import { useContext } from 'react';
 
 export const Intro = () => {
+  const { user } = useContext(AuthContext);
   return (
       <section id="intro" className={styles.section}>
         <Container>
@@ -29,11 +32,11 @@ export const Intro = () => {
                 <div className={styles['btn-group']}>
                   <div className={styles['button-wrapper']}>
                     <Button
-                        to="/registration"
+                        to={user ? "/tasks" : "/registration"}
                         variant="primary"
                         rootClassName={styles.btn}
                     >
-                      Register now
+                      {user ? "Go to quiz" : "Register now"}
                     </Button>
                   </div>
 

@@ -11,6 +11,8 @@ import { AuthContext } from '../../context/auth/context';
 import { pageNavigation, roadMap } from './constants';
 
 import styles from "./Home.module.css";
+import { TaskPage } from '../TaskPage/TaskPage';
+import {Registration} from '../Registration/Registration';
 
 export const Home = () => {
   const { user } = useContext(AuthContext);
