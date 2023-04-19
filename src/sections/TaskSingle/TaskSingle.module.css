@@ -126,16 +126,6 @@ h3 {
     justify-content: space-between;
 }
 
-.back-link {
-    text-decoration: none;
-    color: #000;
-}
-
-.back-button {
-    gap: 16px;
-    align-items: center;
-}
-
 .control-button {
     align-items: center;
     gap: 8px;
@@ -164,7 +154,7 @@ h3 {
     gap: 8px;
 }
 
-@media screen and (min-width: 430px){
+@media screen and (min-width: 576px){
     .task-header {
         flex-direction: row;
         justify-content: space-between;
@@ -173,7 +163,7 @@ h3 {
 
 }
 
-@media screen and (min-width: 640px){
+@media screen and (min-width: 768px){
     .task-body {
         flex-direction: row;
         gap: 80px;
@@ -195,9 +185,14 @@ h3 {
     .task-block-wrapper {
         padding: 34px 24px;
     }
+
+    .task-header {
+        flex-direction: row;
+        align-items: center;
+    }
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 992px){
     .task-body {
         gap: 120px;
     }
@@ -206,17 +201,12 @@ h3 {
         width: 270px;
     }
 
-    .task-header {
-        flex-direction: row;
-        align-items: center;
-    }
-
     .task-block {
         margin-bottom: 100px;
     }
 }
 
-@media screen and (min-width: 1090px){
+@media screen and (min-width: 1200px){
     .task-body {
         gap: 80px;
     }
@@ -244,22 +234,15 @@ h3 {
     }
 
     .task-block {
-        margin-bottom: 100px;
-    }
-}
-
-@media screen and (min-width: 1200px){
-    .task-block-wrapper {
-        padding: 40px 80px;
-    }
-
-    .task-block {
         margin-bottom: 160px;
     }
 
+    .task-block-wrapper {
+        padding: 40px 80px;
+    }
 }
 
-@media screen and (min-width: 1320px){
+@media screen and (min-width: 1400px){
     .task-body {
         gap: 100px;
     }
