@@ -29,7 +29,7 @@
 }
 
 .list-item + .list-item {
-    margin-top: 18px;
+    margin-top: 15px;
 }
 
 .item-label {
@@ -79,5 +79,13 @@
 
     .list {
         width: 396px;
+    }
+    
+    .list-item {
+        flex-wrap: nowrap;
+    }
+
+    .list-item + .list-item {
+        margin-top: 10px;
     }
 }
