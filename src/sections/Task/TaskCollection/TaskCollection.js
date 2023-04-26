@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
 
-import { TaskCard } from '../../components/TaskCard';
-import { EntryScreen } from "./components/EntryScreen";
+import { TaskCard } from '../../../components/TaskCard';
 
 import { mockedTasks } from './mockedTaskCollection';
 
@@ -17,10 +16,6 @@ export const TaskCollection = () => {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
-
-  const [isStarted, setStarted] = useState(false);
-
-  const toggleStart = () => setStarted(!isStarted);
 
   useEffect(() => {
     // Fetch items from another resources.
@@ -43,8 +38,7 @@ export const TaskCollection = () => {
 
       {currentItems?.length ? (
         <ul className={styles.collection}>
-          {isStarted ? (
-              currentItems.map(({ id, title, description }) => {
+          {currentItems.map(({ id, title, description }) => {
                   return (
                       <li key={id} className={styles.item}>
                         <TaskCard
@@ -54,13 +48,7 @@ export const TaskCollection = () => {
                         />
                       </li>
                   );
-                })
-          ) : (
-              <EntryScreen
-                  isLocked={false}
-                  onClick={ toggleStart }
-              />
-          )}
+                })}
         </ul>
       ) : null}
 

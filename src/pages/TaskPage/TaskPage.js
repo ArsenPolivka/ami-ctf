@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import { Header } from '../../sections/Header';
-import { TaskSidebar } from '../../sections/TaskSidebar';
+import { TaskSidebar } from '../../sections/Task/TaskSidebar';
 import { Container } from '../../components/Layout';
 
 import styles from './TaskPage.module.css';

@@ -7,8 +7,8 @@ import { Login } from './pages/Login';
 import { Profile } from './pages/Profile';
 import { NoMatch } from './pages/404';
 import { TaskPage } from './pages/TaskPage';
-import { TaskCollection } from './sections/TaskCollection';
-import { TaskSingle } from './sections/TaskSingle';
+import { TaskSingle } from './sections/Task/TaskSingle';
+import { TaskEntryScreen } from "./sections/Task/TaskEntryScreen/TaskEntryScreen";
 
 import { AuthProvider } from './context/auth/AuthProvider';
 
@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/tasks" element={<TaskPage />}>
-          <Route index element={<TaskCollection />} />
+          <Route index element={<TaskEntryScreen />} />
           <Route path=":id" element={<TaskSingle />} />
         </Route>
         <Route path="*" element={<NoMatch />} />

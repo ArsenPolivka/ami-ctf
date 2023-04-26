@@ -1,5 +1,9 @@
+.wrapper {
+    position: relative;
+}
+
 .entry {
-    background: url("assets/entry-background.png") no-repeat center center;
+    background: url("../LockedTasksScreen/assets/entry-background.png") no-repeat center center;
     background-size: cover;
     position: absolute;
     top: 0;
