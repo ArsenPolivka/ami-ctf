@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
 
 import { TaskCard } from '../../../components/TaskCard';
+import { useSetSidebarConfig } from "../../../hooks/useSidebarConfig";
 
 import { mockedTasks } from './mockedTaskCollection';
 
@@ -16,6 +17,18 @@ export const TaskCollection = () => {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+
+  const setSidebarConfig = useSetSidebarConfig();
+
+  useEffect(() => {
+    // Set the sidebar configuration for the TaskSingle page
+    setSidebarConfig({ showRatingCard: true });
+
+    // Reset the sidebar configuration when the component is unmounted
+    return () => {
+      setSidebarConfig({ showRatingCard: false });
+    };
+  }, [setSidebarConfig]);
 
   useEffect(() => {
     // Fetch items from another resources.

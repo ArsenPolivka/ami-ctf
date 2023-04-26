@@ -99,3 +99,39 @@
   background-color: transparent;
   color: #6C63FF;
 }
+
+.button--tertiary {
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px 8px 8px;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button--tertiary:hover {
+  background-color: rgba(255, 186, 73, 1);
+}
+
+.button--secondary-outlined {
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  padding: 8px 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button--secondary-outlined:hover {
+  background-color: rgba(255, 186, 73, 1);
+}
+
+.button--attach {
+  background-color: #262534;
+  color: #fff;
+  border: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.button--attach:hover {
+  opacity: 0.9;
+}

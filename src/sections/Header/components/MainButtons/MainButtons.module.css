@@ -32,3 +32,7 @@
     align-items: center;
     border: 0;
 }
+
+.first-button {
+    margin-right: 12px;
+}
