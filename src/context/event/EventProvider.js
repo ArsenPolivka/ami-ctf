@@ -4,7 +4,7 @@ import { EventContext } from './context';
 import { getEventStatus } from '../../api/event';
 
 export const EventProvider = ({ children }) => {
-	const [eventStatus, setEventStatus] = useState(null);
+	const [eventStatus, setEventStatus] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
