@@ -23,6 +23,16 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
 
     return (
         <>
+            {user ? (
+                <Button
+                    to="/tasks"
+                    variant="primary"
+                    rootClassName={styles['quiz-button']}
+                >
+                    Go to quiz
+                </Button>
+            ) : null}
+
             {hasProfile ? (
                 <>
                     <Link
