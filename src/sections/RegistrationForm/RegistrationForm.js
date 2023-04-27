@@ -36,7 +36,7 @@ export const RegistrationForm = () => {
       if (email) {
         setUser(response);
         notifySuccess(email);
-        navigate('/profile');
+        navigate('/tasks');
       } else {
         const errObj = detail?.reduce((acc, item) => {
           return {
