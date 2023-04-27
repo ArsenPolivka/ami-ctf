@@ -13,6 +13,7 @@ import styles from './RegistrationForm.module.css';
 
 export const RegistrationForm = () => {
   const [formValues, setFormValues] = useState();
+  const [error, setError] = useState({});
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -30,14 +31,22 @@ export const RegistrationForm = () => {
     event.preventDefault();
 
     registerUser(formValues).then((response) => {
-      const { email, title } = response;
+      const { email, title, detail } = response;
 
       if (email) {
         setUser(response);
         notifySuccess(email);
         navigate('/profile');
       } else {
+        const errObj = detail?.reduce((acc, item) => {
+          return {
+            ...acc,
+            [item.cause]: item.message
+          }
+        }, {});
+
         notifyError(title);
+        setError(errObj);
       }
     });
   };
@@ -51,10 +60,12 @@ export const RegistrationForm = () => {
           <div className={styles.row}>
             <Input
               hideLabel
+              required
               inputRootClassName={styles.input}
               name="username"
               label="Username"
               placeholder="Username"
+              error={error && error.username}
               onChange={handleChange}
             />
           </div>
@@ -67,6 +78,7 @@ export const RegistrationForm = () => {
               name="email"
               label="E-mail"
               placeholder="E-mail"
+              error={error && error.email}
               onChange={handleChange}
             />
           </div>
@@ -80,6 +92,7 @@ export const RegistrationForm = () => {
               type="password"
               label="Password"
               placeholder="Password"
+              error={error && error.password}
               onChange={handleChange}
             />
           </div>
@@ -93,6 +106,7 @@ export const RegistrationForm = () => {
               type="password"
               label="Confirm password"
               placeholder="Confirm password"
+              error={error && error.confirmedPassword}
               onChange={handleChange}
             />
 

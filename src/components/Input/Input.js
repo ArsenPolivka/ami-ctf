@@ -14,6 +14,7 @@ export const Input = ({
   required,
   rootClassName,
   inputRootClassName,
+  error,
 }) => {
   return (
     <label className={classNames(
@@ -30,7 +31,7 @@ export const Input = ({
       </span>
 
       <input
-        className={classNames(styles.input, inputRootClassName)}
+        className={classNames(styles.input, inputRootClassName, error && styles.error)}
         required={required}
         disabled={disabled}
         type={type}
@@ -39,6 +40,8 @@ export const Input = ({
         placeholder={placeholder}
         onChange={onChange}
       />
+
+      {error && <span className={styles.errorMessage}>{error}</span>}
     </label>
   );
 };

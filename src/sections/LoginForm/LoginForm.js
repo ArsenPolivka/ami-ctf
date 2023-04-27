@@ -13,6 +13,8 @@ import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const [formValues, setFormValues] = useState();
+  const [error, setError] = useState({});
+
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -30,14 +32,22 @@ export const LoginForm = () => {
     event.preventDefault();
 
     loginUser(formValues).then((response) => {
-      const { email, title } = response;
+      const { email, title, detail } = response;
 
       if (email) {
         setUser(response);
         notifySuccess(email);
         navigate('/profile');
       } else {
+        const errObj = detail?.reduce((acc, item) => {
+          return {
+            ...acc,
+            [item.cause]: item.message
+          }
+        }, {});
+
         notifyError(title);
+        setError(errObj);
       }
     });
   };
@@ -56,6 +66,7 @@ export const LoginForm = () => {
               name="email"
               label="E-mail"
               placeholder="E-mail"
+              error={error && error.email}
               onChange={handleChange}
             />
           </div>
@@ -69,6 +80,7 @@ export const LoginForm = () => {
               type="password"
               label="Password"
               placeholder="Password"
+              error={error && error.password}
               onChange={handleChange}
             />
 

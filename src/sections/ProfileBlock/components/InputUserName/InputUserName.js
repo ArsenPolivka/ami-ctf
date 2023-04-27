@@ -5,7 +5,7 @@ import { Input } from "../../../../components/Input";
 
 import styles from "../../ProfileBlock.module.css";
 
-export const InputUserName = ({ isChangeInfoVisible, value, onChange }) => {
+export const InputUserName = ({ isChangeInfoVisible, value, onChange, error }) => {
     const { user } = useContext(AuthContext);
 
     return (
@@ -22,6 +22,7 @@ export const InputUserName = ({ isChangeInfoVisible, value, onChange }) => {
                         value={value}
                         onChange={onChange}
                         name="username"
+                        error={error && error.username}
                     />
                 </div>
             )}
