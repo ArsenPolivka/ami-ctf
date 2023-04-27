@@ -24,8 +24,8 @@ export const LockedTasksScreen = ({ isLocked, onClick }) => {
 
 						{ isLocked ? (
 								<p className={styles['time-left']}>
-									Quiz will be started
-									<span className={styles.time}> soon</span>
+									Quiz will be started soon!
+									<span className={styles.time}></span>
 								</p>
 						) : null }
 					</div>

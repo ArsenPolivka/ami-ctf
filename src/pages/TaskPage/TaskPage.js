@@ -19,15 +19,6 @@ export const TaskPage = () => {
 
       <div className={styles.pageWrapper}>
         <Container>
-          <Button
-              rootClassName={styles['back-button']}
-              icon={ <LeftArrowOutlined /> }
-              iconClassName={styles['left-arrow-icon']}
-              variant='tertiary'
-              to="/tasks"
-          >
-            Back to task list
-          </Button>
           <div className={styles.innerWrapper}>
             <SidebarConfigProvider>
               <TaskSidebar />
