@@ -35,7 +35,7 @@ export const LoginForm = () => {
       if (email) {
         setUser(response);
         notifySuccess(email);
-        navigate('/profile');
+        navigate('/login');
       } else {
         notifyError(title);
       }

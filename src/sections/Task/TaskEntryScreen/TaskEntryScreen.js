@@ -5,7 +5,9 @@ import { LockedTasksScreen } from "../LockedTasksScreen";
 import { EventProvider } from "../../../context/event/EventProvider";
 
 export const TaskEntryScreen = () => {
-	// const { eventStatus, setEventStatus } = useContext(EventProvider);
+	// const { eventStatus, setEventStatus, eventLockedStatus } = useContext(EventProvider);
+	const eventStatus = false;
+  const eventLockedStatus = true;
 
-	return false ? <TaskCollection /> : <LockedTasksScreen />;
+	return eventStatus ? <TaskCollection /> : <LockedTasksScreen isLocked={eventLockedStatus} />;
 }

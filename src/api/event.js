@@ -1,8 +1,9 @@
 import {HOST} from "./constants";
 
 export async function getEventStatus() {
-	const response = await fetch(`${HOST}/users/me`, {
+	const response = await fetch(`${HOST}/events/1`, {
 		credentials: 'include',
+		method: "GET",
 		headers: {
 			"Content-Type": "application/json"
 		},
@@ -10,5 +11,19 @@ export async function getEventStatus() {
 
 	const eventStatus = await response.json();
 
-	return eventStatus;
+	return eventStatus.status;
 }
+
+export async function getEventLockedStatus() {
+	const response = await fetch(`${HOST}/events/1`, {
+		credentials: 'include',
+		headers: {
+			"Content-Type": "application/json"
+		},
+	});
+
+	const eventLockedStatus = await response.json();
+	console.log(eventLockedStatus);
+	return eventLockedStatus;
+}
+
