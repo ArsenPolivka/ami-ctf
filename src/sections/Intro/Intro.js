@@ -14,7 +14,7 @@ import { useContext } from 'react';
 
 export const Intro = () => {
   const { user } = useContext(AuthContext);
-  
+
   return (
     <section id="intro" className={styles.section}>
       <Container>
@@ -27,7 +27,7 @@ export const Intro = () => {
               <h1 className={styles.title}>Capture your flag now!</h1>
 
               <p className={styles.text}>
-                Lorem ipsum dolor sit amet consectetur. Duis aenean condimentum nullam
+                Ignite Your Cyber Skills: Engage, Learn, and Triumph
               </p>
 
               <div className={styles['btn-group']}>
