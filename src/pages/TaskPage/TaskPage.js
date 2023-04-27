@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 
 import { Header } from '../../sections/Header';
-import { TaskSidebar } from '../../sections/TaskSidebar';
+import { TaskSidebar } from '../../sections/Task/TaskSidebar';
 import { Container } from '../../components/Layout';
 import { SidebarConfigProvider } from '../../hooks/useSidebarConfig';
 import { Button } from "../../components/Button";
-import { ReactComponent as LeftArrowOutlined } from "../../sections/TaskSingle/assets/arrow-left.svg";
+import { ReactComponent as LeftArrowOutlined } from "../../sections/Task/TaskSingle/assets/arrow-left.svg";
 
 import styles from './TaskPage.module.css';
+import {Footer} from "../../sections/Footer";
 
 export const TaskPage = () => {
   return (
@@ -36,6 +37,8 @@ export const TaskPage = () => {
           </div>
         </Container>
       </div>
+
+      <Footer />
     </>
   );
 }

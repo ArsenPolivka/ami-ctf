@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
 
-import { TaskCard } from '../../components/TaskCard';
-import { useSetSidebarConfig } from "../../hooks/useSidebarConfig";
+import { TaskCard } from '../../../components/TaskCard';
+import { useSetSidebarConfig } from "../../../hooks/useSidebarConfig";
 
 import { mockedTasks } from './mockedTaskCollection';
 
@@ -46,22 +46,22 @@ export const TaskCollection = () => {
   };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h2 className="visually-hidden">Task Collection</h2>
 
       {currentItems?.length ? (
         <ul className={styles.collection}>
           {currentItems.map(({ id, title, description }) => {
-            return (
-              <li key={id} className={styles.item}>
-                <TaskCard
-                  id={id}
-                  name={title}
-                  description={description}
-                />
-              </li>
-            );
-          })}
+                  return (
+                      <li key={id} className={styles.item}>
+                        <TaskCard
+                            id={id}
+                            name={title}
+                            description={description}
+                        />
+                      </li>
+                  );
+                })}
         </ul>
       ) : null}
 

@@ -11,7 +11,7 @@ export const Login = () => {
   const { user } = useContext(AuthContext);
 
   if (user) {
-    return <Navigate replace to="/profile" />;
+    return <Navigate replace to="/tasks" />;
   }
 
   return (

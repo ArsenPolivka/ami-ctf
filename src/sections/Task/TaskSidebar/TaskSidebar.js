@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useSidebarConfig } from '../../hooks/useSidebarConfig';
+import { useSidebarConfig } from '../../../hooks/useSidebarConfig';
 
 import styles from './TaskSidebar.module.css';
 

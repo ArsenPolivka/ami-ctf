@@ -24,6 +24,17 @@
   border-color: black;
 }
 
+.button--primary-purple {
+  background-color: #6C63FF;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button--primary-purple:hover {
+  background-color: #262534;
+}
+
 .button--secondary {
   border: 1px solid #000;
   background-color: transparent;

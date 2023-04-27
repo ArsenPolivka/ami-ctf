@@ -1,5 +1,12 @@
 .pageWrapper {
   padding: 40px 0 100px;
+  height: 100%;
+}
+
+@media screen and (max-width: 1200px){
+  .pageWrapper {
+    position: relative;
+  }
 }
 
 .innerWrapper {
@@ -7,6 +14,7 @@
   justify-content: space-between;
   gap: 40px;
   flex-direction: column;
+  height: 660px;
 }
 
 .back-button {

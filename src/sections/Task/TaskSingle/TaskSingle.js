@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import classNames from "classnames";
 
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import { Button } from "../../../components/Button";
+import { Input } from "../../../components/Input";
 
 import { ReactComponent as LeftArrowFilled }  from "./assets/left-arrow-filled.svg";
 import { ReactComponent as RightArrowFilled }  from "./assets/right-arrow-filled.svg";
