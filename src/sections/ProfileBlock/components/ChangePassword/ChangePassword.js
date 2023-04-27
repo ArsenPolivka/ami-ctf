@@ -10,7 +10,7 @@ import { ReactComponent as VisibilityOn } from "../../assets/visibility-on.svg";
 
 import styles from "./ChangePassword.module.css";
 
-export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, isChangeInfoVisible, toggleChangePasswordVisibility, confirmPassword }) => {
+export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, isChangeInfoVisible, toggleChangePasswordVisibility, confirmPassword, error }) => {
     const { CURRENT_PASSWORD, NEW_PASSWORD, CONFIRMED_PASSWORD } = REQUESTS_BODY_NAMES.CHANGE_PASSWORD;
     const [inputsVisibility, setInputVisible] = useState({
         [CURRENT_PASSWORD]: false,
@@ -49,6 +49,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                             placeholder="Current password"
                             value={formValues[CURRENT_PASSWORD]}
                             name={CURRENT_PASSWORD}
+                            error={error && error[CURRENT_PASSWORD]}
                             onChange={onChange}
                         />
                         <button
@@ -69,6 +70,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                             placeholder="New password"
                             value={formValues[NEW_PASSWORD]}
                             name={NEW_PASSWORD}
+                            error={error && error[NEW_PASSWORD]}
                             onChange={onChange}
                         />
                         <button
@@ -89,6 +91,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                             placeholder="Confirm password"
                             value={formValues[CONFIRMED_PASSWORD]}
                             name={CONFIRMED_PASSWORD}
+                            error={error && error[CONFIRMED_PASSWORD]}
                             onChange={onChange}
                         />
                         <button

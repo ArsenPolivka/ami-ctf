@@ -21,18 +21,14 @@ export const About = () => {
                             ?
                         </h2>
                         <p className={styles.text}>
-                            Lorem ipsum dolor sit amet consectetur.
-                            Sed non ut dui morbi feugiat quis elit.
-                            Lorem proin phasellus consectetur mi fermentum congue.
-                            Arcu molestie fermentum interdum massa nunc ut interdum viverra et.
-                            Platea vitae purus nulla euismod.
+                            Capture The Flag is an exciting cybersecurity competition
+                            where participants engage in solving various types of challenges.
                         </p>
                         <p className={styles.text}>
-                            Vestibulum erat in adipiscing suscipit mauris elit malesuada.
-                            Viverra mattis egestas dignissim habitasse faucibus semper eget.
-                            Imperdiet eget id fames interdum.
-                            In dictumst sit ultrices a non et.
-                            Lacus porttitor orci tristique.
+                            Typically, these challenges involve identifying vulnerabilities,
+                            exploiting systems, or decrypting codes to capture hidden flags,
+                            which are then converted into points. The winner is the team or
+                            individual who gets the greatest points on completing the tasks.
                         </p>
                     </div>
                 </div>

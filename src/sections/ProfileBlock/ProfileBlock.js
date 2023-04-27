@@ -19,6 +19,7 @@ const { USERNAME, CURRENT_PASSWORD, NEW_PASSWORD, CONFIRMED_PASSWORD } = ALL_NAM
 export const ProfileBlock = () => {
     const [isChangeInfoVisible, setChangeInfoVisible] = useState(false);
     const [isChangePasswordVisible, setChangePasswordVisible] = useState(false);
+    const [error, setError] = useState({});
 
     const toggleChangePasswordVisibility = () => setChangePasswordVisible(!isChangePasswordVisible);
     const toggleChangeInfoVisibility = () => setChangeInfoVisible(!isChangeInfoVisible);
@@ -56,7 +57,15 @@ export const ProfileBlock = () => {
         if (isChangeInfoVisible) {
             updateUser(body, user.id).then(response => {
                 if (response.error) {
+                    const errObj = response.detail?.reduce((acc, item) => {
+                        return {
+                          ...acc,
+                          [item.cause]: item.message
+                        }
+                      }, {});
+
                     notifyError(response.message);
+                    setError(errObj);
                 } else {
                     notifySuccess("Username successfully updated!");
                     setUser({
@@ -99,6 +108,7 @@ export const ProfileBlock = () => {
                                     <InputUserName
                                         isChangeInfoVisible={isChangeInfoVisible}
                                         value={newUsername}
+                                        error={error}
                                         onChange={(e) => setNewUsername(e.target.value)}
                                     />
                                 </li>
@@ -119,6 +129,7 @@ export const ProfileBlock = () => {
                                         isChangeInfoVisible={isChangeInfoVisible}
                                         toggleChangePasswordVisibility={toggleChangePasswordVisibility}
                                         formValues={passwordFormValues}
+                                        error={error}
                                         onChange={handlePasswordFormChange}
                                     />
                                 </li>
