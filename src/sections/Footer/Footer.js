@@ -17,12 +17,14 @@ export const Footer = () => {
                                 theme="white"
                                 size="mobile"
                             />
+
                             <div className={styles.copyright}>
                                 <span>2023</span>
                                 <span>&copy;</span>
                                 <span>All rights reserved</span>
                             </div>
                         </div>
+
                         <div className={styles.social}>
                             <a
                                 className={styles['telegram-wrapper']}
@@ -30,6 +32,7 @@ export const Footer = () => {
                             >
                                 <Telegram className={styles.telegram} />
                             </a>
+
                             <a
                                 className={styles['instagram-wrapper']}
                                 href="https://www.instagram.com/"
@@ -38,17 +41,20 @@ export const Footer = () => {
                             </a>
                         </div>
                     </div>
+
                     <div className={styles['desktop-variant']}>
                         <div className={styles.copyright}>
                             <span>2023</span>
                             <span>&copy;</span>
                             <span>All rights reserved</span>
                         </div>
-                            <LogoExtended
-                                className={styles['logo-desktop']}
-                                theme="white"
-                                size="desktop"
-                            />
+
+                        <LogoExtended
+                            className={styles['logo-desktop']}
+                            theme="white"
+                            size="desktop"
+                        />
+
                         <div className={styles.social}>
                             <a
                                 className={styles['telegram-wrapper']}
@@ -58,6 +64,7 @@ export const Footer = () => {
                             >
                                 <Telegram className={styles.telegram}/>
                             </a>
+
                             <a
                                 className={styles['instagram-wrapper']}
                                 href="https://www.instagram.com/lnu.prykladna/"
