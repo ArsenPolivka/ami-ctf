@@ -17,6 +17,7 @@ export const InputUserName = ({ isChangeInfoVisible, value, onChange, error }) =
             ) : (
                 <div className={styles['item-wrapper']}>
                     <Input
+                        required
                         rootClassName={styles['item-content']}
                         placeholder="New username"
                         value={value}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { EventContext } from './context';
 
-import { getEventLockedStatus, getEventStatus } from '../../api/event';
+import { getEventStatus } from '../../api/event';
 
 export const EventProvider = ({ children }) => {
 	const [eventStatus, setEventStatus] = useState(false);
@@ -13,7 +13,8 @@ export const EventProvider = ({ children }) => {
 			const eventStatusResponse = await getEventStatus();
 
 			if (eventStatusResponse.id) {
-				setEventStatus(eventStatusResponse);
+				setEventStatus(eventStatusResponse.status);
+				setEventLockedStatus(eventStatusResponse);
 				setIsLoading(false);
 			} else {
 				setIsLoading(false);
@@ -22,20 +23,6 @@ export const EventProvider = ({ children }) => {
 		}
 		fetchEventStatus();
 	}, []);
-
-	useEffect(() => {
-		async function fetchLockedEventStatus() {
-			const eventLockedResponse = await getEventLockedStatus();
-
-			if (eventLockedResponse.id) {
-				setEventLockedStatus(eventLockedResponse);
-				setIsLoading(false);
-			} else {
-				setIsLoading(false);
-			}
-		}
-		fetchLockedEventStatus();
-	})
 
 	if (isLoading) {
 		return <p>Loading...</p>;

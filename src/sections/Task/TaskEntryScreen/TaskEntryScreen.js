@@ -4,8 +4,10 @@ import { TaskCollection } from "../TaskCollection";
 import { LockedTasksScreen } from "../LockedTasksScreen";
 import { EventContext } from "../../../context/event/context";
 
-export const TaskEntryScreen = () => {
-	const { eventStatus, setEventStatus, eventLockedStatus } = useContext(EventContext);
+import { PLANNED, STARTED } from './constants';
 
-	return eventStatus ? <TaskCollection /> : <LockedTasksScreen onClick={setEventStatus} isLocked={eventLockedStatus} />;
+export const TaskEntryScreen = () => {
+	const { eventStatus, setEventStatus } = useContext(EventContext);
+
+	return (eventStatus === STARTED) ? <TaskCollection /> : <LockedTasksScreen onClick={setEventStatus} isLocked={eventStatus === PLANNED} />;
 }
