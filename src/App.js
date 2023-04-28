@@ -7,7 +7,6 @@ import { Login } from './pages/Login';
 import { Profile } from './pages/Profile';
 import { NoMatch } from './pages/404';
 import { TaskPage } from './pages/TaskPage';
-import { TaskSingle } from './sections/Task/TaskSingle';
 import { TaskEntryScreen } from "./sections/Task/TaskEntryScreen/TaskEntryScreen";
 
 import { AuthProvider } from './context/auth/AuthProvider';
