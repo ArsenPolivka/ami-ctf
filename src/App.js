@@ -25,7 +25,7 @@ export default function App() {
 
             <Route path="/tasks" element={<TaskPage />}>
               <Route index element={<TaskEntryScreen />} />
-              <Route path=":id" element={<TaskSingle />} />
+              {/* <Route path=":id" element={<TaskSingle />} /> */}
             </Route>
 
           <Route path="*" element={<NoMatch />} />
