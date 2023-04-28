@@ -6,7 +6,7 @@ import styles from './TaskSidebar.module.css';
 
 const defaultPoints = {
   rating: 1,
-  currentPoints: 25,
+  currentPoints: 0,
   maxPoints: 150,
   pointToNext: 0,
   nextRating: 1,
