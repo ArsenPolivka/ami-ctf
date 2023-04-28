@@ -44,9 +44,7 @@ export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration})
     }, [isHeaderVisible]);
 
     return (
-    <header id={styles.header}
-            className={styles.header}
-    >
+    <header className={styles.header}>
       <Container>
           <div className={styles['mobile-wrapper']}>
               <MobileHeader
