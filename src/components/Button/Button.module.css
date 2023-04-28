@@ -20,8 +20,8 @@
 }
 
 .button--primary:hover {
-  background-color: #fff;
-  border-color: black;
+  background-color: #fad08c;
+  border-color: rgba(255, 186, 73, 1);
 }
 
 .button--primary-purple {
@@ -43,7 +43,7 @@
 }
 
 .button--secondary:hover {
-  background-color: rgba(255, 186, 73, 1);
+  background-color: #f7d49c;
   border-color: rgba(255, 186, 73, 1);
 }
 
