@@ -44,11 +44,11 @@ export const Footer = () => {
                             <span>&copy;</span>
                             <span>All rights reserved</span>
                         </div>
-                        <LogoExtended
-                            className={styles['logo-desktop']}
-                            theme="white"
-                            size="desktop"
-                        />
+                            <LogoExtended
+                                className={styles['logo-desktop']}
+                                theme="white"
+                                size="desktop"
+                            />
                         <div className={styles.social}>
                             <a
                                 className={styles['telegram-wrapper']}
