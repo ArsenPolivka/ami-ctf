@@ -45,6 +45,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                 <div className={styles['input-block']}>
                     <div className={styles['toggle-input']}>
                         <Input
+                            required
                             type={inputsVisibility[CURRENT_PASSWORD] ? "text" : "password"}
                             rootClassName={styles['input-password']}
                             placeholder="Current password"
@@ -66,6 +67,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                     </div>
                     <div className={styles['toggle-input']}>
                         <Input
+                            required
                             type={inputsVisibility[NEW_PASSWORD] ? "text" : "password"}
                             rootClassName={styles['input-password']}
                             placeholder="New password"
@@ -87,6 +89,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                     </div>
                     <div className={styles['toggle-input']}>
                         <Input
+                            required
                             type={inputsVisibility[CONFIRMED_PASSWORD] ? "text" : "password"}
                             rootClassName={styles['input-password']}
                             placeholder="Confirm password"
