@@ -68,10 +68,7 @@ export const ProfileBlock = () => {
                     setError(errObj);
                 } else {
                     notifySuccess("Username successfully updated!");
-                    setUser({
-                        ...user,
-                        ...body,
-                    });
+                    setUser(response);
                     setChangeInfoVisible(false);
                 }
             });
