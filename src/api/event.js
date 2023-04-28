@@ -23,7 +23,7 @@ export async function getEventLockedStatus() {
 	});
 
 	const eventLockedStatus = await response.json();
-	console.log(eventLockedStatus);
+
 	return eventLockedStatus;
 }
 
