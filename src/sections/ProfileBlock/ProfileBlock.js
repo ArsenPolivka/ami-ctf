@@ -56,7 +56,6 @@ export const ProfileBlock = () => {
 
         if (isChangeInfoVisible) {
             updateUser(body, user.id).then(response => {
-                console.log(response);
                 if (response.error) {
                     const errObj = response.detail?.reduce((acc, item) => {
                         return {
