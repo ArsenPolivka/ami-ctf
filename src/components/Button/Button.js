@@ -25,7 +25,7 @@ export const Button = ({
           styles.button,
           styles[`button--${variant}`],
           styles[`button--${hiddenLabel ? 'hiddenLabel' :  'visibleLabel'}`],
-          wide & styles.wide,
+          wide && styles.wide,
           rootClassName,
         )}
         disabled={disabled}
@@ -44,7 +44,7 @@ export const Button = ({
         styles.button,
         styles[`button--${variant}`],
         styles[`button--${hiddenLabel ? 'hiddenLabel' :  'visibleLabel'}`],
-        wide & styles.wide,
+        wide && styles.wide,
         rootClassName,
       )}
       disabled={disabled}

@@ -34,6 +34,7 @@ export const ChangePassword = ({ formValues, onChange, isChangePasswordVisible, 
                     </div>
                     <Button
                         variant="purple"
+                        rootClassName={styles.btn}
                         onClick={toggleChangePasswordVisibility}
                         disabled={isChangeInfoVisible}
                     >

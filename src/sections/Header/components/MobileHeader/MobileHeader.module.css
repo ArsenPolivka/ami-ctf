@@ -94,7 +94,7 @@
     }
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 768px) {
     .hidden-logo {
         display: block;
         order: 1;
@@ -107,8 +107,9 @@
 
     .hidden-buttons {
         display: flex;
-        flex-grow: 1;
         justify-content: flex-end;
+        align-items: center;
+        flex-grow: 1;
     }
 
     .buttons {

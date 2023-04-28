@@ -27,6 +27,12 @@
   font-size: 12px;
   line-height: 15px;
   color: #6C63FF;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
