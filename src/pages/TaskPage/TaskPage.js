@@ -4,8 +4,6 @@ import { Header } from '../../sections/Header';
 import { TaskSidebar } from '../../sections/Task/TaskSidebar';
 import { Container } from '../../components/Layout';
 import { SidebarConfigProvider } from '../../hooks/useSidebarConfig';
-import { Button } from "../../components/Button";
-import { ReactComponent as LeftArrowOutlined } from "../../sections/Task/TaskSingle/assets/arrow-left.svg";
 
 import styles from './TaskPage.module.css';
 import {Footer} from "../../sections/Footer";

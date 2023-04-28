@@ -1,6 +1,5 @@
 .profile-wrapper {
     margin-top: 80px;
-    margin-bottom: 275px;
     font-family: 'Nunito', sans-serif;
 }
 
@@ -67,12 +66,11 @@
     justify-content: space-between;
 }
 
-.password-label {
-    align-self: flex-start;
-    transform: translateY(11px);
-}
-
 @media (min-width: 768px) {
+    .wrapper {
+        margin-bottom: 275px;
+    }
+
     .content {
         flex-direction: row;
     }
@@ -80,12 +78,17 @@
     .list {
         width: 396px;
     }
-    
+
     .list-item {
         flex-wrap: nowrap;
     }
 
     .list-item + .list-item {
         margin-top: 10px;
+    }
+
+    .password-label {
+        align-self: flex-start;
+        transform: translateY(11px);
     }
 }
