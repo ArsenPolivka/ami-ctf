@@ -1,0 +1,39 @@
+.profileLink {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    font-family: "Nunito", sans-serif;
+    transition: color 0.3s ease-in-out;
+}
+
+.profileLink:hover {
+    color: #6C63FF;
+}
+
+.userIcon {
+    margin-left: 24px;
+    margin-right: 0;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    background-image: url('./assets/user-icon.png');
+    background-size:  contain;
+}
+
+.logoutIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+}
+
+.first-button {
+    margin-right: 12px;
+    margin-left: 12px;
+}

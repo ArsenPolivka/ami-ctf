@@ -1,0 +1,94 @@
+.profile-wrapper {
+    padding: 80px 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.heading1 {
+    margin-bottom: 32px;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list-item {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 42px;
+}
+
+.list-item + .list-item {
+    margin-top: 15px;
+}
+
+.item-label {
+    width: 100px;
+    margin-right: 28px;
+    flex-shrink: 0;
+}
+
+.item-content {
+    position: relative;
+    flex: 1;
+}
+
+.item-content:first-of-type {
+    width: 100%;
+}
+
+.item-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.change-type {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 8px 16px;
+    white-space: nowrap;
+}
+
+.info-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin-bottom: 275px;
+    }
+
+    .content {
+        flex-direction: row;
+    }
+
+    .list {
+        width: 396px;
+    }
+
+    .list-item {
+        flex-wrap: nowrap;
+    }
+
+    .list-item + .list-item {
+        margin-top: 10px;
+    }
+
+    .password-label {
+        align-self: flex-start;
+        transform: translateY(11px);
+    }
+}

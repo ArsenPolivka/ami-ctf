@@ -1,0 +1,1 @@
+export { LogoExtended } from './LogoExtended';

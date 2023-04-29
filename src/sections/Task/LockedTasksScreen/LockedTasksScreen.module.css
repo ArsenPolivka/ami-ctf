@@ -1,0 +1,49 @@
+.wrapper {
+    position: relative;
+    flex-grow: 1;
+}
+
+.entry {
+    background: url("../LockedTasksScreen/assets/entry-background.png") no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+@media screen and (max-width: 1200px){
+    .wrapper {
+        position: static;
+    }
+
+    .entry {
+        border-radius: 0;
+    }
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.time-left {
+    color: #FFBA49;
+}
+
+.time {
+    font-weight: 500;
+}
+
+.locked {
+    pointer-events: none;
+}

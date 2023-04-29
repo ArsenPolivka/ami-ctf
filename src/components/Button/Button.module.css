@@ -1,0 +1,137 @@
+.button {
+  display: inline-flex;
+  justify-content: center;
+  padding: 12px 40px;
+  border-radius: 6px;
+  user-select: none;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration: none;
+  appearance: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+.button--primary {
+  border: 1px solid rgba(255, 186, 73, 1);
+  background-color: rgba(255, 186, 73, 1);
+  color: #000;
+  transition: border-color, 0.3s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.button--primary:hover {
+  background-color: #fad08c;
+  border-color: rgba(255, 186, 73, 1);
+}
+
+.button--primary-purple {
+  background-color: #6C63FF;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button--primary-purple:hover {
+  background-color: #262534;
+}
+
+.button--secondary {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.button--secondary:hover {
+  background-color: #f7d49c;
+  border-color: rgba(255, 186, 73, 1);
+}
+
+.button--secondary-dark {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.button--secondary-dark:hover {
+  color: #000;
+  background: #fff;
+}
+
+.button--purple {
+  border: 1px solid #6C63FF;
+  background-color: transparent;
+  color: #6C63FF;
+  padding: 8px 16px;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.button--purple:hover {
+  background-color: #6C63FF;
+  color: #ffffff;
+}
+
+.wide {
+  width: 100%;
+}
+
+.button--hiddenLabel {
+  padding: 12px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button--primary:disabled:hover {
+  background-color: rgba(255, 186, 73, 1);
+  border-color: rgba(255, 186, 73, 1);
+}
+
+.button--secondary:disabled:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+.button--purple:disabled:hover {
+  background-color: transparent;
+  color: #6C63FF;
+}
+
+.button--tertiary {
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px 8px 8px;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button--tertiary:hover {
+  background-color: rgba(255, 186, 73, 1);
+}
+
+.button--secondary-outlined {
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  padding: 8px 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button--secondary-outlined:hover {
+  background-color: rgba(255, 186, 73, 1);
+}
+
+.button--attach {
+  background-color: #262534;
+  color: #fff;
+  border: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.button--attach:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,74 @@
+.contact-us {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background: #2F2E41;
+}
+
+.title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.highlighted {
+  color: #6C63FF;
+}
+
+.img {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .contact-us {
+    padding-bottom: 140px;
+  }
+
+  .contacts-us-wrapper {
+    max-width: 544px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 44px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-us {
+    background-color: transparent;
+  }
+
+  .contacts-us-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .body-column {
+    width: 480px;
+    flex-shrink: 0;
+  }
+
+  .form-column {
+    flex-grow: 1;
+    margin-left: 32px;
+    max-width: 426px;
+  }
+
+  .img {
+    display: block;
+    max-width: 400px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 49px;
+    margin-bottom: 16px;
+    color: #000;
+  }
+}
