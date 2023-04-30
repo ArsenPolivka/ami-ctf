@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { AuthContext } from './context';
 
+import { Loader } from '../../components/Loader';
+
 import { getCurrentUser } from '../../api/user';
 
 export const AuthProvider = ({ children }) => {
@@ -23,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <div style={{ position: 'relative', height: '100%' }}><Loader /></div>;
   }
 
   return (
