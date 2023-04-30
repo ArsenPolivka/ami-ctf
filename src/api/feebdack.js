@@ -1,7 +1,5 @@
-import { HOST } from "./constants";
-
 export async function sendContactUsRequest(body) {
-  const response = await fetch(`${HOST}/messages`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/messages`, {
       credentials: 'include',
       method: "POST",
       headers: {
