@@ -9,8 +9,8 @@ export const LockedTasksScreen = ({ isLocked, onClick }) => {
 	return (
 			<div className={styles.wrapper}>
 				<section className={styles.entry}>
-					<div className={styles.content}>
-						<Content />
+					<div className={styles['content-wrapper']}>
+						<Content className={styles.content}/>
 					</div>
 
 					<div className={styles['button-wrapper']}>
