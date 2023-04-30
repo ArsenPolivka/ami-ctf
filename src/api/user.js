@@ -1,7 +1,5 @@
-import { HOST } from './constants';
-
 export async function loginUser(body) {
-  const response = await fetch(`${HOST}/auth/login`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
     credentials: 'include',
     method: "POST",
     headers: {
@@ -16,7 +14,7 @@ export async function loginUser(body) {
 };
 
 export async function registerUser(body) {
-  const response = await fetch(`${HOST}/auth/register`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
     credentials: 'include',
     method: "POST",
     headers: {
@@ -31,7 +29,7 @@ export async function registerUser(body) {
 };
 
 export async function getCurrentUser() {
-  const response = await fetch(`${HOST}/users/me`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, {
     credentials: 'include',
     headers: {
       "Content-Type": "application/json"
@@ -44,7 +42,7 @@ export async function getCurrentUser() {
 };
 
 export async function logoutUser() {
-  await fetch(`${HOST}/auth/logout`, {
+  await fetch(`${process.env.REACT_APP_API_URL}/auth/logout`, {
     credentials: 'include',
     method: "GET",
     headers: {
@@ -54,7 +52,7 @@ export async function logoutUser() {
 }
 
 export async function updateUser(body, id) {
-  const response = await fetch(`${HOST}/users/${id}`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${id}`, {
     credentials: "include",
     method: "PUT",
     headers: {
@@ -74,7 +72,7 @@ export async function updateUser(body, id) {
 };
 
 export async function updatePassword(body, id) {
-  const response = await fetch(`${HOST}/users/${id}/reset-password`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${id}/reset-password`, {
     credentials: "include",
     method: "PUT",
     headers: {
