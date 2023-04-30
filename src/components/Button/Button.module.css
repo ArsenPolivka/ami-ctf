@@ -10,6 +10,7 @@
   appearance: none;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
+  align-self: center;
 }
 
 .button--primary {

@@ -24,38 +24,42 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
 
     return (
         <>
-            {(user && !matchTasks) ? (
-                <Button
-                    to="/tasks"
-                    variant="primary"
-                    rootClassName={styles['quiz-button']}
-                >
-                    Go to quiz
-                </Button>
-            ) : null}
+            <div className={styles.wrapper}>
+                {(user && !matchTasks) ? (
+                    <div className={styles['quiz-button-wrapper']}>
+                        <Button
+                            to="/tasks"
+                            variant="primary"
+                            rootClassName={styles['quiz-button']}
+                        >
+                            Go to quiz
+                        </Button>
+                    </div>
+                ) : null}
 
-            {hasProfile ? (
-                <>
-                    <Link
-                        to="/profile"
-                        className={classNames(styles['first-button'], styles.profileLink)}
-                    >
-                        { user.username }
-                        <span className={styles.userIcon}></span>
-                    </Link>
+                {hasProfile ? (
+                    <div className={styles['profile-wrapper']}>
+                        <Link
+                            to="/profile"
+                            className={classNames(styles['first-button'], styles.profileLink)}
+                        >
+                            { user.username }
+                            <span className={styles.userIcon}></span>
+                        </Link>
 
-                    <Button
-                        variant="secondary"
-                        hiddenLabel
-                        icon={<LogoutIcon />}
-                        iconClassName={styles.logoutIcon}
-                        rootClassName={styles.logout}
-                        onClick={ handleLogout }
-                    >
-                        Logout
-                    </Button>
-                </>
-            ) : null}
+                        <Button
+                            variant="secondary"
+                            hiddenLabel
+                            icon={<LogoutIcon />}
+                            iconClassName={styles.logoutIcon}
+                            rootClassName={styles.logout}
+                            onClick={ handleLogout }
+                        >
+                            Logout
+                        </Button>
+                    </div>
+                ) : null}
+            </div>
 
             {hasLogin ? (
                 <Button
