@@ -33,11 +33,11 @@ export const Intro = () => {
               <div className={styles['btn-group']}>
                 <div className={styles['button-wrapper']}>
                   <Button
-                      to={user ? "/tasks" : "/registration"}
+                      to={ user ? "/tasks" : "/registration" }
                       variant="primary"
                       rootClassName={styles.btn}
                   >
-                    {user ? "Go to quiz" : "Register now"}
+                    { user ? "Go to quiz" : "Register now" }
                   </Button>
                 </div>
 

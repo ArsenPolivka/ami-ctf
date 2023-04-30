@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { EventContext } from './context';
 
+import { Loader } from '../../components/Loader';
+
 import { getEventStatus } from '../../api/event';
 
 export const EventProvider = ({ children }) => {
@@ -23,7 +25,7 @@ export const EventProvider = ({ children }) => {
 	}, []);
 
 	if (isLoading) {
-		return <p>Loading...</p>;
+		return <div style={{ position: 'relative', height: '100%' }}><Loader /></div>;
 	}
 
 	return (

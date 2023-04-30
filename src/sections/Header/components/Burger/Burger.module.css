@@ -51,3 +51,9 @@
     width: 0;
     left: 50%;
 }
+
+@media screen and (min-width: 768px){
+    .burger {
+        margin-left: 16px;
+    }
+}
