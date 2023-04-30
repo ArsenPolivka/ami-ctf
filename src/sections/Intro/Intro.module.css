@@ -91,7 +91,7 @@
   }
 }
 
-@media screen and (min-width: 410px) {
+@media screen and (min-width: 430px) {
   .mobile-wrapper {
     margin-right: 20px;
     border-radius: 0 90px 90px 0;
@@ -108,6 +108,10 @@
 
   .button-wrapper:first-child {
     margin-bottom: 0;
+  }
+
+  .column--first {
+    width: 400px;
   }
 }
 
