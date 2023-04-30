@@ -1,14 +1,21 @@
+import { useContext } from "react";
+
 import { Header } from '../../sections/Header';
 import { Container } from '../../components/Layout';
+
+import { AuthContext } from '../../context/auth/context';
 
 import styles from './NoMatch.module.css';
 
 export const NoMatch = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className={styles['page-wrapper']}>
       <Header
-        hasLogin
-        hasRegistration
+        hasLogin={!user}
+        hasRegistration={!user}
+        hasProfile={Boolean(user)}
       />
 
       <div className={styles['inner-wrapper']}>

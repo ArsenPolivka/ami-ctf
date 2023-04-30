@@ -1,5 +1,3 @@
-export const HOST = 'https://amictf-backend.herokuapp.com/v1';
-
 export const REQUESTS = {
     LOGIN: 'LOGIN',
     REGISTRATION: 'REGISTRATION',

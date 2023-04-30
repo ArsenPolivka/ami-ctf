@@ -1,7 +1,5 @@
-import { HOST } from "./constants";
-
 export async function getEventStatus() {
-	const response = await fetch(`${HOST}/events/1`, {
+	const response = await fetch(`${process.env.REACT_APP_API_URL}/events/1`, {
 		credentials: 'include',
 		method: "GET",
 		headers: {

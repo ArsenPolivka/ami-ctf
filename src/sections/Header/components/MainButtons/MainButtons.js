@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useMatch } from "react-router-dom";
 import classNames from "classnames";
 
 import { AuthContext } from "../../../../context/auth/context";
@@ -13,6 +13,7 @@ import styles from "./MainButtons.module.css";
 export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
     const { user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const matchTasks = useMatch('/tasks');
 
     const handleLogout = async () => {
         await logoutUser();
@@ -23,7 +24,7 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
 
     return (
         <>
-            {user ? (
+            {(user && !matchTasks) ? (
                 <Button
                     to="/tasks"
                     variant="primary"
