@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate, useMatch } from "react-router-dom";
 import classNames from "classnames";
+import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../../../context/auth/context";
 
@@ -14,6 +15,7 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
     const { user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const matchTasks = useMatch('/tasks');
+    const location = useLocation();
 
     const handleLogout = async () => {
         await logoutUser();
@@ -21,6 +23,10 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
 
         navigate("/login");
     };
+
+    if (location.pathname !== '/') {
+        document.body.style.overflow = "";
+    }
 
     return (
         <>
