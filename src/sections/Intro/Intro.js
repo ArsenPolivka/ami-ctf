@@ -41,22 +41,24 @@ export const Intro = () => {
                   </Button>
                 </div>
 
-                <Link to="about"
-                  className={styles['btn-dark']}
-                >
-                  <Button variant="secondary-dark"
-                    rootClassName={styles['button-dark']}
+                <div className={styles['button-wrapper']}>
+                  <Button
+                      to="about"
+                      variant="secondary-dark"
+                      rootClassName={styles['btn-dark']}
                   >
                     Read more
                   </Button>
-                </Link>
-                <Link to="about"
-                  className={styles['btn-second']}
-                >
-                  <Button variant="secondary">
+                </div>
+
+                <div className={styles['button-wrapper']}>
+                  <Button to="about"
+                          variant="secondary"
+                          rootClassName={styles['btn-second']}
+                  >
                     Read more
                   </Button>
-                </Link>
+                </div>
               </div>
             </div>
           </div>
