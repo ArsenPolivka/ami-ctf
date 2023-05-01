@@ -1,9 +1,18 @@
-.icon {
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+}
+
+.icon {
+  display: block;
+  flex-shrink: 0;
   width: 100px;
   height: 100px;
-  display:inline-block;
-  transform: translate(-50%, -50%);
 }

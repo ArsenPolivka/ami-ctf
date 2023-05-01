@@ -4,6 +4,8 @@ import styles from './Loader.module.css';
 
 export const Loader = () => {
   return (
-    <LoaderIcon className={styles.icon} />
+    <div className={styles.loaderWrapper}>
+      <LoaderIcon className={styles.icon} />
+    </div>
   );
 }
