@@ -92,8 +92,6 @@ export const ProfileBlock = () => {
         }
     }
 
-    console.log(isLoading);
-
     return (
         <Container>
             <div className={styles['profile-wrapper']}>
