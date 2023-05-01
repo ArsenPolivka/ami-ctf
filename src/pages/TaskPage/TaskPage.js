@@ -1,18 +1,22 @@
 import { Outlet } from "react-router-dom";
+import { useContext } from "react";
 
 import { Header } from '../../sections/Header';
 import { TaskSidebar } from '../../sections/Task/TaskSidebar';
 import { Container } from '../../components/Layout';
 import { SidebarConfigProvider } from '../../hooks/useSidebarConfig';
 import { Footer } from "../../sections/Footer";
+import { AuthContext } from "../../context/auth/context";
 
 import styles from './TaskPage.module.css';
 
 export const TaskPage = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <>
       <Header
-        hasProfile
+        hasProfile={user}
       />
 
       <div className={styles.pageWrapper}>

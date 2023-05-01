@@ -10,10 +10,9 @@ export const Profile = () => {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-        console.log(user);
         return <Navigate replace to="/login" />;
     }
-  
+
     return (
         <>
             <Header />

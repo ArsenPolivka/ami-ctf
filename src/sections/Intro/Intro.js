@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useContext } from 'react';
 import { Link } from 'react-scroll/modules';
 
 import img from './assets/intro-decoration.png';
@@ -10,7 +11,6 @@ import { ScrollDown } from "../../components/ScrollDown";
 import { AuthContext } from '../../context/auth/context';
 
 import styles from './Intro.module.css';
-import { useContext } from 'react';
 
 export const Intro = () => {
   const { user } = useContext(AuthContext);
@@ -33,45 +33,47 @@ export const Intro = () => {
               <div className={styles['btn-group']}>
                 <div className={styles['button-wrapper']}>
                   <Button
-                      to={ user ? "/tasks" : "/registration" }
-                      variant="primary"
-                      rootClassName={styles.btn}
+                    to={ user ? "/tasks" : "/registration" }
+                    variant="primary"
+                    rootClassName={styles.btn}
                   >
                     { user ? "Go to quiz" : "Register now" }
                   </Button>
                 </div>
 
-                <Link to="about"
-                      className={styles['btn-dark']}
-                >
-                  <Button variant="secondary-dark"
-                          rootClassName={styles['button-dark']}
+                <div className={styles['button-wrapper']}>
+                  <Button
+                      to="about"
+                      variant="secondary-dark"
+                      rootClassName={styles['btn-dark']}
                   >
                     Read more
                   </Button>
-                </Link>
-                <Link to="about"
-                      className={styles['btn-second']}
-                >
-                  <Button variant="secondary">
+                </div>
+
+                <div className={styles['button-wrapper']}>
+                  <Button to="about"
+                          variant="secondary"
+                          rootClassName={styles['btn-second']}
+                  >
                     Read more
                   </Button>
-                </Link>
+                </div>
               </div>
             </div>
           </div>
 
           <div className={classNames(styles.column, styles['column--second'])}>
             <img
-                className={styles.decoration}
-                src={img}
-                alt="young man coding on laptop"
+              className={styles.decoration}
+              src={img}
+              alt="young man coding on laptop"
             />
           </div>
         </div>
         <Link
-            to="about"
-            className={styles.scroll}
+          to="about"
+          className={styles.scroll}
         >
           <ScrollDown />
         </Link>

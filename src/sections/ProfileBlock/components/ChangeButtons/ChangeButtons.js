@@ -22,6 +22,7 @@ export const ChangeButtons = ({ isChangeInfoVisible, isChangePasswordVisible, to
                     >
                         Back
                     </Button>
+
                     <Button
                         variant="primary"
                         rootClassName={styles['save-button']}

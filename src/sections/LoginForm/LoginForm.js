@@ -8,12 +8,14 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { loginUser } from '../../api/user';
 import { AuthContext } from '../../context/auth/context';
+import { Loader } from "../../components/Loader";
 
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const [formValues, setFormValues] = useState();
   const [error, setError] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ export const LoginForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     loginUser(formValues).then((response) => {
       const { email, title, detail } = response;
@@ -49,59 +52,63 @@ export const LoginForm = () => {
         notifyError(title);
         setError(errObj);
       }
+
+      setIsLoading(false);
     });
   };
 
   return (
     <div className={styles.wrapper}>
       <Container>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <h2 className={styles.title}>Sign in</h2>
+        { isLoading ? <Loader /> : (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <h2 className={styles.title}>Sign in</h2>
 
-          <div className={styles.row}>
-            <Input
-              hideLabel
-              required
-              inputRootClassName={styles.input}
-              name="email"
-              label="E-mail"
-              placeholder="E-mail"
-              error={error && error.email}
-              onChange={handleChange}
-            />
-          </div>
+              <div className={styles.row}>
+                <Input
+                    hideLabel
+                    required
+                    inputRootClassName={styles.input}
+                    name="email"
+                    label="E-mail"
+                    placeholder="E-mail"
+                    error={error && error.email}
+                    onChange={handleChange}
+                />
+              </div>
 
-          <div className={styles.row}>
-            <Input
-              hideLabel
-              required
-              inputRootClassName={styles.input}
-              name="password"
-              type="password"
-              label="Password"
-              placeholder="Password"
-              error={error && error.password}
-              onChange={handleChange}
-            />
+              <div className={styles.row}>
+                <Input
+                    hideLabel
+                    required
+                    inputRootClassName={styles.input}
+                    name="password"
+                    type="password"
+                    label="Password"
+                    placeholder="Password"
+                    error={error && error.password}
+                    onChange={handleChange}
+                />
 
-            <Link
-              to="/registration"
-              className={styles.link}
-            >
-              Doesn't have an accout yet?
-            </Link>
-          </div>
+                <Link
+                    to="/registration"
+                    className={styles.link}
+                >
+                  Doesn't have an accout yet?
+                </Link>
+              </div>
 
-          <div className={classNames(styles.row, styles['last-row'])}>
-            <Button
-              wide
-              variant="primary"
-              type="submit"
-            >
-              Sign in
-            </Button>
-          </div>
-        </form>
+              <div className={classNames(styles.row, styles['last-row'])}>
+                <Button
+                    wide
+                    variant="primary"
+                    type="submit"
+                >
+                  Sign in
+                </Button>
+              </div>
+            </form>
+            )}
       </Container>
     </div>
   );

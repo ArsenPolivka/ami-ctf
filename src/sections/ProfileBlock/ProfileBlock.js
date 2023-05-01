@@ -1,14 +1,15 @@
 import {useContext, useState} from "react";
 import toast from 'react-hot-toast';
 
-import {AuthContext} from "../../context/auth/context";
-import {Container} from "../../components/Layout";
+import { AuthContext } from "../../context/auth/context";
+import { Container } from "../../components/Layout";
 import classNames from "classnames";
 
-import {Avatar} from "./components/Avatar";
-import {ChangeButtons} from "./components/ChangeButtons";
-import {ChangePassword} from "./components/ChangePassword";
-import {InputUserName} from "./components/InputUserName";
+import { Loader } from "../../components/Loader";
+import { Avatar } from "./components/Avatar";
+import { ChangeButtons } from "./components/ChangeButtons";
+import { ChangePassword } from "./components/ChangePassword";
+import { InputUserName } from "./components/InputUserName";
 import { updateUser, updatePassword } from "../../api/user";
 import { ALL_NAMES } from "../../api/constants";
 
@@ -20,6 +21,7 @@ export const ProfileBlock = () => {
     const [isChangeInfoVisible, setChangeInfoVisible] = useState(false);
     const [isChangePasswordVisible, setChangePasswordVisible] = useState(false);
     const [error, setError] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     const toggleChangePasswordVisibility = () => setChangePasswordVisible(!isChangePasswordVisible);
     const toggleChangeInfoVisibility = () => setChangeInfoVisible(!isChangeInfoVisible);
@@ -46,6 +48,8 @@ export const ProfileBlock = () => {
     const handleConfirm = async (e) => {
         e.preventDefault();
 
+        setIsLoading(true);
+
         const body = isChangeInfoVisible ? {
             [USERNAME]: newUsername,
         } : {
@@ -56,7 +60,7 @@ export const ProfileBlock = () => {
 
         if (isChangeInfoVisible) {
             updateUser(body, user.id).then(response => {
-                if (response.error) {
+                if (!response.email) {
                     const errObj = response.detail?.reduce((acc, item) => {
                         return {
                           ...acc,
@@ -64,22 +68,34 @@ export const ProfileBlock = () => {
                         }
                       }, {});
 
-                    notifyError(response.message);
+                    notifyError(response.title);
                     setError(errObj);
                 } else {
                     notifySuccess("Username successfully updated!");
                     setUser(response);
                     setChangeInfoVisible(false);
                 }
+
+                setIsLoading(false);
             });
         } else {
             updatePassword(body, user.id).then(response => {
-                if (response.error) {
-                    notifyError(response.message);
+                if (!response.email) {
+                    const errObj = response.detail?.reduce((acc, item) => {
+                        return {
+                          ...acc,
+                          [item.cause]: item.message
+                        }
+                      }, {});
+
+                    notifyError(response.title);
+                    setError(errObj);
                 } else {
                     notifySuccess("Username successfully updated!");
                     setChangePasswordVisible(false);
                 }
+
+                setIsLoading(false);
             });
         }
     }
@@ -94,7 +110,7 @@ export const ProfileBlock = () => {
                     <Avatar isChangeInfoVisible={isChangeInfoVisible} />
                     <form
                         className={styles['info-block']}
-                        onSubmit={handleConfirm}
+                        onSubmit={ handleConfirm }
                     >
                         <div className={styles['user-info']}>
                             <ul className={styles['list']}>
@@ -132,6 +148,7 @@ export const ProfileBlock = () => {
                                 </li>
                             </ul>
                         </div>
+
                         <ChangeButtons
                             isChangeInfoVisible={isChangeInfoVisible}
                             isChangePasswordVisible={isChangePasswordVisible}
@@ -139,6 +156,8 @@ export const ProfileBlock = () => {
                             toggleChangePasswordVisibility={toggleChangePasswordVisibility}
                             toggleChangeInfoVisibility={toggleChangeInfoVisibility}
                         />
+
+                        { isLoading ? <Loader /> : null }
                     </form>
                 </div>
             </div>

@@ -20,7 +20,7 @@
     padding: 0 20px;
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1200px) {
     .wrapper {
         position: static;
     }
@@ -30,7 +30,7 @@
     }
 }
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 550px) {
     .content-wrapper {
         display: flex;
         align-items: center;
@@ -71,5 +71,22 @@
 }
 
 .locked {
+    opacity: 0.4;
     pointer-events: none;
+}
+
+.btn + .btn {
+    margin-top: 12px;
+}
+
+@media screen and (min-width: 768px) {
+    .btn-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn + .btn {
+        margin-top: 0;
+        margin-left: 12px;
+    }
 }
