@@ -60,7 +60,7 @@ export const ProfileBlock = () => {
 
         if (isChangeInfoVisible) {
             updateUser(body, user.id).then(response => {
-                if (response.error) {
+                if (!response.email) {
                     const errObj = response.detail?.reduce((acc, item) => {
                         return {
                           ...acc,
@@ -68,7 +68,7 @@ export const ProfileBlock = () => {
                         }
                       }, {});
 
-                    notifyError(response.message);
+                    notifyError(response.title);
                     setError(errObj);
                 } else {
                     notifySuccess("Username successfully updated!");
@@ -80,8 +80,16 @@ export const ProfileBlock = () => {
             });
         } else {
             updatePassword(body, user.id).then(response => {
-                if (response.error) {
-                    notifyError(response.message);
+                if (!response.email) {
+                    const errObj = response.detail?.reduce((acc, item) => {
+                        return {
+                          ...acc,
+                          [item.cause]: item.message
+                        }
+                      }, {});
+
+                    notifyError(response.title);
+                    setError(errObj);
                 } else {
                     notifySuccess("Username successfully updated!");
                     setChangePasswordVisible(false);

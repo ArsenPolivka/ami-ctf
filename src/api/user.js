@@ -61,14 +61,9 @@ export async function updateUser(body, id) {
     body: JSON.stringify(body)
   });
 
-  if (response.ok) {
-    return response.json();
-  } else {
-    return {
-      error: true,
-      message: `Failed to update user: ${response.title}`,
-    };
-  }
+  const userInfo = await response.json();
+
+  return userInfo;
 };
 
 export async function updatePassword(body, id) {
@@ -81,12 +76,7 @@ export async function updatePassword(body, id) {
     body: JSON.stringify(body)
   });
 
-  if (response.ok) {
-    return response.json();
-  } else {
-    return {
-      error: true,
-      message: `Failed to update password: ${response.title}`,
-    };
-  }
+  const userInfo = await response.json();
+
+  return userInfo;
 };
