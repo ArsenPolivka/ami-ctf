@@ -10,6 +10,7 @@ import { Button } from '../../components/Button';
 import { ScrollDown } from "../../components/ScrollDown";
 import { AuthContext } from '../../context/auth/context';
 
+import buttonStyles from '../../components/Button/Button.module.css';
 import styles from './Intro.module.css';
 
 export const Intro = () => {
@@ -42,22 +43,29 @@ export const Intro = () => {
                 </div>
 
                 <div className={styles['button-wrapper']}>
-                  <Button
+                  <Link
                       to="about"
-                      variant="secondary-dark"
-                      rootClassName={styles['btn-dark']}
+                      className={classNames(
+                          styles['btn-dark'],
+                          buttonStyles.button,
+                          buttonStyles['button--secondary-dark']
+                      )}
                   >
                     Read more
-                  </Button>
+                  </Link>
                 </div>
 
                 <div className={styles['button-wrapper']}>
-                  <Button to="about"
-                          variant="secondary"
-                          rootClassName={styles['btn-second']}
+                  <Link
+                      to="about"
+                      className={classNames(
+                          styles['btn-second'],
+                          buttonStyles.button,
+                          buttonStyles['button--secondary']
+                      )}
                   >
                     Read more
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>
