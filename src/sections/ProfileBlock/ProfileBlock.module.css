@@ -1,5 +1,5 @@
 .profile-wrapper {
-    padding: 80px 0;
+    padding: 45px 0;
     font-family: 'Nunito', sans-serif;
 }
 
@@ -67,6 +67,25 @@
 }
 
 @media (min-width: 768px) {
+    .avatar-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 45px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .profile-wrapper {
+        width: fit-content;
+        margin: 0 auto;
+        padding: 80px 0;
+    }
+
+    .avatar-wrapper {
+        padding-right: 156px;
+        margin: 0;
+    }
+
     .wrapper {
         margin-bottom: 275px;
     }

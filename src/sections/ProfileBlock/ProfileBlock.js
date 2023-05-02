@@ -107,7 +107,10 @@ export const ProfileBlock = () => {
                     My profile
                 </h1>
                 <div className={styles['content']}>
-                    <Avatar isChangeInfoVisible={isChangeInfoVisible} />
+                    <div className={styles['avatar-wrapper']}>
+                        <Avatar />
+                    </div>
+
                     <form
                         className={styles['info-block']}
                         onSubmit={ handleConfirm }

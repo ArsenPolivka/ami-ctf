@@ -14,12 +14,12 @@ export const Profile = () => {
     }
 
     return (
-        <>
+        <div>
             <Header />
 
             <ProfileBlock />
 
             <Footer/>
-        </>
+        </div>
     );
 };
