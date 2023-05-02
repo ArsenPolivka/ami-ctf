@@ -15,8 +15,8 @@ export const Profile = () => {
 
     return (
         <div>
-            <Header />
-
+            <Header hasProfile={true}/>
+            
             <ProfileBlock />
 
             <Footer/>
