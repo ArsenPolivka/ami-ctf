@@ -14,6 +14,9 @@
 }
 
 .upload-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 47px;
     position: absolute;
@@ -30,6 +33,22 @@
 
 .upload-button:hover {
     opacity: 0.7;
+}
+
+.uploaded {
+    width: 315px;
+    height: 315px;
+    border-radius: 8px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 @media (min-width: 768px) {

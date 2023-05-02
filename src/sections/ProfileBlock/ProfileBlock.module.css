@@ -67,6 +67,9 @@
 }
 
 @media (min-width: 768px) {
+    .info-block {
+        flex-direction: row;
+    }
     .avatar-wrapper {
         display: flex;
         justify-content: center;

@@ -80,3 +80,29 @@ export async function updatePassword(body, id) {
 
   return userInfo;
 };
+
+export async function getAvatarSASLink(body, id) {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${id}/add-avatar`, {
+    credentials: "include",
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  return response;
+}
+
+export async function addAvatar(link, type, binary) {
+  const response = await fetch(link, {
+    method: "PUT",
+    headers: {
+      "Content-Type": `${type}`,
+      "x-ms-blob-type": "BlockBlob"
+    },
+    body: binary
+  });
+
+  return response;
+}
