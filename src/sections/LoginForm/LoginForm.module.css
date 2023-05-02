@@ -3,6 +3,21 @@
   flex-grow: 1;
 }
 
+.form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+
+.form {
+  width: 100%;
+}
+
+.illustration {
+  display: none;
+}
+
 .title {
   margin-bottom: 24px;
   font-family: 'Nunito', sans-serif;
@@ -35,6 +50,12 @@
   text-decoration: underline;
 }
 
+@media (min-width: 576px) {
+  .form {
+    width: 350px;
+  }
+}
+
 @media (min-width: 768px) {
   .wrapper {
     padding: 60px 0;
@@ -46,15 +67,14 @@
     line-height: 44px;
     text-align: center;
   }
-
-  .form {
-    width: 350px;
-    margin: 0 auto;
-  }
 }
 
 @media (min-width: 1024px) {
   .wrapper {
-    padding: 140px 0;
+    padding: 100px 0 140px 0;
+  }
+
+  .illustration {
+    display: block;
   }
 }
