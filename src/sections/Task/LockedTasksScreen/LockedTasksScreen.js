@@ -1,15 +1,47 @@
 import classNames from "classnames";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Button } from "../../../components/Button";
 import { ReactComponent as Content } from "./assets/content.svg";
 
 import { AuthContext } from "../../../context/auth/context";
+import { EventContext } from "../../../context/event/context";
 
 import styles from './LockedTasksScreen.module.css'
 
 export const LockedTasksScreen = ({ isLocked, onClick }) => {
 	const { user } = useContext(AuthContext);
+	const { eventStartTime } = useContext(EventContext);
+
+	const [currentDateTime, setCurrentDateTime] = useState(new Date().toString());
+	const [leftTime, setLeftTime] = useState(null);
+	const [timeLeftString, setTimeLeftString] = useState('');
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentDateTime(new Date().toString());
+		}, 1000);
+
+		return () => clearInterval(interval);
+	}, [])
+
+	useEffect(() => {
+		const timeLeft = Date.parse(eventStartTime) - Date.parse(currentDateTime);
+		setLeftTime(timeLeft);
+
+		const days = Math.floor(leftTime / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((leftTime / (1000 * 60 * 60)) % 24);
+		const minutes = Math.floor((leftTime / 1000 / 60) % 60);
+		const seconds = Math.floor((leftTime / 1000) % 60);
+
+		const timeLeftString =
+				`${ days > 0 ? days + ' days' : '' }
+			   ${ hours > 0 ? hours + ' hours' : '' } 
+			   ${ minutes > 0 ? minutes + ' minutes' : '' } 
+			   ${ seconds > 0 ? seconds + ' seconds' : '' }`;
+
+		setTimeLeftString(timeLeftString);
+	}, [leftTime, eventStartTime, currentDateTime])
 
 	return (
 			<div className={styles.wrapper}>
@@ -31,8 +63,8 @@ export const LockedTasksScreen = ({ isLocked, onClick }) => {
 
 								{ isLocked ? (
 									<p className={styles['time-left']}>
-										Quiz will be started soon!
-										<span className={styles.time}></span>
+										Quiz starts in
+										<span className={styles.time}> { timeLeftString }</span>
 									</p>
 								) : null }
 							</>

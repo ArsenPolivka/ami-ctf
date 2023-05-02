@@ -5,12 +5,13 @@ import { Loader } from '../../components/Loader';
 
 import { AuthContext } from '../auth/context';
 
-import { getEventStatus } from '../../api/event';
+import { getEvent } from '../../api/event';
 
 export const EventProvider = ({ children }) => {
 	const { user } = useContext(AuthContext);
 
 	const [eventStatus, setEventStatus] = useState(false);
+	const [eventStartTime, setEventStartTime] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -20,10 +21,12 @@ export const EventProvider = ({ children }) => {
 		}
 
 		async function fetchEventStatus() {
-			const eventStatusResponse = await getEventStatus();
+			const eventResponse = await getEvent();
 
-			if (eventStatusResponse.id) {
-				setEventStatus(eventStatusResponse.status);
+			if (eventResponse.id) {
+				setEventStatus(eventResponse.status);
+				setEventStartTime(eventResponse.startTime);
+
 				setIsLoading(false);
 			} else {
 				setIsLoading(false);
@@ -38,7 +41,7 @@ export const EventProvider = ({ children }) => {
 	}
 
 	return (
-			<EventContext.Provider value={{ eventStatus, setEventStatus }}>
+			<EventContext.Provider value={{ eventStatus, setEventStatus, eventStartTime }}>
 				{children}
 			</EventContext.Provider>
 	);
