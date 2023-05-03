@@ -16,8 +16,8 @@ export const TaskPage = () => {
   return (
     <div>
       <Header
-        hasProfile={user}
-        hasProfileTasks={user}
+        hasProfile={Boolean(user)}
+        hasProfileTasks={Boolean(user)}
       />
 
       <div className={styles.pageWrapper}>
