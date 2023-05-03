@@ -91,7 +91,7 @@ export const ProfileBlock = () => {
                     notifyError(response.title);
                     setError(errObj);
                 } else {
-                    notifySuccess("Username successfully updated!");
+                    notifySuccess("Password successfully updated!");
                     setChangePasswordVisible(false);
                 }
 

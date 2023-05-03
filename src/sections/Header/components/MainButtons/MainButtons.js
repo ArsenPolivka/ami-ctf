@@ -10,6 +10,7 @@ import { Button } from "../../../../components/Button";
 import { logoutUser } from "../../../../api/user";
 
 import styles from "./MainButtons.module.css";
+import {Avatar} from "../../../ProfileBlock/components/Avatar";
 
 export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
     const { user, setUser } = useContext(AuthContext);
@@ -50,7 +51,11 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
                             className={classNames(styles['first-button'], styles.profileLink)}
                         >
                             { user.username }
-                            <span className={styles.userIcon}></span>
+
+                            <Avatar isHeader={true}
+                                    rootClassName={styles['header-avatar']}
+                                    url={ user.avatarLink.url }
+                            />
                         </Link>
 
                         <Button

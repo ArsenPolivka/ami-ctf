@@ -1,19 +1,24 @@
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import classNames from "classnames";
 
 import { AuthContext } from "../../../../context/auth/context";
 import { addAvatar, getAvatarSASLink } from "../../../../api/user";
+import { Loader } from "../../../../components/Loader";
 
 import avatar from "../../assets/avatar-placeholder.png";
 
 import styles from "./Avatar.module.css";
-import {Loader} from "../../../../components/Loader";
 
-export const Avatar = () => {
+export const Avatar = ({ url, isHeader, rootClassName }) => {
   const [imageFile, setImageFile] = useState(null);
   const [avatarLink, setAvatarLink] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
+
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
 
   const handleImageUpload = (event) => {
     setIsLoading(true);
@@ -28,13 +33,14 @@ export const Avatar = () => {
             addAvatar(fileAccessLink.url, type, fileBlob).then(response => {
               if (response.ok) {
                 setImageFile(fileBlob);
+                notifySuccess("Avatar successfully added!");
               } else {
-                console.log("false");
+                notifyError(response.title);
               }
             })
           })
         } else {
-          console.log("false");
+          notifyError(response.title);
         }
       })
     }
@@ -50,30 +56,39 @@ export const Avatar = () => {
   }, [imageFile]);
 
   return (
-    <div className={styles['avatar']}>
-      <div className={styles['avatar-wrapper']}>
-        <div className={styles['profile-image-wrapper']}>
-            <img src={ avatarLink ? avatarLink : user.avatarLink.url ?? avatar }
-                 className={styles['profile-image']}
+      <>
+        { isHeader ? (
+            <img src={ `${avatarLink ? avatarLink : url ?? avatar}` }
+                 className={rootClassName}
                  alt="uploaded"
             />
-        </div>
+        ) : (
+            <div className={styles['avatar']}>
+              <div className={styles['avatar-wrapper']}>
+                <div className={styles['profile-image-wrapper']}>
+                  <img src={ `${avatarLink ? avatarLink : user.avatarLink?.url ?? avatar}` }
+                       className={classNames(styles['profile-image'], rootClassName)}
+                       alt="uploaded"
+                  />
+                </div>
 
-        <label
-            htmlFor="image-input"
-            className={styles['upload-button']}
-        >
-          <input
-              id="image-input"
-              className={styles.input}
-              type="file"
-              accept="image/*"
-              onChange={ handleImageUpload }
-          />
-          Upload photo
-        </label>
-      </div>
-      { isLoading ? <Loader /> : null}
-    </div>
+                <label
+                    htmlFor="image-input"
+                    className={styles['upload-button']}
+                >
+                  <input
+                      id="image-input"
+                      className={styles.input}
+                      type="file"
+                      accept="image/*"
+                      onChange={ handleImageUpload }
+                  />
+                  Upload photo
+                </label>
+              </div>
+              { isLoading ? <Loader /> : null}
+            </div>
+        )}
+      </>
   )
 }
