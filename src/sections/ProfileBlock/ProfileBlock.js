@@ -3,8 +3,9 @@ import toast from 'react-hot-toast';
 import classNames from "classnames";
 
 import { AuthContext } from "../../context/auth/context";
-import { Container } from "../../components/Layout";
 
+import { Container } from "../../components/Layout";
+import { Button } from "../../components/Button";
 import { Loader } from "../../components/Loader";
 import { Avatar } from "./components/Avatar";
 import { ChangeButtons } from "./components/ChangeButtons";
@@ -103,6 +104,16 @@ export const ProfileBlock = () => {
 
     return (
         <Container rootClassName={styles.container}>
+            <div className={styles['quiz']}>
+                <Button
+                    to="/tasks"
+                    variant="primary"
+                    rootClassName={styles['quiz-button']}
+                >
+                    Go to quiz
+                </Button>
+            </div>
+
             <div className={styles['profile-wrapper']}>
                 <h1 className={styles['heading1']}>
                     My profile

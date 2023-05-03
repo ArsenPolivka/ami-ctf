@@ -2,6 +2,15 @@
     position: relative;
 }
 
+.quiz {
+    display: flex;
+    justify-content: center;
+}
+
+.quiz-button {
+    width: 100%;
+}
+
 .profile-wrapper {
     padding: 45px 0;
     font-family: 'Nunito', sans-serif;
@@ -35,6 +44,7 @@
     flex-wrap: wrap;
     align-items: center;
     min-height: 42px;
+    position: relative;
 }
 
 .list-item + .list-item {
@@ -79,6 +89,12 @@
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
+}
+
+@media (min-width: 440px) {
+    .quiz {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) {

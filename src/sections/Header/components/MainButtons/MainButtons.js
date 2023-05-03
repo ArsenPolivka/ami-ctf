@@ -1,16 +1,15 @@
 import { useContext } from "react";
-import { Link, useMatch } from "react-router-dom";
-import classNames from "classnames";
+import { useMatch } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../../../context/auth/context";
 import { Button } from "../../../../components/Button";
-import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
 import { LogoutButton } from "../LogoutButton";
+import { ProfileButton } from "../ProfileButton/ProfileButton";
 
 import styles from "./MainButtons.module.css";
 
-export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout }) => {
+export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout, hasGoToQuiz }) => {
     const { user } = useContext(AuthContext);
     const matchTasks = useMatch('/tasks');
     const location = useLocation();
@@ -21,41 +20,33 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout }
 
     return (
         <>
-            <div className={styles.wrapper}>
-                {(user && !matchTasks) ? (
-                    <div className={styles['quiz-button-wrapper']}>
-                        <Button
-                            to="/tasks"
-                            variant="primary"
-                            rootClassName={styles['quiz-button']}
-                        >
-                            Go to quiz
-                        </Button>
-                    </div>
-                ) : null}
+            {user ? (
+                <div className={styles.wrapper}>
+                    {(user && !matchTasks) ? (
+                        <div className={styles['quiz-button-wrapper']}>
+                            <Button
+                                to="/tasks"
+                                variant="primary"
+                                rootClassName={styles['quiz-button']}
+                            >
+                                Go to quiz
+                            </Button>
+                        </div>
+                    ) : null}
 
-                {hasProfile ? (
-                    <div className={styles['profile-wrapper']}>
-                        <Link
-                            to="/profile"
-                            className={classNames(styles['first-button'], styles.profileLink)}
-                        >
-                            { user.username }
+                    {hasProfile ? (
+                        <div className={styles['profile-wrapper']}>
+                            <ProfileButton url={user.avatarLink?.url} />
 
-                            <HeaderAvatar
-                                url={user.avatarLink?.url}
-                                rootClassName={styles['header-avatar']}
-                            />
-                        </Link>
+                            <LogoutButton />
+                        </div>
+                    ) : null}
 
+                    {hasLogout ? (
                         <LogoutButton />
-                    </div>
-                ) : null}
-
-                {hasLogout ? (
-                    <LogoutButton />
-                ) : null}
-            </div>
+                    ) : null}
+                </div>
+            ) : null}
 
             {hasLogin ? (
                 <Button

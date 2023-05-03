@@ -8,6 +8,10 @@
     margin-bottom: 16px;
 }
 
+.username {
+    display: none;
+}
+
 .quiz-button {
     margin-right: 0;
     width: 100%;
@@ -49,11 +53,6 @@
     border: 0;
 }
 
-.first-button {
-    margin-right: 12px;
-    margin-left: 12px;
-}
-
 @media screen and (max-width: 400px) {
     .first-button {
         font-size: 12px;
@@ -75,5 +74,18 @@
     .profile-wrapper {
         margin-bottom: 0;
         margin-left: 32px;
+    }
+}
+
+@media (min-width: 992px) {
+    .first-button {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .username {
+        display: block;
     }
 }
