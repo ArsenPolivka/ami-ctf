@@ -18,6 +18,7 @@ export const Profile = () => {
             <Header
                 hasProfile
                 hasLogout
+                hasGoToQuiz={user}
             />
 
             <ProfileBlock />

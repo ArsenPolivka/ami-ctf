@@ -18,6 +18,7 @@ export const TaskPage = () => {
       <Header
         hasProfile={Boolean(user)}
         hasProfileTasks={Boolean(user)}
+        hasLogout={Boolean(user)}
       />
 
       <div className={styles.pageWrapper}>

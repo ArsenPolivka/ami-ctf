@@ -9,7 +9,7 @@ import { ProfileButton } from "../ProfileButton/ProfileButton";
 
 import styles from "./MainButtons.module.css";
 
-export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout }) => {
+export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout, hasGoToQuiz }) => {
     const { user } = useContext(AuthContext);
     const matchTasks = useMatch('/tasks');
     const location = useLocation();
