@@ -29,6 +29,8 @@ export const Footer = () => {
                             <a
                                 className={styles['telegram-wrapper']}
                                 href="https://t.me/darkside_ami"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 <Telegram className={styles.telegram} />
                             </a>
@@ -36,6 +38,8 @@ export const Footer = () => {
                             <a
                                 className={styles['instagram-wrapper']}
                                 href="https://www.instagram.com/lnu.prykladna/"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 <Instagram className={styles.instagram} />
                             </a>
