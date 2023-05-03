@@ -10,7 +10,7 @@ import avatar from "../../assets/avatar-placeholder.png";
 
 import styles from "./Avatar.module.css";
 
-export const Avatar = ({ url, isHeader, rootClassName }) => {
+export const Avatar = ({ rootClassName }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { user, setUser } = useContext(AuthContext);
