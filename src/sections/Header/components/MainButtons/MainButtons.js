@@ -20,31 +20,33 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout, 
 
     return (
         <>
-            <div className={styles.wrapper}>
-                {(user && !matchTasks) ? (
-                    <div className={styles['quiz-button-wrapper']}>
-                        <Button
-                            to="/tasks"
-                            variant="primary"
-                            rootClassName={styles['quiz-button']}
-                        >
-                            Go to quiz
-                        </Button>
-                    </div>
-                ) : null}
+            {user ? (
+                <div className={styles.wrapper}>
+                    {(user && !matchTasks) ? (
+                        <div className={styles['quiz-button-wrapper']}>
+                            <Button
+                                to="/tasks"
+                                variant="primary"
+                                rootClassName={styles['quiz-button']}
+                            >
+                                Go to quiz
+                            </Button>
+                        </div>
+                    ) : null}
 
-                {hasProfile ? (
-                    <div className={styles['profile-wrapper']}>
-                        <ProfileButton url={user.avatarLink?.url} />
+                    {hasProfile ? (
+                        <div className={styles['profile-wrapper']}>
+                            <ProfileButton url={user.avatarLink?.url} />
 
+                            <LogoutButton />
+                        </div>
+                    ) : null}
+
+                    {hasLogout ? (
                         <LogoutButton />
-                    </div>
-                ) : null}
-
-                {hasLogout ? (
-                    <LogoutButton />
-                ) : null}
-            </div>
+                    ) : null}
+                </div>
+            ) : null}
 
             {hasLogin ? (
                 <Button

@@ -53,11 +53,6 @@
     border: 0;
 }
 
-.first-button {
-    margin-right: 12px;
-    margin-left: 12px;
-}
-
 @media screen and (max-width: 400px) {
     .first-button {
         font-size: 12px;
@@ -79,6 +74,13 @@
     .profile-wrapper {
         margin-bottom: 0;
         margin-left: 32px;
+    }
+}
+
+@media (min-width: 992px) {
+    .first-button {
+        margin-left: 12px;
+        margin-right: 12px;
     }
 }
 
