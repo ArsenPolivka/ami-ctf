@@ -6,6 +6,7 @@
 .profile-wrapper {
     display: flex;
     margin-bottom: 16px;
+    justify-content: center;
 }
 
 .username {
