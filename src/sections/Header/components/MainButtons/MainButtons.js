@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../../../context/auth/context";
 import { Button } from "../../../../components/Button";
-import { logoutUser } from "../../../../api/user";
 import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
 import { LogoutButton } from "../LogoutButton";
 
