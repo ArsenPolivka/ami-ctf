@@ -80,7 +80,7 @@ export const ProfileBlock = () => {
             });
         } else {
             updatePassword(body, user.id).then(response => {
-                if (!response.email) {
+                if (!response.message) {
                     const errObj = response.detail?.reduce((acc, item) => {
                         return {
                           ...acc,
@@ -93,6 +93,7 @@ export const ProfileBlock = () => {
                 } else {
                     notifySuccess("Password successfully updated!");
                     setChangePasswordVisible(false);
+                    setError({});
                 }
 
                 setIsLoading(false);
@@ -101,7 +102,7 @@ export const ProfileBlock = () => {
     }
 
     return (
-        <Container>
+        <Container rootClassName={styles.container}>
             <div className={styles['profile-wrapper']}>
                 <h1 className={styles['heading1']}>
                     My profile
