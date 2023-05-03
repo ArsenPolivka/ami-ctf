@@ -24,8 +24,6 @@ export const Avatar = ({ url, isHeader, rootClassName }) => {
     if (response.id) {
       setUser(response);
     }
-
-    setIsLoading(false);
   }
 
   const handleImageUpload = (event) => {
@@ -56,6 +54,7 @@ export const Avatar = ({ url, isHeader, rootClassName }) => {
 
     if (fileBlob instanceof Blob) {
       fileReader.readAsBinaryString(fileBlob);
+      setIsLoading(false);
     } else {
       setIsLoading(false);
     }
