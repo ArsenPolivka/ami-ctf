@@ -3,6 +3,11 @@
   flex-grow: 1;
 }
 
+.form {
+  position: relative;
+  width: 100%;
+}
+
 .title {
   margin-bottom: 24px;
   font-family: 'Nunito', sans-serif;
@@ -27,11 +32,18 @@
   font-size: 12px;
   line-height: 15px;
   color: #6C63FF;
+  text-decoration: none;
 }
 
 .link:hover,
 .link:focus {
   text-decoration: underline;
+}
+
+@media (min-width: 576px) {
+  .form {
+    width: 350px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -48,12 +60,11 @@
 
   .form {
     width: 350px;
-    margin: 0 auto;
   }
 }
 
 @media (min-width: 1024px) {
   .wrapper {
-    padding: 140px 0;
+    padding: 100px 0 140px 0;
   }
 }

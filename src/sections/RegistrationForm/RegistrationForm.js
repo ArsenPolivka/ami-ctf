@@ -9,7 +9,9 @@ import { Button } from '../../components/Button';
 import { registerUser } from '../../api/user';
 import { AuthContext } from '../../context/auth/context';
 import { Loader } from "../../components/Loader";
+import { ReactComponent as Illustration } from "./assets/register-icon.svg";
 
+import loginStyles from '../LoginForm/LoginForm.module.css';
 import styles from './RegistrationForm.module.css';
 
 export const RegistrationForm = () => {
@@ -60,82 +62,91 @@ export const RegistrationForm = () => {
   return (
     <div className={styles.wrapper}>
       <Container>
-        { isLoading ? <Loader /> : (
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <h2 className={styles.title}>Sign up</h2>
+        <div className={loginStyles['form-wrapper']}>
+          <form
+              className={styles.form}
+              onSubmit={ handleSubmit }
+          >
+            <h2 className={styles.title}>Sign up</h2>
 
-              <div className={styles.row}>
-                <Input
-                    hideLabel
-                    required
-                    inputRootClassName={styles.input}
-                    name="username"
-                    label="Username"
-                    placeholder="Username"
-                    error={error && error.username}
-                    onChange={handleChange}
-                />
-              </div>
+            <div className={styles.row}>
+              <Input
+                  hideLabel
+                  required
+                  inputRootClassName={styles.input}
+                  name="username"
+                  label="Username"
+                  placeholder="Username"
+                  error={error && error.username}
+                  onChange={handleChange}
+              />
+            </div>
 
-              <div className={styles.row}>
-                <Input
-                    hideLabel
-                    required
-                    inputRootClassName={styles.input}
-                    name="email"
-                    label="E-mail"
-                    placeholder="E-mail"
-                    error={error && error.email}
-                    onChange={handleChange}
-                />
-              </div>
+            <div className={styles.row}>
+              <Input
+                  hideLabel
+                  required
+                  inputRootClassName={styles.input}
+                  name="email"
+                  label="E-mail"
+                  placeholder="E-mail"
+                  error={error && error.email}
+                  onChange={handleChange}
+              />
+            </div>
 
-              <div className={styles.row}>
-                <Input
-                    hideLabel
-                    required
-                    inputRootClassName={styles.input}
-                    name="password"
-                    type="password"
-                    label="Password"
-                    placeholder="Password"
-                    error={error && error.password}
-                    onChange={handleChange}
-                />
-              </div>
+            <div className={styles.row}>
+              <Input
+                  hideLabel
+                  required
+                  inputRootClassName={styles.input}
+                  name="password"
+                  type="password"
+                  label="Password"
+                  placeholder="Password"
+                  error={error && error.password}
+                  onChange={handleChange}
+              />
+            </div>
 
-              <div className={styles.row}>
-                <Input
-                    hideLabel
-                    required
-                    inputRootClassName={styles.input}
-                    name="confirmedPassword"
-                    type="password"
-                    label="Confirm password"
-                    placeholder="Confirm password"
-                    error={error && error.confirmedPassword}
-                    onChange={handleChange}
-                />
+            <div className={styles.row}>
+              <Input
+                  hideLabel
+                  required
+                  inputRootClassName={styles.input}
+                  name="confirmedPassword"
+                  type="password"
+                  label="Confirm password"
+                  placeholder="Confirm password"
+                  error={error && error.confirmedPassword}
+                  onChange={handleChange}
+              />
 
-                <Link
-                    to="/login"
-                    className={styles.link}
-                >
-                  Already have an account?
-                </Link>
-              </div>
+              <Link
+                  to="/login"
+                  className={styles.link}
+              >
+                Already have an account?
+              </Link>
+            </div>
 
-              <div className={classNames(styles.row, styles['last-row'])}>
-                <Button
-                    wide
-                    variant="primary"
-                    type="submit"
-                >
-                  Register now
-                </Button>
-              </div>
-            </form>
-        )}
+            <div className={classNames(styles.row, styles['last-row'])}>
+              <Button
+                  wide
+                  variant="primary"
+                  type="submit"
+              >
+                Register now
+              </Button>
+            </div>
+
+            { isLoading ? <Loader /> : null }
+          </form>
+
+          <div className={loginStyles.illustration}>
+            <Illustration />
+          </div>
+        </div>
       </Container>
     </div>
   );

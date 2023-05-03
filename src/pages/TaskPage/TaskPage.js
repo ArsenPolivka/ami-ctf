@@ -14,9 +14,11 @@ export const TaskPage = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <>
+    <div>
       <Header
-        hasProfile={user}
+        hasProfile={Boolean(user)}
+        hasProfileTasks={Boolean(user)}
+        hasLogout={Boolean(user)}
       />
 
       <div className={styles.pageWrapper}>
@@ -32,6 +34,6 @@ export const TaskPage = () => {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }

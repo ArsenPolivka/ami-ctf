@@ -1,4 +1,4 @@
-export async function getEventStatus() {
+export async function getEvent() {
 	const response = await fetch(`${process.env.REACT_APP_API_URL}/events/1`, {
 		credentials: 'include',
 		method: "GET",
@@ -7,7 +7,7 @@ export async function getEventStatus() {
 		},
 	});
 
-	const eventStatus = await response.json();
+	const event = await response.json();
 
-	return eventStatus;
+	return event;
 }

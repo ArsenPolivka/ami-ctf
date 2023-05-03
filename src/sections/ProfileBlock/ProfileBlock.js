@@ -1,10 +1,11 @@
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import toast from 'react-hot-toast';
-
-import { AuthContext } from "../../context/auth/context";
-import { Container } from "../../components/Layout";
 import classNames from "classnames";
 
+import { AuthContext } from "../../context/auth/context";
+
+import { Container } from "../../components/Layout";
+import { Button } from "../../components/Button";
 import { Loader } from "../../components/Loader";
 import { Avatar } from "./components/Avatar";
 import { ChangeButtons } from "./components/ChangeButtons";
@@ -80,7 +81,7 @@ export const ProfileBlock = () => {
             });
         } else {
             updatePassword(body, user.id).then(response => {
-                if (!response.email) {
+                if (!response.message) {
                     const errObj = response.detail?.reduce((acc, item) => {
                         return {
                           ...acc,
@@ -91,8 +92,9 @@ export const ProfileBlock = () => {
                     notifyError(response.title);
                     setError(errObj);
                 } else {
-                    notifySuccess("Username successfully updated!");
+                    notifySuccess("Password successfully updated!");
                     setChangePasswordVisible(false);
+                    setError({});
                 }
 
                 setIsLoading(false);
@@ -101,63 +103,78 @@ export const ProfileBlock = () => {
     }
 
     return (
-        <Container>
+        <Container rootClassName={styles.container}>
+            <div className={styles['quiz']}>
+                <Button
+                    to="/tasks"
+                    variant="primary"
+                    rootClassName={styles['quiz-button']}
+                >
+                    Go to quiz
+                </Button>
+            </div>
+
             <div className={styles['profile-wrapper']}>
                 <h1 className={styles['heading1']}>
                     My profile
                 </h1>
                 <div className={styles['content']}>
-                    <Avatar isChangeInfoVisible={isChangeInfoVisible} />
                     <form
                         className={styles['info-block']}
                         onSubmit={ handleConfirm }
                     >
-                        <div className={styles['user-info']}>
-                            <ul className={styles['list']}>
-                                <li className={styles['list-item']}>
-                                    <div className={styles['item-label']}>
-                                        Username:
-                                    </div>
-                                    <InputUserName
-                                        isChangeInfoVisible={isChangeInfoVisible}
-                                        value={newUsername}
-                                        error={error}
-                                        onChange={(e) => setNewUsername(e.target.value)}
-                                    />
-                                </li>
-                                <li className={styles['list-item']}>
-                                    <div className={styles['item-label']}>
-                                        E-mail:
-                                    </div>
-                                    <div className={styles['item-content']}>
-                                        { user.email }
-                                    </div>
-                                </li>
-                                <li className={styles['list-item']}>
-                                    <div className={classNames(styles['item-label'], styles['password-label'])}>
-                                        Password:
-                                    </div>
-                                    <ChangePassword
-                                        isChangePasswordVisible={isChangePasswordVisible}
-                                        isChangeInfoVisible={isChangeInfoVisible}
-                                        toggleChangePasswordVisibility={toggleChangePasswordVisibility}
-                                        formValues={passwordFormValues}
-                                        error={error}
-                                        onChange={handlePasswordFormChange}
-                                    />
-                                </li>
-                            </ul>
+                        <div className={styles['avatar-wrapper']}>
+                            <Avatar />
                         </div>
 
-                        <ChangeButtons
-                            isChangeInfoVisible={isChangeInfoVisible}
-                            isChangePasswordVisible={isChangePasswordVisible}
-                            setChangeInfoVisible={setChangeInfoVisible}
-                            toggleChangePasswordVisibility={toggleChangePasswordVisibility}
-                            toggleChangeInfoVisibility={toggleChangeInfoVisibility}
-                        />
+                        <div className={styles['info-wrapper']}>
+                            <div className={styles['user-info']}>
+                                <ul className={styles['list']}>
+                                    <li className={styles['list-item']}>
+                                        <div className={styles['item-label']}>
+                                            Username:
+                                        </div>
+                                        <InputUserName
+                                            isChangeInfoVisible={isChangeInfoVisible}
+                                            value={newUsername}
+                                            error={error}
+                                            onChange={(e) => setNewUsername(e.target.value)}
+                                        />
+                                    </li>
+                                    <li className={styles['list-item']}>
+                                        <div className={styles['item-label']}>
+                                            E-mail:
+                                        </div>
+                                        <div className={styles['item-content']}>
+                                            { user.email }
+                                        </div>
+                                    </li>
+                                    <li className={styles['list-item']}>
+                                        <div className={classNames(styles['item-label'], styles['password-label'])}>
+                                            Password:
+                                        </div>
+                                        <ChangePassword
+                                            isChangePasswordVisible={isChangePasswordVisible}
+                                            isChangeInfoVisible={isChangeInfoVisible}
+                                            toggleChangePasswordVisibility={toggleChangePasswordVisibility}
+                                            formValues={passwordFormValues}
+                                            error={error}
+                                            onChange={handlePasswordFormChange}
+                                        />
+                                    </li>
+                                </ul>
+                            </div>
 
-                        { isLoading ? <Loader /> : null }
+                            <ChangeButtons
+                                isChangeInfoVisible={isChangeInfoVisible}
+                                isChangePasswordVisible={isChangePasswordVisible}
+                                setChangeInfoVisible={setChangeInfoVisible}
+                                toggleChangePasswordVisibility={toggleChangePasswordVisibility}
+                                toggleChangeInfoVisibility={toggleChangeInfoVisibility}
+                            />
+
+                            { isLoading ? <Loader /> : null }
+                        </div>
                     </form>
                 </div>
             </div>

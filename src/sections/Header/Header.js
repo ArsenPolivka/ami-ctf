@@ -9,7 +9,7 @@ import { MobileHeader } from "./components/MobileHeader";
 
 import styles from './Header.module.css';
 
-export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration}) => {
+export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration, hasLogout, hasProfileTasks, hasGoToQuiz }) => {
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isBurgerActive, setBurgerActive] = useState(false);
 
@@ -52,10 +52,13 @@ export const Header = ({ pageNavigation, hasProfile, hasLogin, hasRegistration})
                   hasProfile={hasProfile}
                   hasLogin={hasLogin}
                   hasRegistration={hasRegistration}
+                  hasLogout={hasLogout}
                   onLinkTapClose={onLinkTapClose}
                   headerClass={headerClass}
                   toggleHeader={toggleHeader}
                   isBurgerActive={isBurgerActive}
+                  hasProfileTasks={hasProfileTasks}
+                  hasGoToQuiz={hasGoToQuiz}
               />
           </div>
           <div className={styles['desktop-wrapper']}>

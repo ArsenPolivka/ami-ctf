@@ -2,6 +2,9 @@ import { PageNavigation } from "../PageNavigation";
 import { LogoExtended } from "../../../../components/Logo";
 import { MainButtons } from "../MainButtons/MainButtons";
 import { Burger } from "../Burger";
+import { LogoutButton } from "../LogoutButton";
+import { ProfileButton } from "../ProfileButton/ProfileButton";
+import { Button } from "../../../../components/Button";
 
 import styles from './MobileHeader.module.css'
 
@@ -13,7 +16,10 @@ export const MobileHeader = ({
     pageNavigation,
     hasProfile,
     hasLogin,
-    hasRegistration
+    hasRegistration,
+    hasLogout,
+    hasProfileTasks,
+    hasGoToQuiz
 }) => {
     return (
         <div className={styles['mobile-header']}>
@@ -40,6 +46,30 @@ export const MobileHeader = ({
                 <div className={styles.logo}>
                     <LogoExtended size="mobile" />
                 </div>
+
+                {hasGoToQuiz ? (
+                    <div className={styles['quiz']}>
+                        <Button
+                            to="/tasks"
+                            variant="primary"
+                            rootClassName={styles['quiz-button']}
+                        >
+                            Go to quiz
+                        </Button>
+                    </div>
+                ) : null}
+
+                {hasProfileTasks ? (
+                    <div className={styles.onlyMobile}>
+                        <ProfileButton />
+                    </div>
+                ) : null}
+
+                {hasLogout ? (
+                    <div className={styles.onlyMobile}>
+                        <LogoutButton />
+                    </div>
+                ) : null}
             </div>
             <div className={styles[headerClass]}>
                 <nav className={styles.navigation}>

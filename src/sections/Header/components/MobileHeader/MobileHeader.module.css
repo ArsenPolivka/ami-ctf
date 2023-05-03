@@ -82,7 +82,8 @@
     display: none;
 }
 
-.hidden-buttons {
+.hidden-buttons,
+.quiz {
     display: none;
 }
 
@@ -93,6 +94,13 @@
     }
 }
 
+@media (min-width: 440px) {
+    .quiz {
+        display: block;
+        flex-shrink: 0;
+    }
+}
+
 @media screen and (min-width: 992px) {
     .hidden-logo {
         display: block;
@@ -100,7 +108,9 @@
         flex-grow: 4;
     }
 
-    .logo {
+    .logo,
+    .onlyMobile,
+    .quiz {
         display: none;
     }
 

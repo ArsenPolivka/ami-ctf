@@ -14,12 +14,16 @@ export const Profile = () => {
     }
 
     return (
-        <>
-            <Header />
+        <div>
+            <Header
+                hasProfile
+                hasLogout
+                hasGoToQuiz={Boolean(user)}
+            />
 
             <ProfileBlock />
 
             <Footer/>
-        </>
+        </div>
     );
 };

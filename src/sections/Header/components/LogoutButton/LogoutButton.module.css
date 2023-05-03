@@ -1,0 +1,11 @@
+.logoutIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+}
