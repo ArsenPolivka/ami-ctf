@@ -8,9 +8,9 @@ import { AuthContext } from "../../../../context/auth/context";
 import { ReactComponent as LogoutIcon } from './assets/logout.svg';
 import { Button } from "../../../../components/Button";
 import { logoutUser } from "../../../../api/user";
+import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
 
 import styles from "./MainButtons.module.css";
-import {Avatar} from "../../../ProfileBlock/components/Avatar";
 
 export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
     const { user, setUser } = useContext(AuthContext);
@@ -52,9 +52,9 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
                         >
                             { user.username }
 
-                            <Avatar isHeader={true}
-                                    rootClassName={styles['header-avatar']}
-                                    url={ user.avatarLink.url }
+                            <HeaderAvatar
+                                url={user.avatarLink?.url}
+                                rootClassName={styles['header-avatar']}
                             />
                         </Link>
 

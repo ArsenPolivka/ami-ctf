@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import classNames from "classnames";
 
 import { AuthContext } from "../../../../context/auth/context";
-import {addAvatar, getAvatarSASLink, getCurrentUser} from "../../../../api/user";
+import { addAvatar, getAvatarSASLink, getCurrentUser } from "../../../../api/user";
 import { Loader } from "../../../../components/Loader";
 
 import avatar from "../../assets/avatar-placeholder.png";
@@ -11,14 +11,22 @@ import avatar from "../../assets/avatar-placeholder.png";
 import styles from "./Avatar.module.css";
 
 export const Avatar = ({ url, isHeader, rootClassName }) => {
-  const [imageFile, setImageFile] = useState(null);
-  const [avatarLink, setAvatarLink] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user, setUser } = useContext(AuthContext);
 
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
+
+  async function fetchUser() {
+    const response = await getCurrentUser();
+
+    if (response.id) {
+      setUser(response);
+    }
+
+    setIsLoading(false);
+  }
 
   const handleImageUpload = (event) => {
     setIsLoading(true);
@@ -32,7 +40,8 @@ export const Avatar = ({ url, isHeader, rootClassName }) => {
           response.json().then(({type, fileAccessLink}) => {
             addAvatar(fileAccessLink.url, type, fileBlob).then(response => {
               if (response.ok) {
-                setImageFile(fileBlob);
+                fetchUser();
+
                 notifySuccess("Avatar successfully added!");
               } else {
                 notifyError(response.title);
@@ -45,57 +54,38 @@ export const Avatar = ({ url, isHeader, rootClassName }) => {
       })
     }
 
-    fileReader.readAsBinaryString(fileBlob);
-  };
-
-  useEffect(() => {
-    async function fetchUser() {
-      const response = await getCurrentUser();
-
-      if (response.id) {
-        setUser(response);
-        setAvatarLink(URL.createObjectURL(imageFile));
-      }
+    if (fileBlob instanceof Blob) {
+      fileReader.readAsBinaryString(fileBlob);
+    } else {
       setIsLoading(false);
     }
-
-    fetchUser();
-  }, [setUser, imageFile]);
+  };
 
   return (
-      <>
-        { isHeader ? (
-            <img src={ `${avatarLink ? avatarLink : url ?? avatar}` }
-                 className={rootClassName}
+      <div className={styles['avatar']}>
+        <div className={styles['avatar-wrapper']}>
+          <div className={styles['profile-image-wrapper']}>
+            <img src={ `${user.avatarLink?.url ? user.avatarLink?.url : avatar}` }
+                 className={classNames(styles['profile-image'], rootClassName)}
                  alt="uploaded"
             />
-        ) : (
-            <div className={styles['avatar']}>
-              <div className={styles['avatar-wrapper']}>
-                <div className={styles['profile-image-wrapper']}>
-                  <img src={ `${avatarLink ? avatarLink : user.avatarLink?.url ?? avatar}` }
-                       className={classNames(styles['profile-image'], rootClassName)}
-                       alt="uploaded"
-                  />
-                </div>
+          </div>
 
-                <label
-                    htmlFor="image-input"
-                    className={styles['upload-button']}
-                >
-                  <input
-                      id="image-input"
-                      className={styles.input}
-                      type="file"
-                      accept="image/*"
-                      onChange={ handleImageUpload }
-                  />
-                  Upload photo
-                </label>
-              </div>
-              { isLoading ? <Loader /> : null}
-            </div>
-        )}
-      </>
+          <label
+              htmlFor="image-input"
+              className={styles['upload-button']}
+          >
+            <input
+                id="image-input"
+                className={styles.input}
+                type="file"
+                accept="image/*"
+                onChange={ handleImageUpload }
+            />
+            Upload photo
+          </label>
+        </div>
+        { isLoading ? <Loader /> : null}
+      </div>
   )
 }
