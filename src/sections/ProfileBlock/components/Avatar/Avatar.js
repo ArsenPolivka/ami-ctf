@@ -39,8 +39,8 @@ export const Avatar = ({ rootClassName }) => {
             addAvatar(fileAccessLink.url, type, fileBlob).then(response => {
               if (response.ok) {
                 fetchUser();
-
                 notifySuccess("Avatar successfully added!");
+                setIsLoading(false);
               } else {
                 notifyError(response.title);
               }
@@ -54,7 +54,6 @@ export const Avatar = ({ rootClassName }) => {
 
     if (fileBlob instanceof Blob) {
       fileReader.readAsBinaryString(fileBlob);
-      setIsLoading(false);
     } else {
       setIsLoading(false);
     }
