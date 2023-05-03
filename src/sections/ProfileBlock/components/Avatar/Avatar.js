@@ -1,22 +1,27 @@
+import { useContext, useEffect, useState } from "react";
+
+import { AuthContext } from "../../../../context/auth/context";
+import { addAvatar, getAvatarSASLink } from "../../../../api/user";
+
 import avatar from "../../assets/avatar-placeholder.png";
 
 import styles from "./Avatar.module.css";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../../context/auth/context";
-import {addAvatar, getAvatarSASLink} from "../../../../api/user";
+import {Loader} from "../../../../components/Loader";
 
-export const Avatar = ({ isChangeInfoVisible }) => {
+export const Avatar = () => {
   const [imageFile, setImageFile] = useState(null);
+  const [avatarLink, setAvatarLink] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { user } = useContext(AuthContext);
 
-
   const handleImageUpload = (event) => {
+    setIsLoading(true);
+
     const fileBlob = event.target.files[0];
     const fileReader = new FileReader();
 
     fileReader.onload = () => {
-
-
       getAvatarSASLink({ type: fileBlob.type }, user.id).then(response => {
         if (response.ok) {
           response.json().then(({type, fileAccessLink}) => {
@@ -33,43 +38,42 @@ export const Avatar = ({ isChangeInfoVisible }) => {
         }
       })
     }
+
     fileReader.readAsBinaryString(fileBlob);
   };
+
+  useEffect(() => {
+    if (imageFile) {
+      setAvatarLink(URL.createObjectURL(imageFile));
+      setIsLoading(false);
+    }
+  }, [imageFile]);
 
   return (
     <div className={styles['avatar']}>
       <div className={styles['avatar-wrapper']}>
-        <div className={styles.uploaded}>
-          {imageFile ? (
-              <img src={ URL.createObjectURL(imageFile) }
-                   className={styles.image} alt="uploaded"
-              />
-          ) : (
-              <img
-                  className={styles['profile-image']}
-                  src={avatar}
-                  alt="user-avatar"
-              />
-          )}
+        <div className={styles['profile-image-wrapper']}>
+            <img src={ avatarLink ? avatarLink : user.avatarLink.url ?? avatar }
+                 className={styles['profile-image']}
+                 alt="uploaded"
+            />
         </div>
 
-        {/*UPLOAD PHOTO BUTTON*/}
-        { isChangeInfoVisible ? (
-            <label
-                htmlFor="image-input"
-                className={styles['upload-button']}
-            >
-              <input
-                  id="image-input"
-                  className={styles.input}
-                  type="file"
-                  accept="image/*"
-                  onChange={ handleImageUpload }
-              />
-              Upload photo
-            </label>
-        ) : null }
+        <label
+            htmlFor="image-input"
+            className={styles['upload-button']}
+        >
+          <input
+              id="image-input"
+              className={styles.input}
+              type="file"
+              accept="image/*"
+              onChange={ handleImageUpload }
+          />
+          Upload photo
+        </label>
       </div>
+      { isLoading ? <Loader /> : null}
     </div>
   )
 }

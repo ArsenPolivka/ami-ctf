@@ -3,6 +3,12 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .heading1 {
     margin-bottom: 32px;
     font-size: 26px;
@@ -66,10 +72,13 @@
     justify-content: space-between;
 }
 
+.avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
 @media (min-width: 768px) {
-    .info-block {
-        flex-direction: row;
-    }
     .avatar-wrapper {
         display: flex;
         justify-content: center;
@@ -78,6 +87,10 @@
 }
 
 @media (min-width: 1024px) {
+    .info-block {
+        flex-direction: row;
+    }
+
     .profile-wrapper {
         width: fit-content;
         margin: 0 auto;

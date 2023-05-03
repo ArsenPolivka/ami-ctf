@@ -1,9 +1,9 @@
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import toast from 'react-hot-toast';
+import classNames from "classnames";
 
 import { AuthContext } from "../../context/auth/context";
 import { Container } from "../../components/Layout";
-import classNames from "classnames";
 
 import { Loader } from "../../components/Loader";
 import { Avatar } from "./components/Avatar";
@@ -112,7 +112,7 @@ export const ProfileBlock = () => {
                         onSubmit={ handleConfirm }
                     >
                         <div className={styles['avatar-wrapper']}>
-                            <Avatar isChangeInfoVisible={isChangeInfoVisible}/>
+                            <Avatar />
                         </div>
 
                         <div className={styles['info-wrapper']}>
