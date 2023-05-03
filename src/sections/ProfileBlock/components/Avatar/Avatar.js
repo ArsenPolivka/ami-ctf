@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import classNames from "classnames";
 
 import { AuthContext } from "../../../../context/auth/context";
-import { addAvatar, getAvatarSASLink } from "../../../../api/user";
+import {addAvatar, getAvatarSASLink, getCurrentUser} from "../../../../api/user";
 import { Loader } from "../../../../components/Loader";
 
 import avatar from "../../assets/avatar-placeholder.png";
@@ -15,7 +15,7 @@ export const Avatar = ({ url, isHeader, rootClassName }) => {
   const [avatarLink, setAvatarLink] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
@@ -49,11 +49,18 @@ export const Avatar = ({ url, isHeader, rootClassName }) => {
   };
 
   useEffect(() => {
-    if (imageFile) {
-      setAvatarLink(URL.createObjectURL(imageFile));
+    async function fetchUser() {
+      const response = await getCurrentUser();
+
+      if (response.id) {
+        setUser(response);
+        setAvatarLink(URL.createObjectURL(imageFile));
+      }
       setIsLoading(false);
     }
-  }, [imageFile]);
+
+    fetchUser();
+  }, [setUser, imageFile]);
 
   return (
       <>
