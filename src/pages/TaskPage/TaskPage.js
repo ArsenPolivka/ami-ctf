@@ -17,6 +17,7 @@ export const TaskPage = () => {
     <div>
       <Header
         hasProfile={user}
+        hasProfileTasks={user}
       />
 
       <div className={styles.pageWrapper}>

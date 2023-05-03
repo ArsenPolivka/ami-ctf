@@ -3,6 +3,7 @@ import { LogoExtended } from "../../../../components/Logo";
 import { MainButtons } from "../MainButtons/MainButtons";
 import { Burger } from "../Burger";
 import { LogoutButton } from "../LogoutButton";
+import { ProfileButton } from "../ProfileButton/ProfileButton";
 
 import styles from './MobileHeader.module.css'
 
@@ -16,6 +17,7 @@ export const MobileHeader = ({
     hasLogin,
     hasRegistration,
     hasLogout,
+                                 hasProfileTasks
 }) => {
     return (
         <div className={styles['mobile-header']}>
@@ -42,6 +44,12 @@ export const MobileHeader = ({
                 <div className={styles.logo}>
                     <LogoExtended size="mobile" />
                 </div>
+
+                {hasProfileTasks ? (
+                    <div className={styles.onlyMobile}>
+                        <ProfileButton />
+                    </div>
+                ) : null}
 
                 {hasLogout ? (
                     <div className={styles.onlyMobile}>

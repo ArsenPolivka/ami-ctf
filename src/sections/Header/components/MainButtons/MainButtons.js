@@ -1,12 +1,11 @@
 import { useContext } from "react";
-import { Link, useMatch } from "react-router-dom";
-import classNames from "classnames";
+import { useMatch } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../../../context/auth/context";
 import { Button } from "../../../../components/Button";
-import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
 import { LogoutButton } from "../LogoutButton";
+import { ProfileButton } from "../ProfileButton/ProfileButton";
 
 import styles from "./MainButtons.module.css";
 
@@ -36,17 +35,7 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout }
 
                 {hasProfile ? (
                     <div className={styles['profile-wrapper']}>
-                        <Link
-                            to="/profile"
-                            className={classNames(styles['first-button'], styles.profileLink)}
-                        >
-                            { user.username }
-
-                            <HeaderAvatar
-                                url={user.avatarLink?.url}
-                                rootClassName={styles['header-avatar']}
-                            />
-                        </Link>
+                        <ProfileButton url={user.avatarLink?.url} />
 
                         <LogoutButton />
                     </div>

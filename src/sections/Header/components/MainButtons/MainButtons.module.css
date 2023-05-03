@@ -8,6 +8,10 @@
     margin-bottom: 16px;
 }
 
+.username {
+    display: none;
+}
+
 .quiz-button {
     margin-right: 0;
     width: 100%;
@@ -75,5 +79,11 @@
     .profile-wrapper {
         margin-bottom: 0;
         margin-left: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .username {
+        display: block;
     }
 }
