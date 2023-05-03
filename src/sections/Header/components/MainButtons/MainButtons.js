@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../../../context/auth/context";
 import { Button } from "../../../../components/Button";
-
+import { logoutUser } from "../../../../api/user";
+import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
 import { LogoutButton } from "../LogoutButton";
 
 import styles from "./MainButtons.module.css";
@@ -41,7 +42,11 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout }
                             className={classNames(styles['first-button'], styles.profileLink)}
                         >
                             { user.username }
-                            <span className={styles.userIcon}></span>
+
+                            <HeaderAvatar
+                                url={user.avatarLink?.url}
+                                rootClassName={styles['header-avatar']}
+                            />
                         </Link>
 
                         <LogoutButton />

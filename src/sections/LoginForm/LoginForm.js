@@ -28,7 +28,7 @@ export const LoginForm = () => {
     })
   };
 
-  const notifySuccess = (email) => toast.success(`Successfully logedin ${email}!`);
+  const notifySuccess = (email) => toast.success(`Successfully logged in ${email}!`);
   const notifyError = (err) => toast.error(`This is an error: ${err}!`);
 
   const handleSubmit = async (event) => {

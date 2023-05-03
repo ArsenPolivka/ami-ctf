@@ -1,75 +1,90 @@
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import classNames from "classnames";
+
+import { AuthContext } from "../../../../context/auth/context";
+import { addAvatar, getAvatarSASLink, getCurrentUser } from "../../../../api/user";
+import { Loader } from "../../../../components/Loader";
+
 import avatar from "../../assets/avatar-placeholder.png";
 
 import styles from "./Avatar.module.css";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../../context/auth/context";
-import {addAvatar, getAvatarSASLink} from "../../../../api/user";
 
-export const Avatar = ({ isChangeInfoVisible }) => {
-  const [imageFile, setImageFile] = useState(null);
-  const { user } = useContext(AuthContext);
+export const Avatar = ({ rootClassName }) => {
+  const [isLoading, setIsLoading] = useState(false);
 
+  const { user, setUser } = useContext(AuthContext);
+
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
+
+  async function fetchUser() {
+    const response = await getCurrentUser();
+
+    if (response.id) {
+      setUser(response);
+    }
+  }
 
   const handleImageUpload = (event) => {
+    setIsLoading(true);
+
     const fileBlob = event.target.files[0];
     const fileReader = new FileReader();
 
     fileReader.onload = () => {
-
-
       getAvatarSASLink({ type: fileBlob.type }, user.id).then(response => {
         if (response.ok) {
           response.json().then(({type, fileAccessLink}) => {
             addAvatar(fileAccessLink.url, type, fileBlob).then(response => {
               if (response.ok) {
-                setImageFile(fileBlob);
+                fetchUser();
+
+                notifySuccess("Avatar successfully added!");
               } else {
-                console.log("false");
+                notifyError(response.title);
               }
             })
           })
         } else {
-          console.log("false");
+          notifyError(response.title);
         }
       })
     }
-    fileReader.readAsBinaryString(fileBlob);
+
+    if (fileBlob instanceof Blob) {
+      fileReader.readAsBinaryString(fileBlob);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className={styles['avatar']}>
-      <div className={styles['avatar-wrapper']}>
-        <div className={styles.uploaded}>
-          {imageFile ? (
-              <img src={ URL.createObjectURL(imageFile) }
-                   className={styles.image} alt="uploaded"
-              />
-          ) : (
-              <img
-                  className={styles['profile-image']}
-                  src={avatar}
-                  alt="user-avatar"
-              />
-          )}
-        </div>
+      <div className={styles['avatar']}>
+        <div className={styles['avatar-wrapper']}>
+          <div className={styles['profile-image-wrapper']}>
+            <img src={ `${user.avatarLink?.url ? user.avatarLink?.url : avatar}` }
+                 className={classNames(styles['profile-image'], rootClassName)}
+                 alt="uploaded"
+            />
+          </div>
 
-        {/*UPLOAD PHOTO BUTTON*/}
-        { isChangeInfoVisible ? (
-            <label
-                htmlFor="image-input"
-                className={styles['upload-button']}
-            >
-              <input
-                  id="image-input"
-                  className={styles.input}
-                  type="file"
-                  accept="image/*"
-                  onChange={ handleImageUpload }
-              />
-              Upload photo
-            </label>
-        ) : null }
+          <label
+              htmlFor="image-input"
+              className={styles['upload-button']}
+          >
+            <input
+                id="image-input"
+                className={styles.input}
+                type="file"
+                accept="image/*"
+                onChange={ handleImageUpload }
+            />
+            Upload photo
+          </label>
+        </div>
+        { isLoading ? <Loader /> : null}
       </div>
-    </div>
   )
 }

@@ -11,7 +11,7 @@ export const ChangeButtons = ({ isChangeInfoVisible, isChangePasswordVisible, to
                     rootClassName={styles['main-button']}
                     onClick={toggleChangeInfoVisibility}
                 >
-                    Change user name
+                    Change username
                 </Button>
             ) : (
                 <div className={styles['buttons']}>
