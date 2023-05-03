@@ -100,7 +100,8 @@
         flex-grow: 4;
     }
 
-    .logo {
+    .logo,
+    .onlyMobile {
         display: none;
     }
 

@@ -2,6 +2,7 @@ import { PageNavigation } from "../PageNavigation";
 import { LogoExtended } from "../../../../components/Logo";
 import { MainButtons } from "../MainButtons/MainButtons";
 import { Burger } from "../Burger";
+import { LogoutButton } from "../LogoutButton";
 
 import styles from './MobileHeader.module.css'
 
@@ -13,7 +14,8 @@ export const MobileHeader = ({
     pageNavigation,
     hasProfile,
     hasLogin,
-    hasRegistration
+    hasRegistration,
+    hasLogout,
 }) => {
     return (
         <div className={styles['mobile-header']}>
@@ -40,6 +42,12 @@ export const MobileHeader = ({
                 <div className={styles.logo}>
                     <LogoExtended size="mobile" />
                 </div>
+
+                {hasLogout ? (
+                    <div className={styles.onlyMobile}>
+                        <LogoutButton />
+                    </div>
+                ) : null}
             </div>
             <div className={styles[headerClass]}>
                 <nav className={styles.navigation}>

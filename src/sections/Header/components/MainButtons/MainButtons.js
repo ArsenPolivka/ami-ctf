@@ -1,29 +1,20 @@
 import { useContext } from "react";
-import { Link, useNavigate, useMatch } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import classNames from "classnames";
 import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../../../context/auth/context";
-
-import { ReactComponent as LogoutIcon } from './assets/logout.svg';
 import { Button } from "../../../../components/Button";
 import { logoutUser } from "../../../../api/user";
 import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
+import { LogoutButton } from "../LogoutButton";
 
 import styles from "./MainButtons.module.css";
 
-export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
-    const { user, setUser } = useContext(AuthContext);
-    const navigate = useNavigate();
+export const MainButtons = ({ hasProfile, hasLogin, hasRegistration, hasLogout }) => {
+    const { user } = useContext(AuthContext);
     const matchTasks = useMatch('/tasks');
     const location = useLocation();
-
-    const handleLogout = async () => {
-        await logoutUser();
-        setUser(null);
-
-        navigate("/login");
-    };
 
     if (location.pathname !== '/') {
         document.body.style.overflow = "";
@@ -58,17 +49,12 @@ export const MainButtons = ({ hasProfile, hasLogin, hasRegistration }) => {
                             />
                         </Link>
 
-                        <Button
-                            variant="secondary"
-                            hiddenLabel
-                            icon={<LogoutIcon />}
-                            iconClassName={styles.logoutIcon}
-                            rootClassName={styles.logout}
-                            onClick={ handleLogout }
-                        >
-                            Logout
-                        </Button>
+                        <LogoutButton />
                     </div>
+                ) : null}
+
+                {hasLogout ? (
+                    <LogoutButton />
                 ) : null}
             </div>
 
