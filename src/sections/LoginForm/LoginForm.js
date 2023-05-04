@@ -98,7 +98,7 @@ export const LoginForm = () => {
                   to="/registration"
                   className={styles.link}
               >
-                Doesn't have an accout yet?
+                Doesn't have an account yet?
               </Link>
             </div>
 
