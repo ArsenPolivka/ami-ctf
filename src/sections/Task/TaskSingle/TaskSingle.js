@@ -1,5 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import classNames from "classnames";
+import toast from 'react-hot-toast';
+import { useState } from "react";
 
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
@@ -9,10 +11,41 @@ import { ReactComponent as RightArrowFilled }  from "./assets/right-arrow-filled
 import { ReactComponent as Download }  from "./assets/download-icon.svg";
 import { ReactComponent as TipIcon }  from "./assets/tip-icon.svg";
 
+import { verifyTask } from "../../../api/user";
+import { ALL_NAMES } from "../../../api/constants";
+
 import styles from './TaskSingle.module.css';
+
+const { KEY } = ALL_NAMES;
 
 export const TaskSingle = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [answer, setAnswer] = useState("");
+
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
+
+  const handleVerify = async (e) => {
+    e.preventDefault();
+
+    const body = {
+      [KEY]: answer,
+    }
+
+    verifyTask(body, id).then(response => {
+      if (response.error) {
+        notifyError(response.message);
+      } else {
+        notifySuccess("Key is correct!");
+        navigate(`/tasks/${Number(id) + 1}`);
+      }
+    });
+  }
+
+  const nextTask = () => navigate(`/tasks/${Number(id) + 1}`);
+  const previousTask = () => navigate(`/tasks/${ id > 1 ? Number(id) - 1 : id }`);
 
   return (
     <div className={styles['single-task-page']}>
@@ -101,14 +134,18 @@ export const TaskSingle = () => {
                 </div>
               </div>
             </div>
-            <form className={styles['submit-form']}>
-              <h2 className={styles['form-label']}>Put your answer here:</h2>
-
+            <form className={styles['submit-form']}
+                  onSubmit={handleVerify}
+            >
+              <h2 className={styles['form-label']}>
+                Put your answer here:
+              </h2>
               <div className={styles['submit-wrapper']}>
                 <Input placeholder='Key'
+                       value={answer}
+                       onChange={(e) => setAnswer(e.target.value)}
                        rootClassName={styles['answer-input']}
                 />
-
                 <Button
                     type='submit'
                     variant='primary'
@@ -127,6 +164,7 @@ export const TaskSingle = () => {
               icon={ <LeftArrowFilled /> }
               iconClassName={styles['left-arrow-filled']}
               variant='tertiary'
+              onClick={ previousTask }
           >
             Previous task
           </Button>
@@ -135,6 +173,7 @@ export const TaskSingle = () => {
               iconClassName={styles['right-arrow-filled']}
               icon={ <RightArrowFilled /> }
               variant='tertiary'
+              onClick={ nextTask }
           >
             Next task
           </Button>

@@ -11,6 +11,7 @@ import { TaskEntryScreen } from "./sections/Task/TaskEntryScreen/TaskEntryScreen
 
 import { AuthProvider } from './context/auth/AuthProvider';
 import {EventProvider} from "./context/event/EventProvider";
+import {TaskSingle} from "./sections/Task/TaskSingle";
 
 export default function App() {
   return (
@@ -24,7 +25,7 @@ export default function App() {
 
             <Route path="/tasks" element={<TaskPage />}>
               <Route index element={<TaskEntryScreen />} />
-              {/* <Route path=":id" element={<TaskSingle />} /> */}
+              <Route path=":id" element={<TaskSingle />} />
             </Route>
 
           <Route path="*" element={<NoMatch />} />

@@ -119,11 +119,18 @@ h3 {
 .attachment-button {
     align-items: center;
     gap: 24px;
+    width: 100%;
 }
 
 .control-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.back-button {
+    gap: 16px;
+    align-items: center;
+    color: #000;
 }
 
 .control-button {

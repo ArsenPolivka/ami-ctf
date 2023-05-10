@@ -1,6 +1,7 @@
 .wrapper {
     position: relative;
     flex-grow: 1;
+    height: 660px;
 }
 
 .entry {

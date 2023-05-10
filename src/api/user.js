@@ -11,7 +11,7 @@ export async function loginUser(body) {
   const loginUserResponse = await response.json();
 
   return loginUserResponse;
-};
+}
 
 export async function registerUser(body) {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
@@ -26,7 +26,7 @@ export async function registerUser(body) {
   const registerUserResponse = await response.json();
 
   return registerUserResponse;
-};
+}
 
 export async function getCurrentUser() {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, {
@@ -39,7 +39,7 @@ export async function getCurrentUser() {
   const userInfo = await response.json();
 
   return userInfo;
-};
+}
 
 export async function logoutUser() {
   await fetch(`${process.env.REACT_APP_API_URL}/auth/logout`, {
@@ -64,7 +64,7 @@ export async function updateUser(body, id) {
   const userInfo = await response.json();
 
   return userInfo;
-};
+}
 
 export async function updatePassword(body, id) {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${id}/reset-password`, {
@@ -105,4 +105,24 @@ export async function addAvatar(link, type, binary) {
   });
 
   return response;
+}
+
+export async function verifyTask(body, id) {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/tasks/${id}/verify`, {
+    credentials: "include",
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (response.ok) {
+    return response.json();
+  } else {
+    return {
+      error: true,
+      message: `Failed to verify task: ${response.title}`,
+    };
+  }
 }
