@@ -1,17 +1,19 @@
-import { Outlet } from "react-router-dom";
 import { useContext } from "react";
+import { Outlet } from "react-router-dom";
 
+import { Container } from '../../components/Layout';
 import { Header } from '../../sections/Header';
 import { TaskSidebar } from '../../sections/Task/TaskSidebar';
-import { Container } from '../../components/Layout';
-import { SidebarConfigProvider } from '../../hooks/useSidebarConfig';
 import { Footer } from "../../sections/Footer";
 import { AuthContext } from "../../context/auth/context";
+import { SidebarConfigProvider } from '../../hooks/useSidebarConfig';
+import { useUserStatistics } from '../../hooks/useUserStatistics';
 
 import styles from './TaskPage.module.css';
 
 export const TaskPage = () => {
   const { user } = useContext(AuthContext);
+  const { stats, isLoading } = useUserStatistics(user.id);
 
   return (
     <div>
@@ -25,7 +27,7 @@ export const TaskPage = () => {
         <Container>
           <div className={styles.innerWrapper}>
             <SidebarConfigProvider>
-              <TaskSidebar />
+              <TaskSidebar points={stats} isLoading={isLoading} />
 
               <Outlet />
             </SidebarConfigProvider>

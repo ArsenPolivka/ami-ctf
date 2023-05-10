@@ -126,3 +126,16 @@ export async function verifyTask(body, id) {
     };
   }
 }
+
+export async function getStatistic(id) {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${id}/statistic`, {
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+
+  const userStatistic = await response.json();
+
+  return userStatistic;
+}
