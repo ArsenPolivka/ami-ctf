@@ -1,17 +1,13 @@
 .pageWrapper {
+  position: relative;
+  flex-grow: 1;
   padding: 40px 0 100px;
-}
-
-@media screen and (max-width: 1200px){
-  .pageWrapper {
-    position: relative;
-  }
 }
 
 .innerWrapper {
   display: flex;
   justify-content: space-between;
-  gap: 40px;
+  gap: 60px;
   flex-direction: column;
 }
 
@@ -26,5 +22,9 @@
   .innerWrapper {
     flex-direction: row;
     gap: 80px;
+  }
+
+  .pageWrapper {
+    position: static;
   }
 }

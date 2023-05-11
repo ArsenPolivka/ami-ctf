@@ -16,7 +16,7 @@ export const TaskPage = () => {
   const { stats, isLoading } = useUserStatistics(user.id);
 
   return (
-    <div>
+    <>
       <Header
         hasProfile={Boolean(user)}
         hasProfileTasks={Boolean(user)}
@@ -36,6 +36,6 @@ export const TaskPage = () => {
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 }

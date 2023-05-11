@@ -57,7 +57,7 @@ const generateTimeString = (millisec) => {
 };
 
 export const TaskSidebar = ({ ratingList, points, isLoading }) => {
-  const { showRatingCard } = useSidebarConfig();
+  const { showRatingCard, showMobileSidebar } = useSidebarConfig();
   const [date, setDate] = useState(Date.now());
   const [timePassed, setTimePassed] = useState("00:00:00");
   const [timeLeft, setTimeLeft] = useState("00:00:00");
@@ -85,7 +85,7 @@ export const TaskSidebar = ({ ratingList, points, isLoading }) => {
   }, [date, eventDetails?.endTime, eventDetails?.startTime]);
 
   return (
-    <aside className={styles.aside}>
+    <aside className={classNames(styles.aside, { [styles['aside-mobile-hidden']]: !showMobileSidebar })}>
       <div className={styles.points}>
         {isLoading && <Loader />}
 
