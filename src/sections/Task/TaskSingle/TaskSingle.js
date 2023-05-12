@@ -127,7 +127,7 @@ export const TaskSingle = () => {
 
                 <div className={styles.attachment}>
                   <h3 className={styles['attachment-label']}>Attachment</h3>
-                  {data.file ? <DownloadButton id={id}/> : (
+                  {data?.file ? <DownloadButton href={data?.href}/> : (
                     <span className={styles['attachment-placeholder']}>
                       The current task does not require any files.
                     </span>
@@ -135,24 +135,26 @@ export const TaskSingle = () => {
                 </div>
               </div>
             </div>
-            <form className={styles['submit-form']}
-                  onSubmit={handleVerify}
+            <form
+              className={styles['submit-form']}
+              onSubmit={handleVerify}
             >
               <h2 className={styles['form-label']}>
                 Put your answer here:
               </h2>
 
               <div className={styles['submit-wrapper']}>
-                <Input placeholder='Key'
-                       value={answer}
-                       onChange={(e) => setAnswer(e.target.value)}
-                       rootClassName={styles['answer-input']}
+                <Input
+                  rootClassName={styles['answer-input']}
+                  placeholder='Key'
+                  value={answer}
+                  onChange={(e) => setAnswer(e.target.value)}
                 />
 
                 <Button
-                    type='submit'
-                    variant='primary'
-                    rootClassName={styles['submit-answer-button']}
+                  type='submit'
+                  variant='primary'
+                  rootClassName={styles['submit-answer-button']}
                 >
                   Submit
                 </Button>
@@ -163,20 +165,20 @@ export const TaskSingle = () => {
 
         <div className={styles['control-buttons']}>
           <Button
-              rootClassName={styles['control-button']}
-              icon={ <LeftArrowFilled /> }
-              iconClassName={styles['left-arrow-filled']}
-              variant='tertiary'
-              onClick={ previousTask }
+            rootClassName={styles['control-button']}
+            icon={ <LeftArrowFilled /> }
+            iconClassName={styles['left-arrow-filled']}
+            variant='tertiary'
+            onClick={ previousTask }
           >
             Previous task
           </Button>
           <Button
-              rootClassName={styles['control-button']}
-              iconClassName={styles['right-arrow-filled']}
-              icon={ <RightArrowFilled /> }
-              variant='tertiary'
-              onClick={ nextTask }
+            rootClassName={styles['control-button']}
+            iconClassName={styles['right-arrow-filled']}
+            icon={ <RightArrowFilled /> }
+            variant='tertiary'
+            onClick={ nextTask }
           >
             Next task
           </Button>
