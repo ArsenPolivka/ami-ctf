@@ -1,7 +1,7 @@
 .attachment-button {
     align-items: center;
     gap: 24px;
-    width: 100%;
+    display: flex;
 }
 
 .download-icon {

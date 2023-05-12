@@ -117,14 +117,7 @@ export async function verifyTask(body, id) {
     body: JSON.stringify(body)
   });
 
-  if (response.ok) {
-    return response.json();
-  } else {
-    return {
-      error: true,
-      message: `Failed to verify task: ${response.title}`,
-    };
-  }
+  return response.json();
 }
 
 export async function getStatistic(id) {

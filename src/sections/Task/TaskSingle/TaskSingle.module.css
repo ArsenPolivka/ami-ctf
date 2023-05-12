@@ -85,8 +85,12 @@ h3 {
     margin-bottom: 16px;
 }
 
-.answer-input {
+.answer-input-wrapper {
     margin-bottom: 12px;
+}
+
+.input-error {
+    border-color: #CF5454;
 }
 
 .submit-answer-button {

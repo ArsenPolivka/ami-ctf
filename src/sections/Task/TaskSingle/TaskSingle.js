@@ -32,12 +32,20 @@ export const TaskSingle = () => {
   const [answer, setAnswer] = useState("");
   const [tip, setTip] = useState(null);
   const [isTipLoading, setIsTipLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
 
-  const nextTask = () => navigate(`/tasks/${id < eventDetails?.totalNumberOfTasks ? Number(id) + 1 : id}`);
-  const previousTask = () => navigate(`/tasks/${ id > 1 ? Number(id) - 1 : id }`);
+  const nextTask = () => {
+    navigate(`/tasks/${id < eventDetails?.totalNumberOfTasks ? Number(id) + 1 : id}`);
+    setIsError(false);
+  };
+
+  const previousTask = () => {
+    navigate(`/tasks/${id > 1 ? Number(id) - 1 : id}`)
+    setIsError(false);
+  };
 
   const handleVerify = async (e) => {
     e.preventDefault();
@@ -47,9 +55,11 @@ export const TaskSingle = () => {
     }
 
     verifyTask(body, id).then(response => {
-      if (response.error) {
-        notifyError(response.message);
+      if (!response.ok) {
+        setIsError(true);
+        notifyError(response.title);
       } else {
+        setIsError(false);
         notifySuccess("Key is correct!");
         nextTask();
       }
@@ -171,7 +181,8 @@ export const TaskSingle = () => {
 
               <div className={styles['submit-wrapper']}>
                 <Input
-                  rootClassName={styles['answer-input']}
+                  rootClassName={styles['answer-input-wrapper']}
+                  inputRootClassName={classNames(styles['answer-input'], {[styles['input-error']] : isError})}
                   placeholder='Key'
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
