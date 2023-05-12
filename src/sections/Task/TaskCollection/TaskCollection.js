@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo, useContext } from "react";
 import ReactPaginate from 'react-paginate';
 
 import { TaskCard } from '../../../components/TaskCard';
-import { Loader } from '../../../components/Loader';
 import { useSetSidebarConfig } from "../../../hooks/useSidebarConfig";
 import { TaskContext } from '../../../context/task/context';
 
