@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from "classnames";
 import toast from 'react-hot-toast';
-import { useContext, useState } from "react";
+import { useContext, useState, useMemo } from "react";
 
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
@@ -16,7 +16,7 @@ import { useSingleTask } from "../../../hooks/useSingleTask";
 import { verifyTask } from "../../../api/user";
 import { ALL_NAMES } from "../../../api/constants";
 import { getTip } from '../../../api/task';
-import { EventContext } from "../../../context/event/context";
+import { TaskContext } from "../../../context/task/context";
 
 import styles from './TaskSingle.module.css';
 
@@ -25,7 +25,7 @@ const { KEY } = ALL_NAMES;
 export const TaskSingle = () => {
   const { id } = useParams();
   const { data, isLoading } = useSingleTask(id);
-  const { eventDetails } = useContext(EventContext);
+  const { taskCollection } = useContext(TaskContext);
 
   const navigate = useNavigate();
 
@@ -34,16 +34,29 @@ export const TaskSingle = () => {
   const [isTipLoading, setIsTipLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const collection = useMemo(() => {
+    return {
+      firstItem: taskCollection.content[0],
+      lastItem: taskCollection.content[taskCollection.content.length - 1],
+      items: taskCollection.content,
+      length: taskCollection.content.length,
+    }
+  }, [taskCollection]);
+
+  const itemIndex = useMemo(() => {
+    return taskCollection.content.indexOf(taskCollection.content.find(item => item.id === Number(id)));
+  }, [id, taskCollection.content]);
+
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
 
   const nextTask = () => {
-    navigate(`/tasks/${id < eventDetails?.totalNumberOfTasks ? Number(id) + 1 : id}`);
+    navigate(`/tasks/${taskCollection.content[itemIndex + 1].id}`);
     setIsError(false);
   };
 
   const previousTask = () => {
-    navigate(`/tasks/${id > 1 ? Number(id) - 1 : id}`)
+    navigate(`/tasks/${taskCollection.content[itemIndex - 1].id}`)
     setIsError(false);
   };
 
@@ -215,6 +228,7 @@ export const TaskSingle = () => {
             icon={ <LeftArrowFilled /> }
             iconClassName={styles['left-arrow-filled']}
             variant='tertiary'
+            disabled={Number(id) === collection.firstItem.id}
             onClick={ previousTask }
           >
             Previous task
@@ -224,6 +238,7 @@ export const TaskSingle = () => {
             iconClassName={styles['right-arrow-filled']}
             icon={ <RightArrowFilled /> }
             variant='tertiary'
+            disabled={Number(id) === collection.lastItem.id}
             onClick={ nextTask }
           >
             Next task

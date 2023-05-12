@@ -10,44 +10,47 @@ import { TaskPage } from './pages/TaskPage';
 import { TaskEntryScreen } from "./sections/Task/TaskEntryScreen/TaskEntryScreen";
 
 import { AuthProvider } from './context/auth/AuthProvider';
-import {EventProvider} from "./context/event/EventProvider";
-import {TaskSingle} from "./sections/Task/TaskSingle";
+import { EventProvider } from './context/event/EventProvider';
+import { TaskProvider } from './context/task/TaskProvider';
+import { TaskSingle } from './sections/Task/TaskSingle';
 
 export default function App() {
   return (
     <AuthProvider>
       <EventProvider>
-        <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+        <TaskProvider>
+          <Routes>
+            <Route exact path="/" element={<Home/>} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
 
-            <Route path="/tasks" element={<TaskPage />}>
-              <Route index element={<TaskEntryScreen />} />
-              <Route path=":id" element={<TaskSingle />} />
-            </Route>
+              <Route path="/tasks" element={<TaskPage />}>
+                <Route index element={<TaskEntryScreen />} />
+                <Route path=":id" element={<TaskSingle />} />
+              </Route>
 
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-        <Toaster
-          toastOptions={{
-            className: 'toaster',
-            position: 'top-right',
-            success: {
-              style: {
-                background: '#d3f6d7',
-                color: '#29D13A',
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+          <Toaster
+            toastOptions={{
+              className: 'toaster',
+              position: 'top-right',
+              success: {
+                style: {
+                  background: '#d3f6d7',
+                  color: '#29D13A',
+                },
               },
-            },
-            error: {
-              style: {
-                background: '#FFEFEF',
-                color: '#CF5454',
+              error: {
+                style: {
+                  background: '#FFEFEF',
+                  color: '#CF5454',
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </TaskProvider>
       </EventProvider>
     </AuthProvider>
   );

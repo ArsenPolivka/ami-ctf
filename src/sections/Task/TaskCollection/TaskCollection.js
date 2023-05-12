@@ -1,10 +1,10 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import ReactPaginate from 'react-paginate';
 
 import { TaskCard } from '../../../components/TaskCard';
 import { Loader } from '../../../components/Loader';
 import { useSetSidebarConfig } from "../../../hooks/useSidebarConfig";
-import { useTaskCollection } from '../../../hooks/useTaskCollection';
+import { TaskContext } from '../../../context/task/context';
 
 import styles from './TaskCollection.module.css';
 import './pagination.css';
@@ -20,11 +20,11 @@ export const TaskCollection = () => {
 
   const setSidebarConfig = useSetSidebarConfig();
 
-  const { data, isLoading } = useTaskCollection();
+  const { taskCollection } = useContext(TaskContext);
 
   const items = useMemo(() => {
-    return data?.content ?? [];
-  }, [data]);
+    return taskCollection?.content ?? [];
+  }, [taskCollection]);
 
   useEffect(() => {
     // Set the sidebar configuration for the TaskSingle page
@@ -56,8 +56,6 @@ export const TaskCollection = () => {
       <h2 className="visually-hidden">Task Collection</h2>
 
       <ul className={styles.collection}>
-        {isLoading ? <Loader /> : null}
-
         {items.length ? currentItems.map(({ id, name, description }) => {
           return (
             <li key={id} className={styles.item}>
