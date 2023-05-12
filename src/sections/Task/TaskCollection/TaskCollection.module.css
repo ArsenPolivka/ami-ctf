@@ -1,7 +1,10 @@
 .collection {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+  /* width: 100%; */
+  min-height: 400px;
   margin: -10px;
 }
 
@@ -12,6 +15,7 @@
 
 .wrapper {
   position: relative;
+  flex-grow: 1;
 }
 
 @media (min-width: 1200px) {

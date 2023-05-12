@@ -10,6 +10,7 @@ import { getEvent } from '../../api/event';
 export const EventProvider = ({ children }) => {
 	const { user } = useContext(AuthContext);
 
+	const [isStarted, setIsStarted] = useState(false);
 	const [eventDetails, setEventDetails] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -39,7 +40,7 @@ export const EventProvider = ({ children }) => {
 	}
 
 	return (
-			<EventContext.Provider value={{ eventDetails, setEventDetails }}>
+			<EventContext.Provider value={{ eventDetails, isStarted, setIsStarted, setEventDetails }}>
 				{children}
 			</EventContext.Provider>
 	);

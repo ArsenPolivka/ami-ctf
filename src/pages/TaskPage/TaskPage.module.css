@@ -18,6 +18,11 @@
   color: #000;
 }
 
+.left-arrow-icon {
+  width: 24px;
+  height: 24px;
+}
+
 @media screen and (min-width: 1200px){
   .innerWrapper {
     flex-direction: row;

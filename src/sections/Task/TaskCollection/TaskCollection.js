@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import ReactPaginate from 'react-paginate';
 
 import { TaskCard } from '../../../components/TaskCard';
+import { Loader } from '../../../components/Loader';
 import { useSetSidebarConfig } from "../../../hooks/useSidebarConfig";
-
-import { mockedTasks } from './mockedTaskCollection';
+import { useTaskCollection } from '../../../hooks/useTaskCollection';
 
 import styles from './TaskCollection.module.css';
 import './pagination.css';
@@ -20,6 +20,12 @@ export const TaskCollection = () => {
 
   const setSidebarConfig = useSetSidebarConfig();
 
+  const { data, isLoading } = useTaskCollection();
+
+  const items = useMemo(() => {
+    return data?.content ?? [];
+  }, [data]);
+
   useEffect(() => {
     // Set the sidebar configuration for the TaskSingle page
     setSidebarConfig({ showRatingCard: true });
@@ -34,13 +40,13 @@ export const TaskCollection = () => {
     // Fetch items from another resources.
     const endOffset = itemOffset + TASKS_PER_PAGE;
 
-    setCurrentItems(mockedTasks.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(mockedTasks.length / TASKS_PER_PAGE));
-  }, [itemOffset]);
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / TASKS_PER_PAGE));
+  }, [itemOffset, items]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = event.selected * TASKS_PER_PAGE % mockedTasks.length;
+    const newOffset = event.selected * TASKS_PER_PAGE % items.length;
 
     setItemOffset(newOffset);
   };
@@ -49,21 +55,21 @@ export const TaskCollection = () => {
     <div className={styles.wrapper}>
       <h2 className="visually-hidden">Task Collection</h2>
 
-      {currentItems?.length ? (
-        <ul className={styles.collection}>
-          {currentItems.map(({ id, title, description }) => {
-                  return (
-                      <li key={id} className={styles.item}>
-                        <TaskCard
-                            id={id}
-                            name={title}
-                            description={description}
-                        />
-                      </li>
-                  );
-                })}
-        </ul>
-      ) : null}
+      <ul className={styles.collection}>
+        {isLoading ? <Loader /> : null}
+
+        {items.length ? currentItems.map(({ id, name, description }) => {
+          return (
+            <li key={id} className={styles.item}>
+              <TaskCard
+                id={id}
+                name={name}
+                description={description}
+              />
+            </li>
+          );
+        }) : null}
+      </ul>
 
       <div className="pagination-wrapper">
         <ReactPaginate

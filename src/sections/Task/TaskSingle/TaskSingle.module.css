@@ -1,6 +1,7 @@
 .single-task-page {
     font-family: 'Nunito', sans-serif;
     width: 100%;
+    position: relative;
 }
 
 h1 {
@@ -116,10 +117,9 @@ h3 {
     margin-bottom: 8px;
 }
 
-.attachment-button {
-    align-items: center;
-    gap: 24px;
-    width: 100%;
+.attachment-placeholder {
+    font-size: 12px;
+    color: #6C63FF;
 }
 
 .control-buttons {
@@ -153,10 +153,6 @@ h3 {
     height: 24px;
 }
 
-.download-icon {
-    order: 1;
-}
-
 .tip-button {
     gap: 8px;
 }
@@ -167,7 +163,6 @@ h3 {
         justify-content: space-between;
         align-items: center;
     }
-
 }
 
 @media screen and (min-width: 768px){

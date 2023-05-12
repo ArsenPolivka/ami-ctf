@@ -1,0 +1,9 @@
+.attachment-button {
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.download-icon {
+    order: 1;
+}
