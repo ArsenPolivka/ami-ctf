@@ -41,6 +41,19 @@ export async function getCurrentUser() {
   return userInfo;
 }
 
+export async function getAllUsers() {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/users?page=0&size=5&sort=currentScore,desc`, {
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+
+  const users = await response.json();
+
+  return users;
+}
+
 export async function logoutUser() {
   await fetch(`${process.env.REACT_APP_API_URL}/auth/logout`, {
     credentials: 'include',

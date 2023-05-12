@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Loader } from '../../../components/Loader';
 
 import { useSidebarConfig } from '../../../hooks/useSidebarConfig';
+import { AuthContext } from "../../../context/auth/context";
 import { EventContext } from "../../../context/event/context";
 
 import styles from './TaskSidebar.module.css';
@@ -20,30 +21,6 @@ const defaultPoints = {
   timeLeft: '00:00:00'
 };
 
-const defaultRatingList = [
-  {
-    isCurrentUser: true,
-    name: 'Me',
-    score: 25,
-  },
-  {
-    name: 'Student name',
-    score: 23,
-  },
-  {
-    name: 'Student name',
-    score: 22,
-  },
-  {
-    name: 'Student name',
-    score: 21,
-  },
-  {
-    name: 'Student name',
-    score: 14,
-  },
-];
-
 const generateTimeString = (millisec) => {
   const days = Math.floor(millisec / (1000 * 60 * 60 * 24));
   const hours = Math.floor((millisec / (1000 * 60 * 60)) % 24);
@@ -56,12 +33,13 @@ const generateTimeString = (millisec) => {
   return days > 0 ? `${days}d ${fHours}:${fMinutes}:${fSeconds}` : `${fHours}:${fMinutes}:${fSeconds}`;
 };
 
-export const TaskSidebar = ({ ratingList, points, isLoading }) => {
+export const TaskSidebar = ({ users, points, isLoading }) => {
   const { showRatingCard, showMobileSidebar } = useSidebarConfig();
   const [date, setDate] = useState(Date.now());
   const [timePassed, setTimePassed] = useState("00:00:00");
   const [timeLeft, setTimeLeft] = useState("00:00:00");
   const { eventDetails } = useContext(EventContext);
+  const { user } = useContext(AuthContext);
 
   const {
     position,
@@ -150,12 +128,12 @@ export const TaskSidebar = ({ ratingList, points, isLoading }) => {
           <div className={styles.cardDivider} />
 
           <ul className={styles.ratingList}>
-            {defaultRatingList.map(({ name, score, isCurrentUser }, index) => {
+            {users.map(({ id, username, score }, index) => {
               return (
-                <li key={index} className={classNames(styles.ratingListItem, isCurrentUser && styles.current)}>
-                  <div>{index}.</div>
+                <li key={id} className={classNames(styles.ratingListItem, id === user.id && styles.current)}>
+                  <div>{index + 1}.</div>
 
-                  <div>{name}</div>
+                  <div>{username}</div>
 
                   <div className={styles.ratingScore}>{score}</div>
                 </li>

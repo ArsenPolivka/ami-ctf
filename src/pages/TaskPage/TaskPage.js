@@ -10,6 +10,7 @@ import { Button } from "../../components/Button";
 import { ReactComponent as LeftArrowOutlined }  from "../../sections/Task/TaskSingle/assets/arrow-left.svg";
 
 import { AuthContext } from "../../context/auth/context";
+import { RatingContext } from '../../context/rating/context';
 import { SidebarConfigProvider } from '../../hooks/useSidebarConfig';
 import { useUserStatistics } from '../../hooks/useUserStatistics';
 
@@ -17,6 +18,7 @@ import styles from './TaskPage.module.css';
 
 export const TaskPage = () => {
   const { user } = useContext(AuthContext);
+  const { users } = useContext(RatingContext);
   const { stats, isLoading } = useUserStatistics(user.id);
   const location = useLocation();
 
@@ -43,7 +45,7 @@ export const TaskPage = () => {
           ) : null}
           <div className={styles.innerWrapper}>
             <SidebarConfigProvider>
-              <TaskSidebar points={stats} isLoading={isLoading} />
+              <TaskSidebar points={stats} users={users} isLoading={isLoading} />
 
               <Outlet />
             </SidebarConfigProvider>

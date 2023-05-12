@@ -55,7 +55,7 @@ export const TaskCollection = () => {
       <h2 className="visually-hidden">Task Collection</h2>
 
       <ul className={styles.collection}>
-        {items.length ? currentItems.map(({ id, name, description }) => {
+        {items.length ? currentItems?.map(({ id, name, description }) => {
           return (
             <li key={id} className={styles.item}>
               <TaskCard
