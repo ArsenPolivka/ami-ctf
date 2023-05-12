@@ -10,7 +10,7 @@ import { getEvent } from '../../api/event';
 export const EventProvider = ({ children }) => {
 	const { user } = useContext(AuthContext);
 
-	const [isStarted, setIsStarted] = useState(false);
+	const [isStarted, setIsStarted] = useState(localStorage.getItem('isStarted') ?? false);
 	const [eventDetails, setEventDetails] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
