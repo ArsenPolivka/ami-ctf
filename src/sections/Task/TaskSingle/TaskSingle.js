@@ -15,6 +15,7 @@ import { ReactComponent as TipIcon }  from "./assets/tip-icon.svg";
 import { useSingleTask } from "../../../hooks/useSingleTask";
 import { verifyTask } from "../../../api/user";
 import { ALL_NAMES } from "../../../api/constants";
+import { getTip } from '../../../api/task';
 import { EventContext } from "../../../context/event/context";
 
 import styles from './TaskSingle.module.css';
@@ -29,6 +30,8 @@ export const TaskSingle = () => {
   const navigate = useNavigate();
 
   const [answer, setAnswer] = useState("");
+  const [tip, setTip] = useState(null);
+  const [isTipLoading, setIsTipLoading] = useState(false);
 
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
@@ -53,6 +56,21 @@ export const TaskSingle = () => {
     });
   }
 
+  const handleUseTip = () => {
+    setIsTipLoading(true);
+    getTip(id).then(response => {
+      const { title } = response;
+
+      if (!title) {
+        setTip(response);
+      } else {
+        notifyError(title);
+      }
+    }).finally(() => setIsTipLoading(false));
+
+    return { tip, isLoading };
+  }
+
   return (
     <div className={styles['single-task-page']}>
       {isLoading ? <Loader /> : null}
@@ -65,19 +83,23 @@ export const TaskSingle = () => {
                 {id}. {data?.name}
               </h1>
 
-              <div className={styles['tip-block']}>
-                <Button
+              {data?.numberOfTips ? (
+                <div className={styles['tip-block']}>
+                  <Button
                     rootClassName={styles['tip-button']}
                     icon={ <TipIcon /> }
                     iconClassName={styles['tip-icon']}
                     variant='secondary-outlined'
-                >
-                  Use tip
-                </Button>
-                <div className={styles['tip-label']}>
-                  -50% of points
+                    disabled={isTipLoading}
+                    onClick={handleUseTip}
+                  >
+                    Use tip
+                  </Button>
+                  <div className={styles['tip-label']}>
+                    -50% of points
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
 
             <div className={styles['task-cost']}>
@@ -94,19 +116,23 @@ export const TaskSingle = () => {
                     {id}. {data?.name}
                   </h1>
 
-                  <div className={styles['tip-block']}>
-                    <Button
+                  {data?.numberOfTips ? (
+                    <div className={styles['tip-block']}>
+                      <Button
                         rootClassName={styles['tip-button']}
                         icon={ <TipIcon /> }
                         iconClassName={styles['tip-icon']}
                         variant='secondary-outlined'
-                    >
-                      Use tip
-                    </Button>
-                    <div className={styles['tip-label']}>
-                      -50% of points
+                        disabled={isTipLoading}
+                        onClick={handleUseTip}
+                      >
+                        Use tip
+                      </Button>
+                      <div className={styles['tip-label']}>
+                        -50% of points
+                      </div>
                     </div>
-                  </div>
+                  ) : null}
                 </div>
 
                 <div className={styles['task-cost']}>
@@ -127,7 +153,7 @@ export const TaskSingle = () => {
 
                 <div className={styles.attachment}>
                   <h3 className={styles['attachment-label']}>Attachment</h3>
-                  {data?.file ? <DownloadButton href={data?.href}/> : (
+                  {data?.file ? <DownloadButton href={data?.file.url}/> : (
                     <span className={styles['attachment-placeholder']}>
                       The current task does not require any files.
                     </span>
@@ -161,6 +187,15 @@ export const TaskSingle = () => {
               </div>
             </form>
           </div>
+
+          {data?.tips.length ? (
+            <div className={styles.tipsBlock}>
+              <h3 className={styles['description-label']}>Tips</h3>
+              {data?.tips.map((item, index) => (
+                <div className={styles.tipsItem} key={index}>{item}</div>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <div className={styles['control-buttons']}>

@@ -25,3 +25,17 @@ export async function getSingleTask(id) {
 
 	return task;
 }
+
+export async function getTip(id) {
+	const response = await fetch(`${process.env.REACT_APP_API_URL}/tasks/${id}/tips`, {
+		credentials: 'include',
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json"
+		},
+	});
+
+	const tip = await response.json();
+
+	return tip;
+}
