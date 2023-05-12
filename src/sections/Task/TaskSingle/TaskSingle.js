@@ -113,7 +113,7 @@ export const TaskSingle = () => {
                     icon={ <TipIcon /> }
                     iconClassName={styles['tip-icon']}
                     variant='secondary-outlined'
-                    disabled={isTipLoading}
+                    disabled={isTipLoading || data?.numberOfTips === data?.tips.length}
                     onClick={handleUseTip}
                   >
                     Use tip
@@ -146,7 +146,7 @@ export const TaskSingle = () => {
                         icon={ <TipIcon /> }
                         iconClassName={styles['tip-icon']}
                         variant='secondary-outlined'
-                        disabled={isTipLoading}
+                        disabled={isTipLoading || data?.numberOfTips === data?.tips.length}
                         onClick={handleUseTip}
                       >
                         Use tip
