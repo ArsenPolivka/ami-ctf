@@ -224,7 +224,8 @@ export const TaskSingle = () => {
               className={styles['submit-form']}
               onSubmit={handleVerify}
             >
-              {taskCollection?.content[id]?.completionStatus === 'COMPLETED' ? <CompletedTask /> : null}
+              {data?.completionStatus === 'COMPLETED' ? <CompletedTask /> : null}
+
               <h2 className={styles['form-label']}>
                 Put your answer here:
               </h2>
