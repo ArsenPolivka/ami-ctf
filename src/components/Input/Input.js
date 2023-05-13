@@ -1,6 +1,11 @@
+import { forwardRef } from "react";
 import classNames from 'classnames';
 
 import styles from './Input.module.css';
+
+const MyInput = forwardRef((props, ref) => {
+  return <input ref={ref} {...props} />;
+});
 
 export const Input = ({
   label,
@@ -15,6 +20,7 @@ export const Input = ({
   rootClassName,
   inputRootClassName,
   error,
+  inputRef,
 }) => {
   return (
     <label className={classNames(
@@ -30,7 +36,7 @@ export const Input = ({
         {label}
       </span>
 
-      <input
+      <MyInput
         className={classNames(styles.input, inputRootClassName, error && styles.error)}
         required={required}
         disabled={disabled}
@@ -38,6 +44,7 @@ export const Input = ({
         value={value}
         name={name}
         placeholder={placeholder}
+        ref={inputRef}
         onChange={onChange}
       />
 

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from "classnames";
 import toast from 'react-hot-toast';
-import { useContext, useState, useMemo } from "react";
+import { useContext, useState, useMemo, useRef } from "react";
 
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
@@ -17,6 +17,9 @@ import { verifyTask } from "../../../api/user";
 import { ALL_NAMES } from "../../../api/constants";
 import { getTip, getSingleTask } from '../../../api/task';
 import { TaskContext } from "../../../context/task/context";
+import { EventContext } from "../../../context/event/context";
+import { useUserStatistics } from "../../../hooks/useUserStatistics";
+import { AuthContext } from "../../../context/auth/context";
 
 import styles from './TaskSingle.module.css';
 
@@ -26,6 +29,15 @@ export const TaskSingle = () => {
   const { id } = useParams();
   const { data, setData, isLoading, setIsLoading } = useSingleTask(id);
   const { taskCollection } = useContext(TaskContext);
+  const { eventDetails } = useContext(EventContext);
+  const { user } = useContext(AuthContext);
+
+  const { stats } = useUserStatistics(user?.id);
+
+  const inputRef = useRef(null);
+
+  let tasksNumber = eventDetails?.totalNumberOfTasks;
+  let tasksDone = stats?.tasksDone;
 
   const navigate = useNavigate();
 
@@ -68,15 +80,20 @@ export const TaskSingle = () => {
     }
 
     verifyTask(body, id).then(response => {
-      if (!response.ok) {
+      if (response.status !== 'SUCCESS') {
         setIsError(true);
         notifyError(response.title);
+        inputRef.current.value = '';
       } else {
         setIsError(false);
         notifySuccess("Key is correct!");
         nextTask();
       }
     });
+
+    if (tasksDone === tasksNumber) {
+      navigate('/tasks/finally');
+    }
   }
 
   const handleUseTip = () => {
@@ -102,6 +119,14 @@ export const TaskSingle = () => {
     }).finally(() => setIsTipLoading(false));
 
     return { tip, isLoading };
+  }
+
+  const handleFinishQuiz = () => {
+    navigate('/tasks/finally');
+  }
+
+  if (tasksDone === tasksNumber) {
+    navigate('/tasks/finally');
   }
 
   return (
@@ -208,6 +233,7 @@ export const TaskSingle = () => {
                   inputRootClassName={classNames(styles['answer-input'], {[styles['input-error']] : isError})}
                   placeholder='Key'
                   value={answer}
+                  inputRef={inputRef}
                   onChange={(e) => setAnswer(e.target.value)}
                 />
 
@@ -217,6 +243,14 @@ export const TaskSingle = () => {
                   rootClassName={styles['submit-answer-button']}
                 >
                   Submit
+                </Button>
+
+                <Button
+                  variant='secondary'
+                  rootClassName={styles.finishBtn}
+                  onClick={handleFinishQuiz}
+                >
+                  Finish quiz
                 </Button>
               </div>
             </form>

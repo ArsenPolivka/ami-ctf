@@ -1,0 +1,58 @@
+.wrapper {
+    position: relative;
+    flex-grow: 1;
+    height: 660px;
+    margin: 0 -20px;
+}
+
+.finally {
+    background-image: url("./assets/finally-background.png");
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 38px;
+}
+
+.icon-wrapper {
+    margin-bottom: 24px;
+}
+
+.info-correct {
+    color: #29D13A;
+}
+
+.info-half-correct {
+    color: #6C63FF;
+}
+
+.info-incorrect {
+    color: #FF1101;
+}
+
+.btn-half-correct {
+    background-color: #6C63FF;
+    color: #fff;
+    border: 1px solid #6C63FF;
+}
+
+.btn-half-correct:hover {
+    background-color: #fff;
+    color: #6C63FF;
+    border: 1px solid #6C63FF;
+}

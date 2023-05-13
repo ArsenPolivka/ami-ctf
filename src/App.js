@@ -14,6 +14,7 @@ import { EventProvider } from './context/event/EventProvider';
 import { TaskProvider } from './context/task/TaskProvider';
 import { RatingProvider } from './context/rating/RatingProvider';
 import { TaskSingle } from './sections/Task/TaskSingle';
+import { FinallyScreen } from "./sections/Task/FinallyScreen/FinallyScreen";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
                 <Route path="/tasks" element={<TaskPage />}>
                   <Route index element={<TaskEntryScreen />} />
                   <Route path=":id" element={<TaskSingle />} />
+                  <Route path={"finally"} element={<FinallyScreen />} />
                 </Route>
 
               <Route path="*" element={<NoMatch />} />

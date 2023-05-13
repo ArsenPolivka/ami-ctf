@@ -14,5 +14,14 @@ export const TaskEntryScreen = () => {
 		localStorage.setItem('isStarted', true);
 	}
 
-	return isStarted ? <TaskCollection /> : <LockedTasksScreen onClick={handleStartEvent} isLocked={!eventDetails?.status || eventDetails?.status === PLANNED} />;
+	return (
+			isStarted ? (
+					<TaskCollection />
+			) : (
+					<LockedTasksScreen
+							onClick={handleStartEvent}
+							isLocked={!eventDetails?.status || eventDetails?.status === PLANNED}
+					/>
+			)
+	)
 }
