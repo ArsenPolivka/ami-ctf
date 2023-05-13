@@ -7,6 +7,7 @@ import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
 import { Loader } from "../../../components/Loader";
 import { DownloadButton } from "./components/DownloadButton/DownloadButton";
+import { CompletedTask } from "./components/CompletedTask/CompletedTask";
 
 import { ReactComponent as LeftArrowFilled }  from "./assets/left-arrow-filled.svg";
 import { ReactComponent as RightArrowFilled }  from "./assets/right-arrow-filled.svg";
@@ -83,9 +84,9 @@ export const TaskSingle = () => {
       if (response.status !== 'SUCCESS') {
         setIsError(true);
         notifyError(response.title);
-        setAnswer("");
       } else {
         setIsError(false);
+        setAnswer("");
         notifySuccess("Key is correct!");
         nextTask();
       }
@@ -223,6 +224,7 @@ export const TaskSingle = () => {
               className={styles['submit-form']}
               onSubmit={handleVerify}
             >
+              {taskCollection?.content[id]?.completionStatus === 'COMPLETED' ? <CompletedTask /> : null}
               <h2 className={styles['form-label']}>
                 Put your answer here:
               </h2>

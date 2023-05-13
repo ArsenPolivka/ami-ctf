@@ -196,6 +196,10 @@ h3 {
     margin-top: 16px;
 }
 
+.submit-form {
+    position: relative;
+}
+
 @media screen and (min-width: 576px){
     .task-header {
         flex-direction: row;
