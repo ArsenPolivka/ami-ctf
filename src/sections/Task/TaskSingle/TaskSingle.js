@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from "classnames";
 import toast from 'react-hot-toast';
-import { useContext, useState, useMemo, useRef } from "react";
+import { useContext, useState, useMemo } from "react";
 
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
@@ -34,8 +34,6 @@ export const TaskSingle = () => {
 
   const { stats } = useUserStatistics(user?.id);
 
-  const inputRef = useRef(null);
-
   let tasksNumber = eventDetails?.totalNumberOfTasks;
   let tasksDone = stats?.tasksDone;
 
@@ -64,11 +62,13 @@ export const TaskSingle = () => {
 
   const nextTask = () => {
     navigate(`/tasks/${taskCollection.content[itemIndex + 1].id}`);
+    setAnswer("");
     setIsError(false);
   };
 
   const previousTask = () => {
-    navigate(`/tasks/${taskCollection.content[itemIndex - 1].id}`)
+    navigate(`/tasks/${taskCollection.content[itemIndex - 1].id}`);
+    setAnswer("");
     setIsError(false);
   };
 
@@ -83,7 +83,7 @@ export const TaskSingle = () => {
       if (response.status !== 'SUCCESS') {
         setIsError(true);
         notifyError(response.title);
-        inputRef.current.value = '';
+        setAnswer("");
       } else {
         setIsError(false);
         notifySuccess("Key is correct!");
@@ -233,7 +233,6 @@ export const TaskSingle = () => {
                   inputRootClassName={classNames(styles['answer-input'], {[styles['input-error']] : isError})}
                   placeholder='Key'
                   value={answer}
-                  inputRef={inputRef}
                   onChange={(e) => setAnswer(e.target.value)}
                 />
 
