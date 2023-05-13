@@ -138,7 +138,7 @@ export const TaskSingle = () => {
           <div className={classNames(styles['task-header-wrapper'], styles['header-desktop'])}>
             <div className={styles['task-header']}>
               <h1 className={styles['task-name']}>
-                {id}. {data?.name}
+                {itemIndex + 1}. {data?.name}
               </h1>
 
               {data?.numberOfTips ? (
@@ -171,7 +171,7 @@ export const TaskSingle = () => {
               <div className={classNames(styles['task-header-wrapper'], styles['header-mobile'])}>
                 <div className={styles['task-header']}>
                   <h1 className={styles['task-name']}>
-                    {id}. {data?.name}
+                    {itemIndex + 1}. {data?.name}
                   </h1>
 
                   {data?.numberOfTips ? (
