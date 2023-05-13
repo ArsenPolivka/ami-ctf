@@ -15,7 +15,7 @@ export const useSetSidebarConfig = () => {
 };
 
 export const SidebarConfigProvider = ({ children }) => {
-  const state = useState({ showRatingCard: false });
+  const state = useState({ showRatingCard: false, showMobileSidebar: true });
 
   return <SidebarConfigContext.Provider value={state}>{children}</SidebarConfigContext.Provider>;
 };

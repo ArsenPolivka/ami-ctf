@@ -6,16 +6,18 @@ import { ReactComponent as Content } from "./assets/content.svg";
 
 import { AuthContext } from "../../../context/auth/context";
 import { EventContext } from "../../../context/event/context";
+import { useSetSidebarConfig } from "../../../hooks/useSidebarConfig";
 
 import styles from './LockedTasksScreen.module.css'
 
 export const LockedTasksScreen = ({ isLocked, onClick }) => {
 	const { user } = useContext(AuthContext);
-	const { eventStartTime } = useContext(EventContext);
+	const { eventDetails } = useContext(EventContext);
 
 	const [currentDateTime, setCurrentDateTime] = useState(new Date().toString());
 	const [leftTime, setLeftTime] = useState(null);
 	const [timeLeftString, setTimeLeftString] = useState('');
+	const setSidebarConfig = useSetSidebarConfig();
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -23,10 +25,20 @@ export const LockedTasksScreen = ({ isLocked, onClick }) => {
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, [])
+	}, []);
 
 	useEffect(() => {
-		const timeLeft = Date.parse(eventStartTime) - Date.parse(currentDateTime);
+    // Set the sidebar configuration for the TaskSingle page
+    setSidebarConfig({ showMobileSidebar: false });
+
+    // Reset the sidebar configuration when the component is unmounted
+    return () => {
+      setSidebarConfig({ showMobileSidebar: true });
+    };
+  }, [setSidebarConfig]);
+
+	useEffect(() => {
+		const timeLeft = Date.parse(eventDetails?.startTime) - Date.parse(currentDateTime);
 		setLeftTime(timeLeft);
 
 		const days = Math.floor(leftTime / (1000 * 60 * 60 * 24));
@@ -41,7 +53,7 @@ export const LockedTasksScreen = ({ isLocked, onClick }) => {
 			   ${ seconds > 0 ? seconds + ' seconds' : '' }`;
 
 		setTimeLeftString(timeLeftString);
-	}, [leftTime, eventStartTime, currentDateTime])
+	}, [leftTime, eventDetails?.startTime, currentDateTime])
 
 	return (
 			<div className={styles.wrapper}>

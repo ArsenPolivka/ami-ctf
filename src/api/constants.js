@@ -4,6 +4,7 @@ export const REQUESTS = {
     CHANGE_NAME: 'CHANGE_NAME',
     CHANGE_PASSWORD: 'CHANGE_PASSWORD',
     CONTACT_US: 'CONTACT_US',
+    VERIFY: 'VERIFY',
 };
 
 export const ALL_NAMES = {
@@ -15,6 +16,7 @@ export const ALL_NAMES = {
     NEW_PASSWORD: 'newPassword',
     FULL_NAME: 'fullName',
     BODY: 'body',
+    KEY: 'key',
 };
 
 export const REQUESTS_BODY_NAMES = {
@@ -41,4 +43,7 @@ export const REQUESTS_BODY_NAMES = {
         EMAIL: 'email',
         BODY: 'body'
     },
+    [REQUESTS.VERIFY]:{
+        KEY: 'key',
+    }
 };

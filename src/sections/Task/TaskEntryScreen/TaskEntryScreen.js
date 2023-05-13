@@ -4,10 +4,24 @@ import { TaskCollection } from "../TaskCollection";
 import { LockedTasksScreen } from "../LockedTasksScreen";
 import { EventContext } from "../../../context/event/context";
 
-import { PLANNED, STARTED } from './constants';
+import { PLANNED } from './constants';
 
 export const TaskEntryScreen = () => {
-	const { eventStatus, setEventStatus } = useContext(EventContext);
+	const { eventDetails, isStarted, setIsStarted } = useContext(EventContext);
 
-	return (eventStatus === STARTED) ? <TaskCollection /> : <LockedTasksScreen onClick={setEventStatus} isLocked={!eventStatus || eventStatus === PLANNED} />;
+	const handleStartEvent = () => {
+		setIsStarted(true);
+		localStorage.setItem('isStarted', true);
+	}
+
+	return (
+			isStarted ? (
+					<TaskCollection />
+			) : (
+					<LockedTasksScreen
+							onClick={handleStartEvent}
+							isLocked={!eventDetails?.status || eventDetails?.status === PLANNED}
+					/>
+			)
+	)
 }

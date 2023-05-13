@@ -10,8 +10,8 @@ import { getEvent } from '../../api/event';
 export const EventProvider = ({ children }) => {
 	const { user } = useContext(AuthContext);
 
-	const [eventStatus, setEventStatus] = useState(false);
-	const [eventStartTime, setEventStartTime] = useState(false);
+	const [isStarted, setIsStarted] = useState(localStorage.getItem('isStarted') ?? false);
+	const [eventDetails, setEventDetails] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -24,8 +24,7 @@ export const EventProvider = ({ children }) => {
 			const eventResponse = await getEvent();
 
 			if (eventResponse.id) {
-				setEventStatus(eventResponse.status);
-				setEventStartTime(eventResponse.startTime);
+				setEventDetails(eventResponse);
 
 				setIsLoading(false);
 			} else {
@@ -41,7 +40,7 @@ export const EventProvider = ({ children }) => {
 	}
 
 	return (
-			<EventContext.Provider value={{ eventStatus, setEventStatus, eventStartTime }}>
+			<EventContext.Provider value={{ eventDetails, isStarted, setIsStarted, setEventDetails }}>
 				{children}
 			</EventContext.Provider>
 	);

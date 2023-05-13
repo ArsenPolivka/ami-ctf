@@ -10,43 +10,52 @@ import { TaskPage } from './pages/TaskPage';
 import { TaskEntryScreen } from "./sections/Task/TaskEntryScreen/TaskEntryScreen";
 
 import { AuthProvider } from './context/auth/AuthProvider';
-import {EventProvider} from "./context/event/EventProvider";
+import { EventProvider } from './context/event/EventProvider';
+import { TaskProvider } from './context/task/TaskProvider';
+import { RatingProvider } from './context/rating/RatingProvider';
+import { TaskSingle } from './sections/Task/TaskSingle';
+import { FinallyScreen } from "./sections/Task/FinallyScreen/FinallyScreen";
 
 export default function App() {
   return (
     <AuthProvider>
       <EventProvider>
-        <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+        <TaskProvider>
+          <RatingProvider>
+            <Routes>
+              <Route exact path="/" element={<Home/>} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
 
-            <Route path="/tasks" element={<TaskPage />}>
-              <Route index element={<TaskEntryScreen />} />
-              {/* <Route path=":id" element={<TaskSingle />} /> */}
-            </Route>
+                <Route path="/tasks" element={<TaskPage />}>
+                  <Route index element={<TaskEntryScreen />} />
+                  <Route path=":id" element={<TaskSingle />} />
+                  <Route path={"finally"} element={<FinallyScreen />} />
+                </Route>
 
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-        <Toaster
-          toastOptions={{
-            className: 'toaster',
-            position: 'top-right',
-            success: {
-              style: {
-                background: '#d3f6d7',
-                color: '#29D13A',
-              },
-            },
-            error: {
-              style: {
-                background: '#FFEFEF',
-                color: '#CF5454',
-              },
-            },
-          }}
-        />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
+            <Toaster
+              toastOptions={{
+                className: 'toaster',
+                position: 'top-right',
+                success: {
+                  style: {
+                    background: '#d3f6d7',
+                    color: '#29D13A',
+                  },
+                },
+                error: {
+                  style: {
+                    background: '#FFEFEF',
+                    color: '#CF5454',
+                  },
+                },
+              }}
+            />
+          </RatingProvider>
+        </TaskProvider>
       </EventProvider>
     </AuthProvider>
   );

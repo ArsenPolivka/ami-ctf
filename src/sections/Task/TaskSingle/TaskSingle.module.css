@@ -1,6 +1,7 @@
 .single-task-page {
     font-family: 'Nunito', sans-serif;
     width: 100%;
+    position: relative;
 }
 
 h1 {
@@ -84,11 +85,20 @@ h3 {
     margin-bottom: 16px;
 }
 
-.answer-input {
+.answer-input-wrapper {
     margin-bottom: 12px;
 }
 
+.input-error {
+    border-color: #CF5454;
+}
+
 .submit-answer-button {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.finishBtn {
     width: 100%;
 }
 
@@ -116,14 +126,20 @@ h3 {
     margin-bottom: 8px;
 }
 
-.attachment-button {
-    align-items: center;
-    gap: 24px;
+.attachment-placeholder {
+    font-size: 12px;
+    color: #6C63FF;
 }
 
 .control-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.back-button {
+    gap: 16px;
+    align-items: center;
+    color: #000;
 }
 
 .control-button {
@@ -146,12 +162,42 @@ h3 {
     height: 24px;
 }
 
-.download-icon {
-    order: 1;
-}
-
 .tip-button {
     gap: 8px;
+}
+
+.tipsBlock {
+    margin-top: 24px;
+}
+
+.tipsItem {
+    border-radius: 4px;
+    display: block;
+    font-size: 14px;
+    padding: 12px 24px 12px 60px;
+    background:#cfffe6;
+    color:#565656;
+}
+
+.tipsItem::before {
+    float: left;
+    margin-left: -46px;
+    margin-top: -14px;
+    width: 25px;
+    height: 48px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='svg-icon' viewBox='0 0 20 20'%3E%3Cpath fill='%2321a796' d='M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    content: "";
+}
+
+.tipsItem + .tipsItem {
+    margin-top: 16px;
+}
+
+.submit-form {
+    position: relative;
 }
 
 @media screen and (min-width: 576px){
@@ -160,7 +206,6 @@ h3 {
         justify-content: space-between;
         align-items: center;
     }
-
 }
 
 @media screen and (min-width: 768px){
