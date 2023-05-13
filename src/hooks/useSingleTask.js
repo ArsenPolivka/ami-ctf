@@ -22,5 +22,5 @@ export const useSingleTask = (id) => {
 		}).finally(() => setIsLoading(false));
 	}, [id]);
 
-	return { data, isLoading };
+	return { data, setData, isLoading, setIsLoading };
 };

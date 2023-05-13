@@ -15,7 +15,7 @@ import { ReactComponent as TipIcon }  from "./assets/tip-icon.svg";
 import { useSingleTask } from "../../../hooks/useSingleTask";
 import { verifyTask } from "../../../api/user";
 import { ALL_NAMES } from "../../../api/constants";
-import { getTip } from '../../../api/task';
+import { getTip, getSingleTask } from '../../../api/task';
 import { TaskContext } from "../../../context/task/context";
 
 import styles from './TaskSingle.module.css';
@@ -24,7 +24,7 @@ const { KEY } = ALL_NAMES;
 
 export const TaskSingle = () => {
   const { id } = useParams();
-  const { data, isLoading } = useSingleTask(id);
+  const { data, setData, isLoading, setIsLoading } = useSingleTask(id);
   const { taskCollection } = useContext(TaskContext);
 
   const navigate = useNavigate();
@@ -86,6 +86,16 @@ export const TaskSingle = () => {
 
       if (!title) {
         setTip(response);
+        setIsLoading(true);
+        getSingleTask(id).then(response => {
+          const { title } = response;
+
+          if (!title) {
+            setData(response);
+          } else {
+            notifyError(title);
+          }
+        }).finally(() => setIsLoading(false));
       } else {
         notifyError(title);
       }
