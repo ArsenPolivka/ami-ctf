@@ -126,7 +126,7 @@ export const TaskSingle = () => {
     navigate('/tasks/finally');
   }
 
-  if (tasksDone === tasksNumber) {
+  if (tasksDone === tasksNumber || eventDetails?.status === 'FINISHED') {
     navigate('/tasks/finally');
   }
 

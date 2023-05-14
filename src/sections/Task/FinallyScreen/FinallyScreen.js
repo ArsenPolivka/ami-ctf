@@ -59,7 +59,7 @@ export const FinallyScreen = () => {
 							{`${greetings} ${tasksDone}/${tasksNumber} tasks had done!`}
 						</span>
 							</div>
-							{tasksDone !== tasksNumber ? (
+							{tasksDone !== tasksNumber && eventDetails.status !== 'FINISHED' ? (
 									<Button
 											variant='primary'
 											rootClassName={classNames(styles.button, styles[btnClass])}

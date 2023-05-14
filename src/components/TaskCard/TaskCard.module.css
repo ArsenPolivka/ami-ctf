@@ -22,6 +22,11 @@
   line-height: 19px;
   color: #000000;
   margin-bottom: 18px;
+  max-height: 38px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 190px;
 }
 
 .btn {
