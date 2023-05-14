@@ -1,8 +1,9 @@
 .card {
   background: #FFFFFF;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
   padding: 32px;
+  position: relative;
 }
 
 .title {
@@ -25,4 +26,13 @@
 
 .btn {
   margin-left: auto;
+}
+
+.completion-label {
+  display: flex;
+  align-items: center;
+  background-color: #6ed278;
+  border-radius: 6px;
+  justify-content: center;
+  height: 41px;
 }

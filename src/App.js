@@ -8,13 +8,13 @@ import { Profile } from './pages/Profile';
 import { NoMatch } from './pages/404';
 import { TaskPage } from './pages/TaskPage';
 import { TaskEntryScreen } from "./sections/Task/TaskEntryScreen/TaskEntryScreen";
+import { TaskSingle } from './sections/Task/TaskSingle';
+import { FinallyScreen } from "./sections/Task/FinallyScreen/FinallyScreen";
 
 import { AuthProvider } from './context/auth/AuthProvider';
 import { EventProvider } from './context/event/EventProvider';
 import { TaskProvider } from './context/task/TaskProvider';
 import { RatingProvider } from './context/rating/RatingProvider';
-import { TaskSingle } from './sections/Task/TaskSingle';
-import { FinallyScreen } from "./sections/Task/FinallyScreen/FinallyScreen";
 
 export default function App() {
   return (

@@ -52,16 +52,20 @@ export const TaskCollection = () => {
 
   return (
     <div className={styles.wrapper}>
+
       <h2 className="visually-hidden">Task Collection</h2>
 
       <ul className={styles.collection}>
         {items.length ? currentItems?.map(({ id, name, description }) => {
+          const itemIndex = taskCollection.content.indexOf(taskCollection.content.find(item => item.id === Number(id)));
+
           return (
             <li key={id} className={styles.item}>
               <TaskCard
                 id={id}
                 name={name}
                 description={description}
+                itemIndex={itemIndex + 1}
               />
             </li>
           );
